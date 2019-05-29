@@ -15,9 +15,9 @@ public class Pessoa {
     private Funcao funcao;
 
     public Pessoa(String dni, String nome, String estadoOrigem, String interesses) {
-        validador(dni, "");
-        validador(nome, "");
-        validador(estadoOrigem, "");
+        validadorAtributo(dni, "");
+        validadorAtributo(nome, "");
+        validadorAtributo(estadoOrigem, "");
 
         this.dni = dni;
         this.nome = nome;
@@ -26,10 +26,10 @@ public class Pessoa {
     }
 
     public Pessoa(String dni, String nome, String estadoOrigem, String interesses, String partido) {
-        validador(dni, "");
-        validador(nome, "");
-        validador(estadoOrigem, "");
-        validador(partido, "");
+        validadorAtributo(dni, "");
+        validadorAtributo(nome, "");
+        validadorAtributo(estadoOrigem, "");
+        validadorAtributo(partido, "");
 
         this.dni = dni;
         this.nome = nome;
