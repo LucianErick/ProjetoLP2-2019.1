@@ -1,5 +1,7 @@
 package lp2;
 
+import java.util.Objects;
+
 import static lp2.Validador.*;
 
 public class Pessoa {
@@ -64,14 +66,30 @@ public class Pessoa {
     public String toString() {
         String partido = this.partido == null ? "" : this.partido;
         String funcao = this.funcao == null ? "" : this.funcao.toString();
+        if (!funcao.equals("") && partido.equals("")) {
+            return String.format("%s - %s (%s) - Interesses: %s", this.nome, this.dni, this.estadoOrigem);
+        }
+        else if (funcao.equals("") && !partido.equals("")) {
+            return String.format("%s - %s (%s) - %s", this.nome, this.dni, this.estadoOrigem, this.partido);
+        }
+        else if (funcao.equals("") && partido.equals("")) {
+            return String.format("%s - %s (%s) - %s - Interesses: %s", this.nome, this.dni, this.estadoOrigem, this.partido, this.interesses);
+        }
+        else {
+            return String.format("%s - %s (%s)", this.nome, this.dni, this.estadoOrigem);
+        }
+    }
 
-        return "Pessoa{" +
-                "dni='" + dni + '\'' +
-                ", nome='" + nome + '\'' +
-                ", estadoOrigem='" + estadoOrigem + '\'' +
-                ", interesses='" + interesses + '\'' +
-                ", partido='" + partido + '\'' +
-                ", funcao=" + funcao +
-                '}';
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pessoa)) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(getDni(), pessoa.getDni());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDni());
     }
 }
