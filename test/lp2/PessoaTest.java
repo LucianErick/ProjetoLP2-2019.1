@@ -23,7 +23,7 @@ class PessoaTest {
     }
 
     @Test
-    void pessoaConstrutorSemPartidoComIntesseTest() {
+    void pessoaConstrutorSemPartidoComInteresseTest() {
         assertEquals("Ana - 213292920-3 (PB) - Interesses: saude, economia", pessoa1.toString());
     }
     @Test

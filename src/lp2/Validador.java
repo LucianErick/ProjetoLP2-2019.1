@@ -8,13 +8,12 @@ public class Validador {
         }
     }
 
-    public static boolean validadorDni(String dni, String mensagem) {
+    public static void validadorDni(String dni, String mensagem) {
         for (int i = 0; i < dni.length(); i++) {
-            char c = dni.charAt(i);
-            if (Character.isDigit(c) || "-".equals(c)) {
-                return true;
+            char caractere = dni.charAt(i);
+            if (!(Character.isDigit(caractere) || "-".equals(caractere))) {
+                throw new IllegalArgumentException(mensagem);
             }
         }
-        return false;
-        }
     }
+}

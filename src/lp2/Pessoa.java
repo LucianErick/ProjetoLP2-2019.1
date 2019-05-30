@@ -64,20 +64,13 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        String partido = this.partido == null ? "" : this.partido;
-        String funcao = this.funcao == null ? "" : this.funcao.toString();
-        if (!funcao.equals("") && partido.equals("")) {
-            return String.format("%s - %s (%s) - Interesses: %s", this.nome, this.dni, this.estadoOrigem);
-        }
-        else if (funcao.equals("") && !partido.equals("")) {
-            return String.format("%s - %s (%s) - %s", this.nome, this.dni, this.estadoOrigem, this.partido);
-        }
-        else if (funcao.equals("") && partido.equals("")) {
-            return String.format("%s - %s (%s) - %s - Interesses: %s", this.nome, this.dni, this.estadoOrigem, this.partido, this.interesses);
-        }
-        else {
-            return String.format("%s - %s (%s)", this.nome, this.dni, this.estadoOrigem);
-        }
+        String funcao = this.funcao == null  ?  ""  : " - " + this.funcao.toString();
+        String partido = this.partido == "" ? ""  : " - " +  this.partido;
+        return nome
+                + " - " + dni +
+                " " + "(" + estadoOrigem + ")"
+                + partido
+                + interesses;
     }
 
     @Override
