@@ -64,8 +64,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        String interesses = this.interesses == ""  ?  ""  : " - " + this.interesses;
-        String partido = this.partido == "" ? ""  : " - " +  this.partido;
+        String interesses = this.interesses.equals("")  ?  ""  : " - " + this.interesses;
+        String partido = this.partido.equals("") ? ""  : " - " +  this.partido;
         return nome
                 + " - " + dni +
                 " " + "(" + estadoOrigem + ")"
