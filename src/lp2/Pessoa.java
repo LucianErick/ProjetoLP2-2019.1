@@ -85,4 +85,13 @@ public class Pessoa {
     public int hashCode() {
         return Objects.hash(getDni());
     }
+
+    public boolean cadastraDeputado (String dataDeInicio){
+        validadorString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
+        validadorData(dataDeInicio, "Erro ao cadastrar deputado: data invalida");
+        validadorDataFutura(dataDeInicio, "Erro ao cadastrar deputado: data futura");
+
+        setFuncao(new Deputado(dni,dataDeInicio));
+        return true;
+    }
 }

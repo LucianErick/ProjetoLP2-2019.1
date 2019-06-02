@@ -2,9 +2,8 @@ package lp2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaTest {
     private Pessoa pessoa1;
@@ -68,5 +67,19 @@ class PessoaTest {
     void equalsTest2() {
         assertTrue(pessoa1.equals(pessoa5));
 
+    }
+
+    @Test
+    void casdastraDeputadoTest() {
+        assertTrue(pessoa2.cadastraDeputado("10091999"));
+
+        // cadastro com data possuindo letras.
+        assertThrows(IllegalArgumentException.class, () -> pessoa4.cadastraDeputado( "evhhu"));
+        //cadastro com data fora do padrao aceitavel.
+        assertThrows(IllegalArgumentException.class, () -> pessoa4.cadastraDeputado("11111111111"));
+        //cadastro com o dia da data invalido.
+        assertThrows(IllegalArgumentException.class, () -> pessoa4.cadastraDeputado("35102000"));
+        //cadastro com data futura
+        assertThrows(IllegalArgumentException.class, () -> pessoa4.cadastraDeputado("20112020"));
     }
 }

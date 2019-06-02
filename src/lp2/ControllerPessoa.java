@@ -1,5 +1,6 @@
 package lp2;
 
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,4 +41,23 @@ public class ControllerPessoa {
         }
         return false;
     }
+
+    public boolean cadastraDeputado (String dni, String dataDeInicio) {
+        validadorString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+        if (!pessoas.containsKey(dni)) {
+            throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa nao encontrada");
+        }
+        validadorDni(dni, "Erro ao cadastrar deputado: dni invalido");
+        validadorString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
+        validadorData(dataDeInicio, "Erro ao cadastrar deputado: data invalida");
+        validadorDataFutura(dataDeInicio, "Erro ao cadastrar deputado: data futura");
+
+        if (pessoas.get(dni).getPartido() == null || pessoas.get(dni).getPartido().trim().equals("")) {
+            throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
+        }
+
+        pessoas.get(dni).cadastraDeputado(dataDeInicio);
+        return true;
+    }
 }
+
