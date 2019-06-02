@@ -34,7 +34,7 @@ public class Pessoa {
     private Funcao funcao;
 
     /**
-     * Contrutor da classe Pessoa a partir dos atributos da mesma menos partido. Caso os parametros forem invalidos, lança-se uma excessao.
+     * Contrutor da classe Pessoa a partir dos atributos dela, menos o partido. Caso os parametros forem invalidos, lança-se uma excessao.
      * @param dni codigo de identificacao da objeto Pessoa
      * @param nome nome do objeto Pessoa.
      * @param estadoOrigem estado de origem do objeto Pessoa.
