@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2859de58-4f40-49f5-9d7f-7b926af3b871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ProjetoLP2-2019.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetoLP2-2019.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lp2/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lp2/Validador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Validador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/lp2/PessoaTest.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="567">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,9 +121,9 @@
         <option value="$PROJECT_DIR$/test/lp2/PessoaTest.java" />
         <option value="$PROJECT_DIR$/src/lp2/Validador.java" />
         <option value="$PROJECT_DIR$/src/lp2/Pessoa.java" />
-        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/PessoaTest.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java" />
+        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
       </list>
     </option>
   </component>
@@ -445,20 +439,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testes/lp2/PessoaTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
