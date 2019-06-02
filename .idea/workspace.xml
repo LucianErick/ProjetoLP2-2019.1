@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2859de58-4f40-49f5-9d7f-7b926af3b871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/ControllerPartido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/ControllerPartido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/Deputado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Deputado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/Funcao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Funcao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/Partido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Partido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lp2/Validador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Validador.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,22 +25,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
+        <entry file="file://$PROJECT_DIR$/src/lp2/Pessoa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+            <state relative-caret-position="2385">
+              <caret line="173" column="64" selection-start-line="173" selection-start-column="64" selection-end-line="173" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,10 +37,66 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java">
+        <entry file="file://$PROJECT_DIR$/src/lp2/Validador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="27" column="68" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="68" />
+            <state relative-caret-position="572">
+              <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#416#417#0" expanded="true" />
+                <element signature="e#462#463#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lp2/Deputado.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lp2/Partido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,20 +130,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/lp2/ControllerDeCU.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Deputado.java" />
         <option value="$PROJECT_DIR$/src/lp2/ControllerPessoaTest.java" />
         <option value="$PROJECT_DIR$/test/lp2/ControllerPessoaTest.java" />
         <option value="$PROJECT_DIR$/test/lp2/PessoaTest.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Validador.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Pessoa.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/PessoaTest.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java" />
-        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Partido.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/PartidoTest.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Funcao.java" />
-        <option value="$PROJECT_DIR$/src/lp2/ControllerPartido.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Pessoa.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" />
+        <option value="$PROJECT_DIR$/src/lp2/ControllerPartido.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Validador.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Deputado.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Partido.java" />
+        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Funcao.java" />
       </list>
     </option>
   </component>
@@ -109,24 +159,12 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ProjetoLP2-2019.1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProjetoLP2-2019.1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProjetoLP2-2019.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjetoLP2-2019.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProjetoLP2-2019.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjetoLP2-2019.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lp2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ProjetoLP2-2019.1" type="b2602c69:ProjectViewProjectNode" />
@@ -143,6 +181,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,7 +333,10 @@
       <workItem from="1559501249107" duration="1746000" />
       <workItem from="1559503118514" duration="1755000" />
       <workItem from="1559506320846" duration="877000" />
-      <workItem from="1559507328071" duration="391000" />
+      <workItem from="1559507328071" duration="1732000" />
+      <workItem from="1559509173707" duration="1735000" />
+      <workItem from="1559511214754" duration="1763000" />
+      <workItem from="1559513088568" duration="1236000" />
     </task>
     <task id="LOCAL-00001" summary="US4 incompleta">
       <created>1559501479996</created>
@@ -303,11 +345,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559501479996</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Testes da Classe Partido.">
+      <created>1559507765643</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559507765643</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7392000" />
+    <option name="totallyTimeSpent" value="13467000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,7 +372,7 @@
     <editor active="true" />
     <layout>
       <window_info id="simpleUML" order="0" weight="0.32954547" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25727773" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27065304" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -333,7 +382,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3298351" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -357,7 +406,7 @@
     </layout>
     <layout-to-restore>
       <window_info id="simpleUML" order="0" weight="0.32954547" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19984265" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26593235" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -395,7 +444,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="US4 incompleta" />
-    <option name="LAST_COMMIT_MESSAGE" value="US4 incompleta" />
+    <MESSAGE value="Testes da Classe Partido." />
+    <option name="LAST_COMMIT_MESSAGE" value="Testes da Classe Partido." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/lp2/ControllerDeCU.java" />
@@ -405,30 +455,6 @@
     <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoaTest.java" />
     <entry file="file://$PROJECT_DIR$/test/lp2/ControllerPessoaTest.java" />
     <entry file="file://$PROJECT_DIR$/src/lp2/PessoaTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-end-line="5" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/Validador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testes/lp2/PessoaTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="597">
@@ -449,43 +475,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/Pessoa.java">
+    <entry file="file://$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/Deputado.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/Partido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding>
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -494,7 +487,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
+        <state relative-caret-position="360">
           <caret line="27" column="68" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -502,10 +495,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        <state relative-caret-position="405">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/Partido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/Pessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2385">
+          <caret line="173" column="64" selection-start-line="173" selection-start-column="64" selection-end-line="173" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/Validador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/Deputado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
