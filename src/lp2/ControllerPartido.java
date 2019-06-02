@@ -14,7 +14,7 @@ public class ControllerPartido {
         this.mapaPartido = new HashMap<>();
     }
 
-    public boolean cadastraPessoa(String nomePartido) {
+    public boolean cadastraPartido(String nomePartido) {
 
         validadorString(nomePartido, "Erro ao cadastrar partido: nome nao pode ser vazio ou nulo");
 
