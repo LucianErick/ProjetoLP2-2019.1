@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2859de58-4f40-49f5-9d7f-7b926af3b871" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/ControllerPartido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/ControllerPartido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lp2/Deputado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Deputado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lp2/Funcao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Funcao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lp2/Partido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Partido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Pessoa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lp2/Validador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lp2/Validador.java" afterDir="false" />
     </list>
@@ -27,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/Pessoa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2385">
-              <caret line="173" column="64" selection-start-line="173" selection-start-column="64" selection-end-line="173" selection-end-column="64" />
+            <state relative-caret-position="-612">
+              <caret line="55" column="142" selection-start-line="55" selection-start-column="142" selection-end-line="55" selection-end-column="142" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/Validador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
+            <state relative-caret-position="-245">
+              <caret line="24" column="99" selection-start-line="24" selection-start-column="99" selection-end-line="24" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,12 +46,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+            <state relative-caret-position="-565">
+              <caret line="24" column="132" selection-start-line="24" selection-start-column="132" selection-end-line="24" selection-end-column="132" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-                <element signature="e#462#463#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,7 +58,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lp2/Deputado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="362">
               <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -78,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -86,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/Partido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
+            <state relative-caret-position="377">
               <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
             </state>
           </provider>
@@ -95,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+            <state relative-caret-position="375">
+              <caret line="25" column="133" selection-start-line="25" selection-start-column="133" selection-end-line="25" selection-end-column="133" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,14 +129,14 @@
         <option value="$PROJECT_DIR$/Testes/lp2/PessoaTest.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/ControllerPessoaTest.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/PartidoTest.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Pessoa.java" />
         <option value="$PROJECT_DIR$/Testes/lp2/ControllerPartidoTest.java" />
-        <option value="$PROJECT_DIR$/src/lp2/ControllerPartido.java" />
-        <option value="$PROJECT_DIR$/src/lp2/Validador.java" />
         <option value="$PROJECT_DIR$/src/lp2/Deputado.java" />
         <option value="$PROJECT_DIR$/src/lp2/Partido.java" />
-        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
         <option value="$PROJECT_DIR$/src/lp2/Funcao.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Pessoa.java" />
+        <option value="$PROJECT_DIR$/src/lp2/Validador.java" />
+        <option value="$PROJECT_DIR$/src/lp2/ControllerPessoa.java" />
+        <option value="$PROJECT_DIR$/src/lp2/ControllerPartido.java" />
       </list>
     </option>
   </component>
@@ -158,7 +151,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,7 +174,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -336,7 +329,8 @@
       <workItem from="1559507328071" duration="1732000" />
       <workItem from="1559509173707" duration="1735000" />
       <workItem from="1559511214754" duration="1763000" />
-      <workItem from="1559513088568" duration="1236000" />
+      <workItem from="1559513088568" duration="1738000" />
+      <workItem from="1559514934561" duration="343000" />
     </task>
     <task id="LOCAL-00001" summary="US4 incompleta">
       <created>1559501479996</created>
@@ -352,11 +346,25 @@
       <option name="project" value="LOCAL" />
       <updated>1559507765643</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Documentação das classes já feitas.">
+      <created>1559514395567</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559514395568</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Documentação das classes já feitas.">
+      <created>1559514581395</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559514581395</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13467000" />
+    <option name="totallyTimeSpent" value="14312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,11 +376,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="-4" width="1317" height="772" extended-state="6" />
+    <frame x="48" y="-11" width="1319" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="simpleUML" order="0" weight="0.32954547" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27065304" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.27537373" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -382,7 +390,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3298351" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298351" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -404,40 +412,6 @@
       <window_info anchor="right" id="Maven" order="8" />
       <window_info anchor="right" id="Database" order="9" />
     </layout>
-    <layout-to-restore>
-      <window_info id="simpleUML" order="0" weight="0.32954547" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26593235" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="Learn" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3298351" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298351" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3298351" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3298351" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32833582" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="right" id="Maven" order="8" />
-      <window_info anchor="right" id="Database" order="9" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -445,7 +419,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="US4 incompleta" />
     <MESSAGE value="Testes da Classe Partido." />
-    <option name="LAST_COMMIT_MESSAGE" value="Testes da Classe Partido." />
+    <MESSAGE value="Documentação das classes já feitas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentação das classes já feitas." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/lp2/ControllerDeCU.java" />
@@ -495,39 +470,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
+    <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#462#463#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lp2/Partido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
+        <state relative-caret-position="377">
           <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lp2/Pessoa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2385">
-          <caret line="173" column="64" selection-start-line="173" selection-start-column="64" selection-end-line="173" selection-end-column="64" />
+        <state relative-caret-position="-612">
+          <caret line="55" column="142" selection-start-line="55" selection-start-column="142" selection-end-line="55" selection-end-column="142" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -536,24 +496,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lp2/Validador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
+        <state relative-caret-position="-245">
+          <caret line="24" column="99" selection-start-line="24" selection-start-column="99" selection-end-line="24" selection-end-column="99" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lp2/Funcao.java">
+    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPessoa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        <state relative-caret-position="-565">
+          <caret line="24" column="132" selection-start-line="24" selection-start-column="132" selection-end-line="24" selection-end-column="132" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lp2/ControllerPartido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="133" selection-start-line="25" selection-start-column="133" selection-end-line="25" selection-end-column="133" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lp2/Deputado.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
+        <state relative-caret-position="362">
           <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />

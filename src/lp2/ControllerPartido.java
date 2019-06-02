@@ -23,7 +23,7 @@ public class ControllerPartido {
     }
 
     /**
-     * Cadastra o objeto Partido no mapaPartidos. Caso ja tenha um objeto Partido com um mesmo nome ja cadastrado, lanca-se uma excessao.
+     * Cadastra o objeto Partido no mapaPartidos. Caso ja tenha um objeto Partido com um mesmo nome ja cadastrado, lanca-se uma excecao.
      * @param nomePartido nome do objeto Partido.
      * @return boolean relacionado cadastro ou nao do objeto Partido no mapaPartido
      */

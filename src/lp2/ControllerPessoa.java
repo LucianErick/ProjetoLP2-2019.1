@@ -22,7 +22,7 @@ public class ControllerPessoa {
     }
 
     /**
-     * Cadastra pessoas de acordo com os metodos da classe, menos o partido. Caso os parametros sejam invalidos, lanca-se uma excessao.
+     * Cadastra pessoas de acordo com os metodos da classe, menos o partido. Caso os parametros sejam invalidos, lanca-se uma excecao.
      * @param nome nome do objeto a ser cadastrado
      * @param dni codigo de identificacao do objeto a ser cadastrado.
      * @param estadoOrigem estado de origem do objeto a ser cadastrado.
@@ -44,7 +44,7 @@ public class ControllerPessoa {
         return false;
     }
     /**
-     * Cadastra pessoas de acordo com os metodos da classe, incluindo o partido. Caso os parametros sejam invalidos, lanca-se uma excessao.
+     * Cadastra pessoas de acordo com os metodos da classe, incluindo o partido. Caso os parametros sejam invalidos, lanca-se uma excecao.
      * @param nome nome do objeto a ser cadastrado
      * @param dni codigo de identificacao do objeto a ser cadastrado.
      * @param estadoOrigem estado de origem do objeto a ser cadastrado.
@@ -70,7 +70,7 @@ public class ControllerPessoa {
     }
 
     /**
-     * Cadastra objeto Deputado a partir do dni e a data de inicio de atuacao. Caso tenha parametro invalido, lanca-se uma excessao.
+     * Cadastra objeto Deputado a partir do dni e a data de inicio de atuacao. Caso tenha parametro invalido, lanca-se uma excecao.
      * @param dni codigo de identificacao.
      * @param dataDeInicio data de inicio de atuacao politica
      * @return boolean relacionando a confirmacao ou nao do objeto Deputado.

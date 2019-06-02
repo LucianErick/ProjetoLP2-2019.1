@@ -22,7 +22,7 @@ public class Validador {
     }
 
     /**
-     * Verifica se o atributo dni compoe-se de digitos e tracos. Caso contrario, lanca-se uma excessao.
+     * Verifica se o atributo dni compoe-se de digitos e tracos. Caso contrario, lanca-se uma excecao.
      * @param dni atributo a ser validado ou nao.
      * @param mensagem mensagem que sera exposta caso uma excessao for lancada.
      */
@@ -37,7 +37,7 @@ public class Validador {
     }
 
     /**
-     * Valida a data, verificando se compoe por digitos. Caso contrario, lanca-se uma excessao.
+     * Valida a data, verificando se compoe por digitos. Caso contrario, lanca-se uma excecao.
      * Se for composta por digitos, os numeros sao formatados a partir de um padrao.
      * Se nao estiver dentro do padrao, lanca-se uma excessao.
      * @param data recebida como parametro de verificacao
@@ -62,7 +62,7 @@ public class Validador {
     }
 
     /**
-     * Verifica se a data recebida como parametro refere-se a uma data futura. Caso for, lanca-se uma excessao.
+     * Verifica se a data recebida como parametro refere-se a uma data futura. Caso for, lanca-se uma excecao.
      * @param data data a ser validada.
      * @param mensagem mensagem que sera exposta caso a data for no futuro.
      */
