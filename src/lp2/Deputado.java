@@ -30,7 +30,6 @@ public class Deputado implements Funcao{
     public Deputado(String dni, String dataDeInicio){
         validadorString(dni, "");
         validadorString(dataDeInicio, "");
-
         this.quantidadeDeLeis = 0;
         FORMATO = "POL: ";
     }

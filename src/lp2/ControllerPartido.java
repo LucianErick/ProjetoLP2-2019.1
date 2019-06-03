@@ -16,9 +16,8 @@ public class ControllerPartido {
 
     /**
      * Construtor da classe Partido que inicializa o mapaPartido referente ao objeto da classe ControllerPartido.
-     * @param mapaPartido
      */
-    public ControllerPartido(HashMap<String, Partido> mapaPartido) {
+    public ControllerPartido() {
 
         this.mapaPartido = new HashMap<>();
     }
@@ -29,18 +28,15 @@ public class ControllerPartido {
      * @return boolean relacionado cadastro ou nao do objeto Partido no mapaPartido
      */
 
-    public boolean cadastraPartido(String nomePartido) {
+    public void cadastraPartido(String nomePartido) {
 
-        validadorString(nomePartido, "Erro ao cadastrar partido: nome nao pode ser vazio ou nulo");
+        validadorString(nomePartido, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
         if (mapaPartido.containsKey(nomePartido)) {
             throw new IllegalArgumentException("Erro ao cadastrar partido: nome ja cadastrado");
 
         } else if (!mapaPartido.containsKey(nomePartido)) {
             this.mapaPartido.put(nomePartido, new Partido(nomePartido));
-            return true;
         }
-
-        return false;
     }
 
     /**

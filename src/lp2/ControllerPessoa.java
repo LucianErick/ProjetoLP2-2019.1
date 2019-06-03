@@ -30,7 +30,7 @@ public class ControllerPessoa {
      * @return boolean confirmando ou nao o cadastro do objeto.
      */
 
-    public boolean cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses) {
+    public void cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         validadorString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
         validadorString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
         validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
@@ -39,9 +39,7 @@ public class ControllerPessoa {
             throw new IllegalArgumentException("Erro ao cadastrar pessoa: dni ja cadastrado");
         } else if (!pessoas.containsKey(dni)) {
             this.pessoas.put(dni, new Pessoa(nome, dni, estadoOrigem, interesses));
-            return true;
         }
-        return false;
     }
     /**
      * Cadastra pessoas de acordo com os metodos da classe, incluindo o partido. Caso os parametros sejam invalidos, lanca-se uma excecao.
@@ -54,7 +52,7 @@ public class ControllerPessoa {
      */
 
 
-    public boolean cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
+    public void cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
         validadorString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
         validadorString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
         validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
@@ -64,9 +62,7 @@ public class ControllerPessoa {
         }
         else if (!pessoas.containsKey(dni)) {
             this.pessoas.put(dni, new Pessoa(nome, dni, estadoOrigem, interesses, partido));
-            return true;
         }
-        return false;
     }
 
     /**
@@ -76,12 +72,12 @@ public class ControllerPessoa {
      * @return boolean relacionando a confirmacao ou nao do objeto Deputado.
      */
 
-    public boolean cadastraDeputado (String dni, String dataDeInicio) {
+    public void cadastraDeputado (String dni, String dataDeInicio) {
         validadorString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar deputado: dni invalido");
         if (!pessoas.containsKey(dni)) {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa nao encontrada");
         }
-        validadorDni(dni, "Erro ao cadastrar deputado: dni invalido");
         validadorString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
         validadorData(dataDeInicio, "Erro ao cadastrar deputado: data invalida");
         validadorDataFutura(dataDeInicio, "Erro ao cadastrar deputado: data futura");
@@ -89,9 +85,7 @@ public class ControllerPessoa {
         if (pessoas.get(dni).getPartido() == null || pessoas.get(dni).getPartido().trim().equals("")) {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
         }
-
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
-        return true;
     }
 }
 
