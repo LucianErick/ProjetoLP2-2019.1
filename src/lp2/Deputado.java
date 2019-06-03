@@ -17,9 +17,9 @@ public class Deputado implements Funcao{
      */
     private int quantidadeDeLeis;
     /**
-     * Atributo que padroniza o formato do objeto Deputado.
+     * Atributo que padroniza o FORMATO do objeto Deputado.
      */
-    private final String formato;
+    private final String FORMATO;
 
     /**
      * Construtor da classe Deputado  utilizando o dni e a data de inicio como essenciais para a caracterizacao do objeto Deputado.
@@ -32,16 +32,16 @@ public class Deputado implements Funcao{
         validadorString(dataDeInicio, "");
 
         this.quantidadeDeLeis = 0;
-        formato = "POL: ";
+        FORMATO = "POL: ";
     }
 
     /**
-     * Retorna o formato do objeto Deputado.
-     * @return o formato padronizado.
+     * Retorna o FORMATO do objeto Deputado.
+     * @return o FORMATO padronizado.
      */
 
-    public String getFormato() {
-        return formato;
+    public String getFORMATO() {
+        return FORMATO;
     }
 
     /**

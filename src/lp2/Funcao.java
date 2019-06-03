@@ -9,5 +9,5 @@ public interface Funcao {
     @Override
     public String toString();
 
-    public String getFormato();
+    public String getFORMATO();
 }

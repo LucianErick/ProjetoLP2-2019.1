@@ -42,10 +42,9 @@ public class Pessoa {
      */
 
     public Pessoa(String dni, String nome, String estadoOrigem, String interesses) {
-        validadorString(dni, "");
-        validadorString(nome, "");
-        validadorString(estadoOrigem, "");
-
+        validadorString(dni, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
+        validadorString(nome, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+        validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
         this.dni = dni;
         this.nome = nome;
         this.estadoOrigem = estadoOrigem;
@@ -62,11 +61,10 @@ public class Pessoa {
      */
 
     public Pessoa(String dni, String nome, String estadoOrigem, String interesses, String partido) {
-        validadorString(dni, "");
-        validadorString(nome, "");
-        validadorString(estadoOrigem, "");
-        validadorString(partido, "");
-
+        validadorString(dni, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
+        validadorString(nome, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+        validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
+        validadorString(partido, "Erro ao cadastrar pessoa: partido nao pode ser vazio ou nulo");
         this.dni = dni;
         this.nome = nome;
         this.estadoOrigem = estadoOrigem;

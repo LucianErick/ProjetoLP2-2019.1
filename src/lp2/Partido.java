@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Classe Partido que refere-se a construcao de partidos governamentais.
  */
-public class Partido {
+public class Partido implements Comparable<Partido> {
     /**
      * Atributo que contem o nome do partido.
      */
@@ -57,5 +57,15 @@ public class Partido {
     @Override
     public String toString() {
         return String.format("%s", getNomePartido());
+    }
+
+    /**
+     * Compara os nomes dos partidos cadastrados em ordem alfabetica.
+     * @param partido o partido.
+     * @return
+     */
+    @Override
+    public int compareTo(Partido partido) {
+        return this.nomePartido.compareTo(partido.getNomePartido());
     }
 }

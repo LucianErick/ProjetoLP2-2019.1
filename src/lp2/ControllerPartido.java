@@ -1,6 +1,7 @@
 package lp2;
 
-import java.util.HashMap;
+import java.util.*;
+
 import static lp2.Validador.validadorString;
 
 /**
@@ -31,8 +32,6 @@ public class ControllerPartido {
     public boolean cadastraPartido(String nomePartido) {
 
         validadorString(nomePartido, "Erro ao cadastrar partido: nome nao pode ser vazio ou nulo");
-
-
         if (mapaPartido.containsKey(nomePartido)) {
             throw new IllegalArgumentException("Erro ao cadastrar partido: nome ja cadastrado");
 
@@ -42,5 +41,23 @@ public class ControllerPartido {
         }
 
         return false;
+    }
+
+    /**
+     * Exibe os partidos cadastrados, em ordem alfabetica(lexicografica), no mapa de partidos.
+     * @return uma string contendo os nomes dos partidos separados por virgula "partido1,partido2...".
+     */
+    public String exibirBase() {
+        String saida = "";
+        List<Partido> partidosList = new ArrayList<>(this.mapaPartido.values());
+        Collections.sort(partidosList);
+
+        for (Partido partido : partidosList) {
+            saida += String.format("%s,", partido.toString());
+        }
+        if(saida.length() > 0) {
+            saida = saida.substring(0,saida.length() - 1);
+        }
+        return saida;
     }
 }
