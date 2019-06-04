@@ -109,6 +109,14 @@ public class Pessoa {
     }
 
     /**
+     * Retorna o atributo funcao do objeto Pessoa.
+     * @return interesses
+     */
+    public Funcao getFuncao() {
+        return funcao;
+    }
+
+    /**
      * Retorna o atributo partido do objeto Pessoa.
      * @return partido
      */
@@ -133,14 +141,28 @@ public class Pessoa {
 
     @Override
     public String toString() {
+        if (this.funcao == null) {
+            toStringPessoa();
+        }
+        else {
+            toStringDeputado();
+        }
+
+
+    }
+
+    private String toStringPessoa(){
         String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
         String partido = (this.partido == null || this.partido.equals("")) ? ""  : " - " +  this.partido;
+
         return nome
                 + " - " + dni +
                 " " + "(" + estadoOrigem + ")"
                 + partido
                 + interesses;
+
     }
+
 
     /**
      * Compara dois objetos e retorna um boolean afirmando se sao ou nao iguais.

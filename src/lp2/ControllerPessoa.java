@@ -17,7 +17,7 @@ public class ControllerPessoa {
     /**
      * Atributo que refere-se ao mapa para armazenar objetos Deputado.
      */
-    private Map<String, Deputado> deputados;
+    //private Map<String, Deputado> deputados;
 
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
@@ -25,7 +25,7 @@ public class ControllerPessoa {
 
     public ControllerPessoa() {
         this.pessoas = new HashMap<>();
-        this.deputados = new HashMap<>();
+        //this.deputados = new HashMap<>();
     }
 
     /**
@@ -90,7 +90,6 @@ public class ControllerPessoa {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
         }
 
-        this.deputados.put(dni, new Deputado(dni, dataDeInicio));
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
     }
 
@@ -106,12 +105,10 @@ public class ControllerPessoa {
         if(!pessoas.containsKey(dni)) {
             throw new IllegalArgumentException("Erro ao exibir pessoa: pessoa nao encontrada");
         }
-        if(deputados == null) {
+        if(pessoas.get(dni).getFuncao() == null) {
             return pessoas.get(dni).toString();
         }
-        if(!deputados.containsKey(dni)) {
-            return pessoas.get(dni).toString();
-        } else {
+        else {
             return "POL: " + pessoas.get(dni).toString() + " - " + deputados.get(dni).toString();
         }
     }

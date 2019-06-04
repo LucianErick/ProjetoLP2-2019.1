@@ -77,9 +77,6 @@ class PessoaTest {
         assertEquals("POL: Ana - 213292925-4 (PB) - PMDB - Interesses: saude, economia - 24/12/1996 - 0 Leis", pessoa2.toString());
         assertEquals("POL: Ana - 213292925-6 (PB) - PT - 10/09/1999 - 0 Leis", pessoa4.toString());
 
-        assertTrue(pessoa2.cadastraDeputado("10091999"));
-        assertTrue(pessoa1.cadastraDeputado("24121996"));
-
         // cadastro com data possuindo letras.
         assertThrows(IllegalArgumentException.class, () -> pessoa4.cadastraDeputado( "evhhu"));
         //cadastro com data fora do padrao aceitavel.
