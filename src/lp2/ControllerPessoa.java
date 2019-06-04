@@ -10,15 +10,22 @@ import static lp2.Validador.*;
 
 public class ControllerPessoa {
     /**
-     * Atributo que refere-se ao mapa para armazenar objetos Pessoa/Deputado.
+     * Atributo que refere-se ao mapa para armazenar objetos Pessoa.
      */
     private Map<String ,Pessoa> pessoas;
+
+    /**
+     * Atributo que refere-se ao mapa para armazenar objetos Deputado.
+     */
+    private Map<String, Deputado> deputados;
+
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
      */
 
     public ControllerPessoa() {
         this.pessoas = new HashMap<>();
+        this.deputados = new HashMap<>();
     }
 
     /**
@@ -27,7 +34,6 @@ public class ControllerPessoa {
      * @param dni codigo de identificacao do objeto a ser cadastrado.
      * @param estadoOrigem estado de origem do objeto a ser cadastrado.
      * @param interesses interesses do objeto a ser cadastrado
-     * @return boolean confirmando ou nao o cadastro do objeto.
      */
 
     public void cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses) {
@@ -48,7 +54,6 @@ public class ControllerPessoa {
      * @param estadoOrigem estado de origem do objeto a ser cadastrado.
      * @param interesses interesses do objeto a ser cadastrado
      * @param partido partido do objeto a ser cadastrado
-     * @return boolean confirmando ou nao o cadastro do objeto.
      */
 
 
@@ -69,11 +74,10 @@ public class ControllerPessoa {
      * Cadastra objeto Deputado a partir do dni e a data de inicio de atuacao. Caso tenha parametro invalido, lanca-se uma excecao.
      * @param dni codigo de identificacao.
      * @param dataDeInicio data de inicio de atuacao politica
-     * @return boolean relacionando a confirmacao ou nao do objeto Deputado.
      */
 
     public void cadastraDeputado (String dni, String dataDeInicio) {
-        validadorString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+        validadorString(dni, "Erro ao cadastrar deputado: dni nao pode ser vazio ou nulo");
         validadorDni(dni, "Erro ao cadastrar deputado: dni invalido");
         if (!pessoas.containsKey(dni)) {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa nao encontrada");
@@ -85,7 +89,31 @@ public class ControllerPessoa {
         if (pessoas.get(dni).getPartido() == null || pessoas.get(dni).getPartido().trim().equals("")) {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
         }
+
+        this.deputados.put(dni, new Deputado(dni, dataDeInicio));
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
+    }
+
+    /**
+     * Exibe uma pessoa cadastrada no sistema a partir do DNI. Caso o parametro seja invalido, uma exececao eh lancada.
+     * @param dni codigo de identificacao.
+     * @return a pessoa cadastrada em um formato para Pessoas Politicas e outra para Nao Politicas.
+     */
+
+    public String exibirPessoa(String dni) {
+        validadorString(dni, "Erro ao exibir pessoa: dni nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao exibir pessoa: dni invalido");
+        if(!pessoas.containsKey(dni)) {
+            throw new IllegalArgumentException("Erro ao exibir pessoa: pessoa nao encontrada");
+        }
+        if(deputados == null) {
+            return pessoas.get(dni).toString();
+        }
+        if(!deputados.containsKey(dni)) {
+            return pessoas.get(dni).toString();
+        } else {
+            return "POL: " + pessoas.get(dni).toString() + " - " + deputados.get(dni).toString();
+        }
     }
 }
 

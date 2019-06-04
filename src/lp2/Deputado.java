@@ -7,19 +7,19 @@ import static lp2.Validador.*;
 /**
  * Classe Deputado que tem Funcao como interface.
  */
-public class Deputado implements Funcao{
+public class Deputado implements Funcao {
     /**
      * Atributo do tipo Date que refere a data de inicio do objeto relacionado
      */
-    private Date dataDeInicio;
+    private String dataDeInicio;
     /**
      * Atributo do tipo String que refere a quantidade de leis aprovadas pelo objeto Deputado.
      */
     private int quantidadeDeLeis;
     /**
-     * Atributo que padroniza o FORMATO do objeto Deputado.
+     * Atributo que padroniza o formato do objeto Deputado.
      */
-    private final String FORMATO;
+    private final String formato;
 
     /**
      * Construtor da classe Deputado  utilizando o dni e a data de inicio como essenciais para a caracterizacao do objeto Deputado.
@@ -30,17 +30,47 @@ public class Deputado implements Funcao{
     public Deputado(String dni, String dataDeInicio){
         validadorString(dni, "");
         validadorString(dataDeInicio, "");
+
+        this.dataDeInicio = converteData(dataDeInicio);
         this.quantidadeDeLeis = 0;
-        FORMATO = "POL: ";
+        formato = "POL: ";
+    }
+    /**
+     * Converte a data recebida para um padrão válido tradicional dd/mm/AAAA.
+     * @param dataDeInicio String que contém a data que será padronizada.
+     * @return a data em formato padronizado.
+     */
+
+    public String converteData(String dataDeInicio) {
+        String aux = "";
+        char[] array = dataDeInicio.toCharArray();
+        for(int i=0; i<array.length; i++) {
+            if(i == 1 || i == 3) {
+                aux += array[i] + "/";
+            }else {
+                aux += array[i];
+            }
+        }
+        dataDeInicio=aux;
+        return dataDeInicio;
     }
 
+    public String getDataDeInicio() {
+        return dataDeInicio;
+    }
+
+    public int getQuantidadeDeLeis() {
+        return quantidadeDeLeis;
+    }
+
+
     /**
-     * Retorna o FORMATO do objeto Deputado.
-     * @return o FORMATO padronizado.
+     * Retorna o formato do objeto Deputado.
+     * @return o formato padronizado.
      */
 
     public String getFORMATO() {
-        return FORMATO;
+        return formato;
     }
 
     /**
@@ -50,6 +80,6 @@ public class Deputado implements Funcao{
 
     @Override
     public String toString() {
-        return "";
+        return getDataDeInicio() + " - " + getQuantidadeDeLeis()+ " Leis";
     }
 }

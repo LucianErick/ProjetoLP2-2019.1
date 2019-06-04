@@ -26,7 +26,9 @@ public class Facade {
 
     //US3
 
-    // CADE GUTEMBERG CARALHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    public String exibirPessoa(String dni) {
+        return this.controladorPessoa.exibirPessoa(dni);
+    }
 
     // US4
     public void cadastrarPartido(String nomePartido) {

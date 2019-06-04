@@ -41,7 +41,7 @@ public class Pessoa {
      * @param interesses intesses relacionados ao objeto Pessoa.
      */
 
-    public Pessoa(String dni, String nome, String estadoOrigem, String interesses) {
+    public Pessoa(String nome, String dni, String estadoOrigem, String interesses) {
         validadorString(dni, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
         validadorString(nome, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
         validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
@@ -60,11 +60,11 @@ public class Pessoa {
      * @param partido partido relaciona ao objeto Pessoa.
      */
 
-    public Pessoa(String dni, String nome, String estadoOrigem, String interesses, String partido) {
+    public Pessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
         validadorString(dni, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
         validadorString(nome, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
         validadorString(estadoOrigem, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
-        validadorString(partido, "Erro ao cadastrar pessoa: partido nao pode ser vazio ou nulo");
+
         this.dni = dni;
         this.nome = nome;
         this.estadoOrigem = estadoOrigem;
@@ -133,8 +133,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        String interesses = this.interesses.equals("")  ?  ""  : " - " + this.interesses;
-        String partido = this.partido.equals("") ? ""  : " - " +  this.partido;
+        String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
+        String partido = (this.partido == null || this.partido.equals("")) ? ""  : " - " +  this.partido;
         return nome
                 + " - " + dni +
                 " " + "(" + estadoOrigem + ")"
