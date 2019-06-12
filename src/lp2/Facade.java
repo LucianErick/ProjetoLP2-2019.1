@@ -1,13 +1,12 @@
+
 package lp2;
 
 import easyaccept.EasyAccept;
 
 public class Facade {
-    private ControllerPartido controladorPartido;
     private ControllerPessoa controladorPessoa;
 
     public Facade() {
-        this.controladorPartido = new ControllerPartido();
         this.controladorPessoa = new ControllerPessoa();
     }
 
@@ -26,16 +25,16 @@ public class Facade {
 
     //US3
 
-    public String exibirPessoa(String dni) {
-        return this.controladorPessoa.exibirPessoa(dni);
-    }
+    //public String exibirPessoa(String dni) {
+    //  return this.controladorPessoa.exibirPessoa(dni);
+    // }
 
     // US4
     public void cadastrarPartido(String nomePartido) {
-        this.controladorPartido.cadastraPartido(nomePartido);
+        this.controladorPessoa.cadastrarPartido(nomePartido);
     }
     public String exibirBase() {
-        return this.controladorPartido.exibirBase();
+        return this.controladorPessoa.exibirBase();
     }
 
     public void salvarSistema() {}
