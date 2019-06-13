@@ -29,6 +29,10 @@ public class ControllerPessoa {
         this.partidos = new ArrayList<>();
     }
 
+    public Map<String, Pessoa> getPessoas() {
+        return pessoas;
+    }
+
     /**
      * Cadastra pessoas de acordo com os metodos da classe, menos o partido. Caso os parametros sejam invalidos, lanca-se uma excecao.
      * @param nome nome do objeto a ser cadastrado
@@ -36,6 +40,7 @@ public class ControllerPessoa {
      * @param estadoOrigem estado de origem do objeto a ser cadastrado.
      * @param interesses interesses do objeto a ser cadastrado
      */
+
 
     public void cadastraPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         validadorString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
@@ -96,7 +101,7 @@ public class ControllerPessoa {
 
   /**
      * Exibe uma pessoa cadastrada no sistema a partir do DNI. Caso o parametro seja invalido, uma exececao eh lancada.
-     * @param dni codigo de identificacao.
+    // * @param dni codigo de identificacao.
      * @return a pessoa cadastrada em um formato para Pessoas Politicas e outra para Nao Politicas.
 
 
