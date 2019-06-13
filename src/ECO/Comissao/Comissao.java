@@ -1,4 +1,4 @@
-package lp2;
+package ECO.Comissao;
 
 import java.util.Objects;
 

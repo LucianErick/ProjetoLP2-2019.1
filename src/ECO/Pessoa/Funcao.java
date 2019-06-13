@@ -1,4 +1,4 @@
-package lp2;
+package ECO.Pessoa;
 
 /**
  * Interface Funcao em prol da padronizacao de funcoes politicas.

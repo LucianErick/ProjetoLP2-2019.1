@@ -1,5 +1,7 @@
-package lp2;
+package ECO;
 
+import ECO.Pessoa.Deputado;
+import ECO.Pessoa.Pessoa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

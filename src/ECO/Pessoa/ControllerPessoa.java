@@ -1,8 +1,8 @@
-package lp2;
+package ECO.Pessoa;
 
 import java.util.*;
 
-import static lp2.Validador.*;
+import static ECO.Util.Validador.*;
 
 /**
  * Classe ControllerPessoa que serve para armazenar os objetos Pessoa e objetos Deputado.

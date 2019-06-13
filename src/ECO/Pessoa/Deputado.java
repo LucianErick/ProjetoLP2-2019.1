@@ -1,8 +1,6 @@
-package lp2;
+package ECO.Pessoa;
 
-import java.util.Date;
-
-import static lp2.Validador.*;
+import static ECO.Util.Validador.*;
 
 /**
  * Classe Deputado que tem Funcao como interface.

@@ -1,4 +1,7 @@
-package lp2;
+package ECO;
+
+import ECO.Comissao.ControllerComissao;
+import ECO.Pessoa.ControllerPessoa;
 
 import java.util.List;
 import java.util.Scanner;

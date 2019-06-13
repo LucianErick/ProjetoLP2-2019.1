@@ -1,7 +1,7 @@
-package lp2;
+package ECO.Pessoa;
 
 import java.util.Objects;
-import static lp2.Validador.*;
+import static ECO.Util.Validador.*;
 
 /**
  * Classe Pessoa onde o objeto Pessoa se forma a partir dos atributos relacionados.

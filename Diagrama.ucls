@@ -2,8 +2,8 @@
 <class-diagram version="1.2.3" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true" 
   router="FAN">  
-  <class id="1" language="java" name="lp2.Facade" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="ECO.Facade" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Facade.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="261" width="292" x="703" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -11,8 +11,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="lp2.Validador" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Validador.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="ECO.Util.Validador" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Validador.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="153" width="213" x="711" y="1379"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -20,8 +20,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="lp2.ControllerPartido" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/ControllerPartido.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="ECO.ControllerPartido" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/ControllerPartido.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="117" width="161" x="1035" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,8 +29,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="lp2.Partido" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Partido.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="ECO.Partido" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Partido.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="189" width="140" x="1236" y="705"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -38,8 +38,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="lp2.ControllerPessoa" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/ControllerPessoa.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="ECO.Pessoa.ControllerPessoa" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/ControllerPessoa.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="153" width="288" x="183" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -47,13 +47,13 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="6" language="java" name="lp2" project="ProjetoLP2-2019.1" file="/ProjetoLP2-2019.1/tests/lp2" 
+  <package id="6" language="java" name="ECO" project="ProjetoLP2-2019.1" file="/ProjetoLP2-2019.1/tests/ECO"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="50" width="101" x="159" y="67"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="7" language="java" name="lp2.DeputadoTest" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/tests/lp2/DeputadoTest.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="ECO.DeputadoTest" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/tests/ECO/DeputadoTest.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="189" width="160" x="511" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -66,8 +66,8 @@
     <position height="39" width="114" x="300" y="67"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </component>  
-  <class id="9" language="java" name="lp2.ControllerPessoaTest" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/tests/lp2/ControllerPessoaTest.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="ECO.ControllerPessoaTest" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/tests/ECO/ControllerPessoaTest.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="153" width="209" x="454" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -75,8 +75,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="lp2.Deputado" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Deputado.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="ECO.Pessoa.Deputado" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Deputado.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="225" width="158" x="511" y="1114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -84,8 +84,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="11" language="java" name="lp2.Funcao" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Funcao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="11" language="java" name="ECO.Pessoa.Funcao" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Funcao.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="99" width="130" x="541" y="1379"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -93,8 +93,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="12" language="java" name="lp2.ControllerPartidoTest" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/tests/lp2/ControllerPartidoTest.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="ECO.ControllerPartidoTest" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/tests/ECO/ControllerPartidoTest.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="189" width="210" x="1035" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -102,8 +102,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="lp2.PartidoTest" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/tests/lp2/PartidoTest.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="ECO.PartidoTest" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/tests/ECO/PartidoTest.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="171" width="127" x="1236" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -111,8 +111,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="lp2.Pessoa" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/src/lp2/Pessoa.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="ECO.Pessoa.Pessoa" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/src/ECO/Pessoa.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="369" width="222" x="690" y="705"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -120,8 +120,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="lp2.PessoaTest" project="ProjetoLP2-2019.1" 
-    file="/ProjetoLP2-2019.1/tests/lp2/PessoaTest.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="ECO.PessoaTest" project="ProjetoLP2-2019.1"
+    file="/ProjetoLP2-2019.1/tests/ECO/PessoaTest.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="297" width="284" x="711" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

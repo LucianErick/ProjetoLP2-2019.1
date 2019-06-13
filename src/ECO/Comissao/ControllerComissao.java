@@ -1,11 +1,12 @@
-package lp2;
+package ECO.Comissao;
+
+import ECO.Pessoa.Deputado;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static lp2.Validador.validadorString;
+import static ECO.Util.Validador.validadorString;
 
 public class ControllerComissao {
     private Map<String, Comissao> comissoes;

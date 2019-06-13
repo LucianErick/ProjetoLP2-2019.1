@@ -1,5 +1,6 @@
-package lp2;
+package ECO;
 
+import ECO.Pessoa.ControllerPessoa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
