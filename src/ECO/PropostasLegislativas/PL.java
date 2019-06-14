@@ -11,13 +11,17 @@ public class PL extends PropostaLegislativa {
         this.Conclusivo = conclusivo;
     }
 
-    public boolean isConclusivo() {
-        return Conclusivo;
+    public String  isConclusivo() {
+        if ( this.Conclusivo == true) {
+            return " - Conclusiva";
+        }
+        return "";
+
     }
 
 
     @Override
     public String ToString() {
-        return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + isConclusivo() + " - " + getSituacaoAtual();
+        return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + isConclusivo() + " - " + getSituacaoAtual();
     }
 }

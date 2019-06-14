@@ -2,19 +2,19 @@ package ECO.PropostasLegislativas;
 
 public abstract class PropostaLegislativa {
 
-    protected String DNIAutor;
+    private String DNIAutor;
 
-    protected int ano;
+    private int ano;
 
-    protected String codigo;
+    private String codigo;
 
-    protected String ementa;
+    private String ementa;
 
-    protected String interessesRelacionados;
+    private String interessesRelacionados;
 
-    protected String situacaoAtual;
+    private String situacaoAtual;
 
-    protected String url;
+    private String url;
 
     public PropostaLegislativa(String DNIAutor, int ano, String ementa, String interessesRelacionados, String url, String codigo) {
         this.DNIAutor = DNIAutor;

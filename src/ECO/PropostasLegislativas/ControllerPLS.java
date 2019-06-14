@@ -2,23 +2,46 @@ package ECO.PropostasLegislativas;
 
 import java.util.HashMap;
 
+import static ECO.Util.Validador.*;
+
 public class ControllerPLS {
 
     private int numeroPL = 1;
     private int numeroPLP = 1;
     private int numeroPEC = 1;
 
-    public HashMap<String, PropostaLegislativa> propostasDeLeis;
+    private HashMap<String, PropostaLegislativa> propostasDeLeis;
+
+    public ControllerPLS() {
+        this.propostasDeLeis = new HashMap<>();
+    }
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo){
-        String codigo = "PL "+ this.numeroPL+ "/" + ano;
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
+        validadorString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+        validadorString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+        validadorString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+        validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
+        validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
+
+        String codigo = "PL "+ this.numeroPL + "/" + ano;
         propostasDeLeis.put(codigo,new PL(dni,ano,ementa,interesses,url,conclusivo, codigo));
         this.numeroPL ++;
         return codigo;
     }
 
     public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos){
-        String codigo = "PLP "+ this.numeroPLP+ "/" + ano;
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
+        validadorString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+        validadorString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+        validadorString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+        validadorString(artigos, "Erro ao cadastrar projeto: artigo nao pode ser vazio ou nulo");
+        validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
+        validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
+
+        String codigo = "PLP "+ this.numeroPLP + "/" + ano;
         propostasDeLeis.put(codigo,new PLP(dni,ano,ementa,interesses,url,artigos, codigo));
         this.numeroPLP ++;
         return codigo;
@@ -26,13 +49,22 @@ public class ControllerPLS {
     }
 
     public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos){
-        String codigo = "PLP "+ this.numeroPEC+ "/" + ano;
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
+        validadorString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+        validadorString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+        validadorString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+        validadorString(artigos, "Erro ao cadastrar projeto: artigo nao pode ser vazio ou nulo");
+        validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
+        validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
+
+        String codigo = "PLP "+ this.numeroPEC + "/" + ano;
         propostasDeLeis.put(codigo,new PEC(dni,ano,ementa,interesses,url,artigos, codigo));
         this.numeroPEC ++;
         return codigo;
     }
 
     public String exibirProjeto(String codigo){
-        return "a";
+        return  propostasDeLeis.get(codigo).ToString();
     }
 }

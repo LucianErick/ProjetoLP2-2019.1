@@ -16,11 +16,6 @@ public class ControllerPessoa {
     private List<String> partidos;
 
     /**
-     * Atributo que refere-se ao mapa para armazenar objetos Deputado.
-     */
-    //private Map<String, Deputado> deputados;
-
-    /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
      */
 
@@ -53,6 +48,7 @@ public class ControllerPessoa {
             this.pessoas.put(dni, new Pessoa(nome, dni, estadoOrigem, interesses));
         }
     }
+
     /**
      * Cadastra pessoas de acordo com os metodos da classe, incluindo o partido. Caso os parametros sejam invalidos, lanca-se uma excecao.
      * @param nome nome do objeto a ser cadastrado
@@ -97,6 +93,15 @@ public class ControllerPessoa {
         }
 
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
+    }
+
+    public void verificaDeputado(String dni) {
+        if (!pessoas.containsKey(dni)){
+            throw new IllegalArgumentException("Erro ao cadastrar projeto: dni invalido");
+        }
+        if (pessoas.get(dni).getFuncao() == null){
+            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa nao eh deputado");
+        }
     }
 
     /**

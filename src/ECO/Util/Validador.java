@@ -3,6 +3,7 @@ package ECO.Util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Date;
 
 /**
@@ -80,6 +81,27 @@ public class Validador {
 
         } catch (ParseException e){
             throw new IllegalArgumentException("Problemas nas conversao de datas.");
+        }
+    }
+
+    public static void validadorAnoFuturo (int ano, String mensagem) {
+        try {
+            String anoDesejado = Integer.toString(ano);
+            Date anoAtual = new Date();
+            DateFormat formatoAno = new SimpleDateFormat("yyyy");
+            Date year = formatoAno.parse(anoDesejado);
+
+            if (year.after(anoAtual)){
+                throw new IllegalArgumentException(mensagem);
+            }
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Problemas nas conversao de anos.");
+        }
+    }
+
+    public static void validadorAno (int ano, String mensagem) {
+        if ( ano < 1998) {
+            throw new IllegalArgumentException(mensagem);
         }
     }
 }

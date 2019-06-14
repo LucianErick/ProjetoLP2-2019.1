@@ -2,17 +2,21 @@ package ECO;
 
 import ECO.Comissao.ControllerComissao;
 import ECO.Pessoa.ControllerPessoa;
+import ECO.PropostasLegislativas.ControllerPLS;
+
 import java.util.Scanner;
 import static ECO.Util.Validador.*;
 
 public class ControllerGeral {
     private ControllerPessoa controlePessoas;
     private ControllerComissao controleComissao;
+    private ControllerPLS controllerPLS;
     Scanner entrada = new Scanner(System.in);
 
     public ControllerGeral() {
         this.controlePessoas = new ControllerPessoa();
         this.controleComissao = new ControllerComissao();
+        this.controllerPLS = new ControllerPLS();
     }
 
     public ControllerPessoa getControlePessoas() {
@@ -47,10 +51,8 @@ public class ControllerGeral {
         return this.controlePessoas.exibirBase();
     }
 
-    public void cadastrarComissao(ControllerComissao controleComissao) {
-        String tema = entrada.nextLine();
+    public void cadastrarComissao(String tema, String dniPoliticos) {
         validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
-        String dniPoliticos = entrada.nextLine();
         validadorString(dniPoliticos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
 
         String[] listaDni = dniPoliticos.split(",");
@@ -67,5 +69,27 @@ public class ControllerGeral {
                 throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa nao eh deputado");
             }
         }
+    }
+
+    public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        this.controlePessoas.verificaDeputado(dni);
+        return this.controllerPLS.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+    }
+
+    public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos) {
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        this.controlePessoas.verificaDeputado(dni);
+        return this.controllerPLS.cadastrarPLP(dni, ano, ementa, interesses, url, artigos);
+    }
+
+    public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos) {
+        validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        this.controlePessoas.verificaDeputado(dni);
+        return this.controllerPLS.cadastrarPEC(dni, ano, ementa, interesses, url, artigos);
+    }
+
+    public String exibirProjeto(String codigo) {
+        return this.controllerPLS.exibirProjeto(codigo);
     }
 }
