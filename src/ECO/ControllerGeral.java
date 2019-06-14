@@ -2,9 +2,8 @@ package ECO;
 
 import ECO.Comissao.ControllerComissao;
 import ECO.Pessoa.ControllerPessoa;
-
-import java.util.List;
 import java.util.Scanner;
+import static ECO.Util.Validador.*;
 
 public class ControllerGeral {
     private ControllerPessoa controlePessoas;
@@ -33,7 +32,7 @@ public class ControllerGeral {
         this.controlePessoas.cadastraPessoa(nome, dni, estadoOrigem, interesses);
     }
 
-    public void cadastrarPessoa(ControllerPessoa controlePessoas) {
+   /**public void cadastrarPessoa(ControllerPessoa controlePessoas) {
         String nome = entrada.nextLine();
         String dni = entrada.nextLine();
         String estadoOrigem = entrada.nextLine();
@@ -41,7 +40,7 @@ public class ControllerGeral {
         String partido = entrada.nextLine();
 
         this.controlePessoas.cadastraPessoa(nome, dni, estadoOrigem,interesses, partido);
-    }
+    } */
 
     public void cadastrarDeputado(ControllerPessoa controlePessoas) {
         String dni = entrada.nextLine();
@@ -56,28 +55,29 @@ public class ControllerGeral {
         this.controlePessoas.cadastrarPartido(partido);
     }
 
-    public void cadastrarComissao(ControllerComissao controleComissao) {
-        String tema = entrada.nextLine();
-        String dniPoliticos = entrada.nextLine();
-        List<String> politicos = dniPoliticos.split(",");
-        for (String dni : politicos) {
-            if(!this.controlePessoas.getPessoas().containsKey(dni)) {
-                throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa inexistente");
-            } else {
-                this.controleComissao.cadastrarComissao(tema, dniPoliticos);
-            }
-            if(this.controlePessoas.getPessoas().get(dni).getFuncao() == null) {
-                throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa nao eh deputado");
-            } else {
-                this.controleComissao.getListaPoliticos().put(dni, controlePessoas.getPessoas(dni));
-
-            }
-
-
-        }
-
-
-        this.controleComissao.cadastrarComissao(tema, dniPoliticos);
+    public String exibirBase(){
+        return this.controlePessoas.exibirBase();
     }
 
+    public void cadastrarComissao(ControllerComissao controleComissao) {
+        String tema = entrada.nextLine();
+        validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
+        String dniPoliticos = entrada.nextLine();
+        validadorString(dniPoliticos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
+
+        String[] listaDni = dniPoliticos.split(",");
+        for (String dni : listaDni) {
+            validadorDni(dni, "Erro ao cadastrar comissao: dni invalido");
+
+            if (this.controlePessoas.getPessoas().containsKey(dni) && this.controlePessoas.getPessoas().get(dni).getFuncao() != null) {
+                this.controleComissao.cadastrarComissao(tema, dniPoliticos);
+            }
+            else if (!this.controlePessoas.getPessoas().containsKey(dni)) {
+                throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa inexistente");
+            }
+            else if (this.controlePessoas.getPessoas().get(dni).getFuncao() == null) {
+                throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa nao eh deputado");
+            }
+        }
+    }
 }

@@ -1,45 +1,25 @@
 package ECO.Comissao;
 
-import ECO.Pessoa.Deputado;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import static ECO.Util.Validador.validadorString;
 
 public class ControllerComissao {
-    private Map<String, Comissao> comissoes;
-    private Map<String, Deputado> listaPoliticos;
+
+    private Map<String, Comissao> mapaComissoes;
 
     public ControllerComissao() {
-        this.comissoes = new HashMap<>();
-        this.listaPoliticos = new ArrayList<>();
-    }
-
-    public Map<String, Deputado> getListaPoliticos() {
-        return listaPoliticos;
+        this.mapaComissoes = new HashMap<>();
     }
 
     public void cadastrarComissao(String tema, String dniPoliticos) {
         validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
-        validadorString(dniPoliticos, "Erro ao cadastrar comisssao: lista de politicos nao pode ser vazia ou nula");
+        validadorString(dniPoliticos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
 
-        if (this.comissoes.containsKey(tema)) {
+        if (this.mapaComissoes.containsKey(tema)) {
             throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
         }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+        this.mapaComissoes.put(tema, new Comissao(tema, dniPoliticos));
     }
 }
