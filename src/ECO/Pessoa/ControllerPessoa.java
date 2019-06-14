@@ -97,7 +97,7 @@ public class ControllerPessoa {
 
     public void verificaDeputado(String dni) {
         if (!pessoas.containsKey(dni)){
-            throw new IllegalArgumentException("Erro ao cadastrar projeto: dni invalido");
+            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
         }
         if (pessoas.get(dni).getFuncao() == null){
             throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa nao eh deputado");

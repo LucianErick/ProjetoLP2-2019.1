@@ -58,7 +58,7 @@ public class ControllerPLS {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PLP "+ this.numeroPEC + "/" + ano;
+        String codigo = "PEC "+ this.numeroPEC + "/" + ano;
         propostasDeLeis.put(codigo,new PEC(dni,ano,ementa,interesses,url,artigos, codigo));
         this.numeroPEC ++;
         return codigo;

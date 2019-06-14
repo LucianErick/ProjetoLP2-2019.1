@@ -13,7 +13,8 @@ public class PEC extends PropostaLegislativa {
     }
 
     public String getArtigo() {
-        return artigo;
+        String[] artigos = this.artigo.split(",");
+        return artigos[0] + ", " + artigos[1];
     }
 
     @Override

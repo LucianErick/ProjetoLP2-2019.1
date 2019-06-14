@@ -73,18 +73,21 @@ public class ControllerGeral {
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
         validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
         this.controlePessoas.verificaDeputado(dni);
         return this.controllerPLS.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
     }
 
     public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
         this.controlePessoas.verificaDeputado(dni);
         return this.controllerPLS.cadastrarPLP(dni, ano, ementa, interesses, url, artigos);
     }
 
     public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+        validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
         this.controlePessoas.verificaDeputado(dni);
         return this.controllerPLS.cadastrarPEC(dni, ano, ementa, interesses, url, artigos);
     }
