@@ -5,37 +5,40 @@ import easyaccept.EasyAccept;
 import ECO.Pessoa.ControllerPessoa;
 
 public class Facade {
-    private ControllerPessoa controladorPessoa;
+    private ControllerGeral controladorGeral;
 
     public Facade() {
-        this.controladorPessoa = new ControllerPessoa();
+        this.controladorGeral = new ControllerGeral();
     }
 
     //US1
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
-        this.controladorPessoa.cadastraPessoa(nome, dni, estadoOrigem, interesses);
+        this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses);
     }
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
-        this.controladorPessoa.cadastraPessoa(nome, dni, estadoOrigem, interesses, partido);
+        this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses, partido);
     }
 
     // US2
     public void cadastrarDeputado(String dni, String dataInicio) {
-        this.controladorPessoa.cadastraDeputado(dni, dataInicio);
+        this.controladorGeral.cadastrarDeputado(dni, dataInicio);
     }
 
-    //US3
+    // US3
 
-    //public String exibirPessoa(String dni) {
-    //  return this.controladorPessoa.exibirPessoa(dni);
-    // }
+    public String exibirPessoa(String dni) {
+        return this.controladorGeral.exibePessoa(dni);
+    }
 
     // US4
+
     public void cadastrarPartido(String nomePartido) {
-        this.controladorPessoa.cadastrarPartido(nomePartido);
+        this.controladorGeral.cadastrarPartido(nomePartido);
     }
+
+
     public String exibirBase() {
-        return this.controladorPessoa.exibirBase();
+        return this.controladorGeral.exibeBase();
     }
 
     public void salvarSistema() {}

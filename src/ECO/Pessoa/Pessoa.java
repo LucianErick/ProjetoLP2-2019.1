@@ -142,27 +142,43 @@ public class Pessoa {
     @Override
     public String toString() {
         if (this.funcao == null) {
-            toStringPessoa();
+            return toStringPessoa();
         }
         else {
-            toStringDeputado();
+            return toStringDeputado();
         }
-
-
     }
 
+    /**
+     * Representacao textual do objeto Pessoa quando sua funcao e nula.
+     * @return a representacao textual do objeto Pessoa relacionado.
+     */
     private String toStringPessoa(){
         String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
         String partido = (this.partido == null || this.partido.equals("")) ? ""  : " - " +  this.partido;
 
-        return nome
-                + " - " + dni +
-                " " + "(" + estadoOrigem + ")"
+        return this.nome
+                + " - " + this.dni +
+                " (" + this.estadoOrigem + ")"
                 + partido
                 + interesses;
 
     }
 
+    /**
+     * Representacao textual do objeto Pessoa quando sua funcao e Deputado.
+     * @return a representacao textual do objeto Pessoa relacionado.
+     */
+    private String toStringDeputado(){
+        String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
+
+        return this.funcao.getFORMATO() + this.nome
+                + " - " + this.dni +
+                " (" + this.estadoOrigem + ")"
+                + " - " + this.partido
+                + interesses + " - "  + this.funcao.toString();
+
+    }
 
     /**
      * Compara dois objetos e retorna um boolean afirmando se sao ou nao iguais.

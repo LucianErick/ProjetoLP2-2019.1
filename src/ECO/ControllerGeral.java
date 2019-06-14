@@ -23,39 +23,27 @@ public class ControllerGeral {
         return controleComissao;
     }
 
-    public void cadastrarPessoa(ControllerPessoa controlePessoas) {
-        String nome = entrada.nextLine();
-        String dni = entrada.nextLine();
-        String estadoOrigem = entrada.nextLine();
-        String interesses = entrada.nextLine();
-
+    public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controlePessoas.cadastraPessoa(nome, dni, estadoOrigem, interesses);
     }
 
-   /**public void cadastrarPessoa(ControllerPessoa controlePessoas) {
-        String nome = entrada.nextLine();
-        String dni = entrada.nextLine();
-        String estadoOrigem = entrada.nextLine();
-        String interesses = entrada.nextLine();
-        String partido = entrada.nextLine();
-
+    public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
         this.controlePessoas.cadastraPessoa(nome, dni, estadoOrigem,interesses, partido);
-    } */
-
-    public void cadastrarDeputado(ControllerPessoa controlePessoas) {
-        String dni = entrada.nextLine();
-        String dataDeInicio = entrada.nextLine();
-
-        this.controlePessoas.cadastraDeputado(dni, dataDeInicio);
     }
 
-    public void cadastrarPartido(ControllerPessoa controlePessoas) {
-        String partido = entrada.nextLine();
-
-        this.controlePessoas.cadastrarPartido(partido);
+    public void cadastrarDeputado(String dni, String dataInicio) {
+        this.controlePessoas.cadastraDeputado(dni, dataInicio);
     }
 
-    public String exibirBase(){
+    public String exibePessoa(String dni) {
+        return this.controlePessoas.exibirPessoa(dni);
+    }
+
+    public void cadastrarPartido(String nomePartido) {
+        this.controlePessoas.cadastrarPartido(nomePartido);
+    }
+
+    public String exibeBase() {
         return this.controlePessoas.exibirBase();
     }
 

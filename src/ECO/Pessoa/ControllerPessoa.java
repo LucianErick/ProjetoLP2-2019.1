@@ -99,30 +99,25 @@ public class ControllerPessoa {
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
     }
 
-  /**
+    /**
      * Exibe uma pessoa cadastrada no sistema a partir do DNI. Caso o parametro seja invalido, uma exececao eh lancada.
-    // * @param dni codigo de identificacao.
+     // * @param dni codigo de identificacao.
      * @return a pessoa cadastrada em um formato para Pessoas Politicas e outra para Nao Politicas.
 
-
+     */
     public String exibirPessoa(String dni) {
         validadorString(dni, "Erro ao exibir pessoa: dni nao pode ser vazio ou nulo");
         validadorDni(dni, "Erro ao exibir pessoa: dni invalido");
         if(!pessoas.containsKey(dni)) {
             throw new IllegalArgumentException("Erro ao exibir pessoa: pessoa nao encontrada");
         }
-        if(pessoas.get(dni).getFuncao() == null) {
-            return pessoas.get(dni).toString();
-        }
-        else {
-            return "POL: " + pessoas.get(dni).toString() + " - " + deputados.get(dni).toString();
-        }
-    } */
+        return pessoas.get(dni).toString();
+    }
 
-  public void cadastrarPartido(String partido) {
-      validadorString(partido, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
-      this.partidos.add(partido);
-  }
+    public void cadastrarPartido(String partido) {
+        validadorString(partido, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
+        this.partidos.add(partido);
+    }
 
     public String exibirBase() {
         String saida = "";
