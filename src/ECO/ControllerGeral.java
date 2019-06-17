@@ -124,13 +124,14 @@ public class ControllerGeral {
     public void cadastrarComissao(String tema, String dniPoliticos) {
         validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
         validadorString(dniPoliticos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
+        if (this.controleComissao.getMapaComissoes().containsKey(tema)) {
+            throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
+        }
 
-        String[] listaDni = dniPoliticos.split(",");
+        String[] listaDni = dniPoliticos.trim().split(",");
         for (String dni : listaDni) {
             validadorDni(dni, "Erro ao cadastrar comissao: dni invalido");
-            if (this.controleComissao.getMapaComissoes().containsKey(tema)) {
-                throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
-            }
+
             if (!this.controlePessoas.getPessoas().containsKey(dni)) {
                 throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa inexistente");
             }
