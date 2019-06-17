@@ -128,16 +128,19 @@ public class ControllerGeral {
         String[] listaDni = dniPoliticos.split(",");
         for (String dni : listaDni) {
             validadorDni(dni, "Erro ao cadastrar comissao: dni invalido");
-
-            if (this.controlePessoas.getPessoas().containsKey(dni) && this.controlePessoas.getPessoas().get(dni).getFuncao() != null) {
-                this.controleComissao.cadastrarComissao(tema, dniPoliticos);
+            if (this.controleComissao.getMapaComissoes().containsKey(tema)) {
+                throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
             }
-            else if (!this.controlePessoas.getPessoas().containsKey(dni)) {
+            if (!this.controlePessoas.getPessoas().containsKey(dni)) {
                 throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa inexistente");
             }
-            else if (this.controlePessoas.getPessoas().get(dni).getFuncao() == null) {
+            if (this.controlePessoas.getPessoas().get(dni).getFuncao() == null) {
                 throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa nao eh deputado");
             }
+            else {
+                this.controleComissao.cadastrarComissao(tema, dniPoliticos);
+            }
+
         }
     }
 

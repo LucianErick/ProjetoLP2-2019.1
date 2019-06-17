@@ -31,7 +31,7 @@ public class Validador {
     public static void validadorDni(String dni, String mensagem) {
         for (int i = 0; i < dni.length(); i++) {
             char caractere = dni.charAt(i);
-            if (!(Character.isDigit(caractere) || '-' == caractere)) {
+            if (!(Character.isDigit(caractere) || '-' == caractere) || ' ' == caractere) {
                 throw new IllegalArgumentException(mensagem);
             }
         }
