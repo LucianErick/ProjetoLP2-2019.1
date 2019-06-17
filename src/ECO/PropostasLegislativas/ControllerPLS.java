@@ -79,6 +79,7 @@ public class ControllerPLS {
         return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo(codigo);
     }
 
+    //    criado para a votacao, nao sei se vai continuar
     public void verificaExistenciaProposta (String codigo) {
         if (propostasDeLeis.containsValue(codigo)) {
             throw new IllegalArgumentException("");
