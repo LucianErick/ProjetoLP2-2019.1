@@ -214,7 +214,7 @@ public class ControllerGeral {
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
         validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
         controllerPLS.verificaExistenciaProposta(codigo);
-        controleComissao.getDniDeputados();
+       // controleComissao.getDniDeputados();
 
 
         return true;
