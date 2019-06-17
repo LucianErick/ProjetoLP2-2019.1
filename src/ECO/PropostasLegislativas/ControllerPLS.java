@@ -1,5 +1,7 @@
 package ECO.PropostasLegislativas;
 
+import ECO.Util.Validador;
+
 import java.util.HashMap;
 
 import static ECO.Util.Validador.*;
@@ -64,6 +66,11 @@ public class ControllerPLS {
         return codigo;
     }
 
+    /**
+     * Exibe o projeto que se refere a String codigo passada como parametro
+     * @param codigo meio de identificacao do projeto
+     * @return o toString do projeto relacionado
+     */
     public String exibirProjeto(String codigo){
         return  propostasDeLeis.get(codigo).ToString();
     }
