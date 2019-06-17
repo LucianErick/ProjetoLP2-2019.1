@@ -95,6 +95,11 @@ public class ControllerPessoa {
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
     }
 
+    /**
+     * Verifica se o objeto Deputado atraves do seu dni existe no mapa de pessoas. Caso não, lanca-se uma excecao. Verifica tambem se o objeto cadastrado no mapa pessoas tem a funcao de deputado tambem
+     * @param dni codigo de identificacao do objeto Pessoa.
+     */
+
     public void verificaDeputado(String dni) {
         if (!pessoas.containsKey(dni)){
             throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
@@ -106,7 +111,7 @@ public class ControllerPessoa {
 
     /**
      * Exibe uma pessoa cadastrada no sistema a partir do DNI. Caso o parametro seja invalido, uma exececao eh lancada.
-     // * @param dni codigo de identificacao.
+     * @param dni codigo de identificacao.
      * @return a pessoa cadastrada em um formato para Pessoas Politicas e outra para Nao Politicas.
 
      */
@@ -119,20 +124,27 @@ public class ControllerPessoa {
         return pessoas.get(dni).toString();
     }
 
+    /**
+     * Cadastra a String partido na lista partidos
+     * @param partido String recebida como parametro responsavel por representar o partido relacionado
+     */
+
     public void cadastrarPartido(String partido) {
         validadorString(partido, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
         this.partidos.add(partido);
     }
 
+    /**
+     * Exibe os partidos ja cadastrados em ordem alfabetica e sem repeticao
+     * @return uma String com todos os partidos ja cadastrados ja ordenados
+     */
+
     public String exibirBase() {
         String saida = "";
-        Collections.sort(this.partidos); // FALTA ORDENAR ISSO MAS N SEI OK
-        // Percorre a lista de Strings contendo os partidos e concatena-os e adiciona um ','
-        // como separador.
+        Collections.sort(this.partidos);
         for (String partido : this.partidos) {
             saida += partido + ",";
         }
-        // Atualiza a string de saida, removendo a ultima ','.
         if(saida.length() != 0) {
             saida = saida.substring(0,saida.length() - 1);
         }

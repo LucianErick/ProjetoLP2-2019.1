@@ -53,14 +53,23 @@ public class Deputado implements Funcao {
         return dataDeInicio;
     }
 
+    /**
+     * Retorna a data de inicio de atuacao do objeto Deputado relacionado
+     * @return a data de inicio do objeto Deputado relacionado
+     */
+
     public String getDataDeInicio() {
         return dataDeInicio;
     }
 
+    /**
+     * Retorna a quantidade de leis cadastradas do objeto Deputado relacionado
+     * @return
+     */
+
     public int getQuantidadeDeLeis() {
         return quantidadeDeLeis;
     }
-
 
     /**
      * Retorna o formato do objeto Deputado.
