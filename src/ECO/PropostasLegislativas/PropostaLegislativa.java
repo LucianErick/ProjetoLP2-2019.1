@@ -125,4 +125,8 @@ public abstract class PropostaLegislativa {
     public String getSituacaoAtual() {
         return situacaoAtual;
     }
+
+
+    //    criado para a votacao, nao sei se vai continuar
+    public abstract boolean verificaBooleanConclusivo(String codigo);
 }

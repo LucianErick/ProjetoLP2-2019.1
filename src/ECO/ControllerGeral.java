@@ -208,4 +208,24 @@ public class ControllerGeral {
     public String exibirProjeto(String codigo) {
         return this.controllerPLS.exibirProjeto(codigo);
     }
+
+    public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
+        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
+        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+        validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
+        controllerPLS.verificaExistenciaProposta(codigo);
+        controleComissao.getDniDeputados();
+
+
+        return true;
+    }
+
+    public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
+        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
+        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+        validadorString(presentes, "");
+        controllerPLS.verificaExistenciaProposta(codigo);
+
+        return true;
+    }
 }

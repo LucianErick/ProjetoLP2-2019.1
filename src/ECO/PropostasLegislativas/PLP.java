@@ -32,7 +32,13 @@ public class PLP extends PropostaLegislativa {
      */
 
     public String getArtigo() {
-        return artigo;
+        String saida = "";
+        String[] artigos = this.artigo.split(",");
+        for ( int i = 0; i < artigos.length; i++ ) {
+            saida += artigos[i] + ", ";
+        }
+        saida = saida.substring(0, saida.length() - 2);
+        return saida;
     }
 
     /**
@@ -43,5 +49,11 @@ public class PLP extends PropostaLegislativa {
     @Override
     public String ToString() {
         return "Projeto de Lei Complementar - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + getArtigo() + " - " + getSituacaoAtual();
+    }
+
+    //    criado para a votacao, nao sei se vai continuar
+    @Override
+    public boolean verificaBooleanConclusivo(String codigo) {
+        return false;
     }
 }

@@ -10,11 +10,6 @@ public class PL extends PropostaLegislativa {
      */
 
     private boolean Conclusivo;
-    /**
-     * Atributo inteiro relacionado ao numero de PL iniciados sendo 1
-     */
-
-    private int numeroPL = 1;
 
     /**
      * Construtor da classe PL com parametros da classe mae e os atributos especificos da classe PL
@@ -45,6 +40,7 @@ public class PL extends PropostaLegislativa {
 
     }
 
+
     /**
      * Representacao textual do objeto PL relacionado
      * @return representacao textual
@@ -53,5 +49,11 @@ public class PL extends PropostaLegislativa {
     @Override
     public String ToString() {
         return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + isConclusivo() + " - " + getSituacaoAtual();
+    }
+
+//    criado para a votacao, nao sei se vai continuar
+    @Override
+    public boolean verificaBooleanConclusivo(String codigo) {
+        return false;
     }
 }
