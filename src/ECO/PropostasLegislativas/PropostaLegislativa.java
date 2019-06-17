@@ -81,23 +81,46 @@ public abstract class PropostaLegislativa {
         return ano;
     }
 
-
+    /**
+     * Representacao textual da classe PropostaLegislativa
+     * @return String com a representacao textual
+     */
 
     public abstract String ToString(); {
 
     }
 
+    /**
+     * Retorna a String com o dni do autor da proposta legislativa
+     * @return o dni do autor
+     */
+
     public String getDNIAutor() {
         return DNIAutor;
     }
+
+    /**
+     * Retorna a String com o codigo da proposta legislativa
+     * @return codigo
+     */
 
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * Retorna a String com o ementa da proposta legislativa
+     * @return ementa
+     */
+
     public String getEmenta() {
         return ementa;
     }
+
+    /**
+     * Retorna a String com a situacao atual da proposta legislativa
+     * @return situacao atual
+     */
 
     public String getSituacaoAtual() {
         return situacaoAtual;
