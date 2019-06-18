@@ -42,8 +42,8 @@ class DeputadoTest {
 
     @Test
     void getQuantidadeDeLeis() {
-        assertEquals("0", deputado1.getQuantidadeDeLeis());
-        assertEquals("0", deputado2.getQuantidadeDeLeis());
+        assertEquals(0, deputado1.getQuantidadeDeLeis());
+        assertEquals(0, deputado2.getQuantidadeDeLeis());
     }
 
     @Test

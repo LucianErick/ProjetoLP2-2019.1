@@ -2,6 +2,7 @@ package ECO;
 
 
 import ECO.Comissao.ControllerComissao;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ControllerGeralTest {
     private ControllerGeral controleGeral;
+
+    @BeforeEach
+    void setUp() {
+        this.controleGeral = new ControllerGeral();
+    }
 
     @Test
     void cadastraComissaoValidaTest() {

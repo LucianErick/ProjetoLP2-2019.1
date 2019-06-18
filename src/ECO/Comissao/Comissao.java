@@ -12,7 +12,7 @@ public class Comissao {
      */
     private String tema;
     /**
-     * Atributo tema responsavel por carregar uma String com os dnis dos deputados participantes do objeto Comissao criado;
+     * Atributo dniDeputados responsavel por carregar uma String com os dnis dos deputados participantes do objeto Comissao criado;
      */
     private String dniDeputados;
 

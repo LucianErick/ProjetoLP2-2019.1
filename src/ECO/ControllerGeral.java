@@ -3,6 +3,8 @@ package ECO;
 import ECO.Comissao.ControllerComissao;
 import ECO.Pessoa.ControllerPessoa;
 import ECO.PropostasLegislativas.ControllerPLS;
+import ECO.Votacao.ControllerVotacao;
+import ECO.Votacao.Orientacao;
 
 import java.util.Scanner;
 import static ECO.Util.Validador.*;
@@ -24,6 +26,11 @@ public class ControllerGeral {
      * Atributo do tipo ControllerPessoa responsavel por armazenar propostas legislativas.
      */
     private ControllerPLS controllerPLS;
+
+    /**
+     * Atributo do tipo ControllerVotacao responsavel por armazenar algo a mudar!!!!!!!!!!!!!!!!!!!!!!!!.
+     */
+    private ControllerVotacao controllerVotacao;
 
     /**
      * Construtor da classe ControllerGeral onde todos os controllers sao inicializados
@@ -210,21 +217,64 @@ public class ControllerGeral {
     }
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
-        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
-        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
-        validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
-        controllerPLS.verificaExistenciaProposta(codigo);
-       // controleComissao.getDniDeputados();
+
+        int votoGovernista = 0;
+        int votoOposicao = 0;
+        int votoAFavor = 0;
+        int votoContra = 0;
+
+
+        String[] dniDeputados = controleComissao.getDniDeputados(codigo).split(",");
+        String [][] interesses = new String[0][];
+        String[] partidos = new String[0];
+        for (int i = 0; i < dniDeputados.length; i++) {
+            partidos[i] = controlePessoas.getPartidos(dniDeputados[i]);
+            interesses[i] = controlePessoas.getInteresses(dniDeputados[i]).split(",");
+            if (controlePessoas.verificaPartidos(partidos[i])) {
+                votoGovernista += 1;
+            }
+            else {
+                votoOposicao += 1;
+            }
+            for (int o = 0; o < interesses.length; o++) {
+                if (controllerPLS.getInteressesRelacionados(codigo).equals(interesses[i][o])){
+                    votoAFavor += 1;
+                }
+                else {
+                    votoContra += 1;
+                }
+            }
+            }
+
+        if (controllerPLS.verificaBooleanConclusivo(codigo) == true) {
+            if (controllerVotacao.votacaoPLConclusiva (statusGovernista, votoAFavor, votoContra, votoGovernista, votoOposicao)){
+                controllerPLS.alteraSituacaoAtual(codigo,"APROVADO" );
+            }
+            controllerPLS.alteraSituacaoAtual(codigo, "ARQUIVADO");
+
+
+        }
+
+        else {
+
+        }
+
+
 
 
         return true;
     }
+
+
+
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
         validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
         validadorString(presentes, "");
         controllerPLS.verificaExistenciaProposta(codigo);
+        controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
+
 
         return true;
     }

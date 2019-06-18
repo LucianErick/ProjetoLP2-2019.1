@@ -81,8 +81,16 @@ public class ControllerPLS {
 
     //    criado para a votacao, nao sei se vai continuar
     public void verificaExistenciaProposta (String codigo) {
-        if (propostasDeLeis.containsValue(codigo)) {
-            throw new IllegalArgumentException("");
+        if (!propostasDeLeis.containsValue(codigo)) {
+            throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
+    }
+
+    public String  getInteressesRelacionados(String codigo) {
+        return propostasDeLeis.get(codigo).getInteressesRelacionados();
+    }
+
+    public void alteraSituacaoAtual (String codigo, String alteracao) {
+        propostasDeLeis.get(codigo).setSituacaoAtual(alteracao);
     }
 }

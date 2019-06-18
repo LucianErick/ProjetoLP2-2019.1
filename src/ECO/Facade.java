@@ -66,6 +66,8 @@ public class Facade {
         return this.controladorGeral.exibirProjeto(codigo);
     }
 
+    // US7
+
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
         return controladorGeral.votarComissao(codigo, statusGovernista, proximoLocal);
     }

@@ -129,4 +129,12 @@ public abstract class PropostaLegislativa {
 
     //    criado para a votacao, nao sei se vai continuar
     public abstract boolean verificaBooleanConclusivo(String codigo);
+
+    public void setSituacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+    }
+
+    public String getInteressesRelacionados() {
+        return interessesRelacionados;
+    }
 }

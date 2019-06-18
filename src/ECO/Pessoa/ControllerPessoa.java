@@ -150,5 +150,20 @@ public class ControllerPessoa {
         }
         return saida;
     }
+
+    public String getPartidos (String dni) {
+        return pessoas.get(dni).getPartido();
+    }
+
+    public String getInteresses (String dni) {
+        return pessoas.get(dni).getInteresses();
+    }
+
+    public boolean verificaPartidos (String partidos) {
+        if ( this.partidos.contains(partidos)) {
+            return true;
+        }
+        return false;
+    }
 }
 
