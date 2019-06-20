@@ -121,6 +121,8 @@ public class ControllerGeral {
     public String exibeBase() {
         return this.controlePessoas.exibirBase();
     }
+    
+    
 
     /**
      * Cadastra o objeto Comissao de acordo com exigencias estabelecidas como: tema ja cadastrado, tema ou String dniPoliticos nulo ou vazia.
@@ -216,7 +218,27 @@ public class ControllerGeral {
         return this.controllerPLS.exibirProjeto(codigo);
     }
 
-    public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
+     public boolean votarComissao(String cod, String statusGovernista, String proxLocal) {
+    	if(proxLocal.equals("") || proxLocal.trim().equals("")) {
+    		throw new IllegalArgumentException("Erro ao votar proposta: proximo local vazio"); 
+    	}
+    	if(!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO") && !statusGovernista.equals("LIVRE")) {
+    		throw new IllegalArgumentException("Erro ao votar proposta: status invalido"); 
+    	}
+    	if(!controllerPLS.getControllerPLS().containsKey(cod)) {
+    		throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente"); 
+    	}
+    	if(controlePessoas.getControllerPessoa().get(controllerPLS.getControllerPLS().get(cod).getDNIAutor()).getPartido().equals("PartidoGov") && statusGovernista.equals("GOVERNISTA")) {
+    		controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
+    		return true;
+    	}
+    	if(controlePessoas.getControllerPessoa().get(controllerPLS.getControllerPLS().get(cod).getDNIAutor()).getPartido().equals("PartidoOpo") && statusGovernista.equals("OPOSICAO")) {
+    		return true;
+    	}
+    	throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
+    }
+    
+   /** public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 
         int votoGovernista = 0;
         int votoOposicao = 0;
@@ -264,7 +286,7 @@ public class ControllerGeral {
 
         return true;
     }
-
+**/
 
 
 
