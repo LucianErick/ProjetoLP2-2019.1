@@ -150,6 +150,10 @@ public class ControllerPessoa {
         }
         return saida;
     }
+    
+    public Map<String ,Pessoa> getControllerPessoa() {
+        return this.pessoas;
+    }
 
     public String getPartidos (String dni) {
         return pessoas.get(dni).getPartido();
