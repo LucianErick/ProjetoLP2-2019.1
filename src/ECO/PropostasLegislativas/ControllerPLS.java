@@ -85,6 +85,10 @@ public class ControllerPLS {
             throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
     }
+    
+     public HashMap<String, PropostaLegislativa>  getControllerPLS() {
+        return this.propostasDeLeis;
+    }
 
     public String  getInteressesRelacionados(String codigo) {
         return propostasDeLeis.get(codigo).getInteressesRelacionados();
