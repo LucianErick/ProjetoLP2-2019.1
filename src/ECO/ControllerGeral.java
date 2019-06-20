@@ -219,9 +219,7 @@ public class ControllerGeral {
     }
 
      public boolean votarComissao(String cod, String statusGovernista, String proxLocal) {
-    	if(proxLocal.equals("") || proxLocal.trim().equals("")) {
-    		throw new IllegalArgumentException("Erro ao votar proposta: proximo local vazio"); 
-    	}
+    	validadorString(proxLocal, "Erro ao votar proposta: proximo local vazio");
     	if(!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO") && !statusGovernista.equals("LIVRE")) {
     		throw new IllegalArgumentException("Erro ao votar proposta: status invalido"); 
     	}

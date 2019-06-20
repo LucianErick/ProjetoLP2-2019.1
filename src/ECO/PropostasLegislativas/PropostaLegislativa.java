@@ -105,7 +105,7 @@ public abstract class PropostaLegislativa {
      */
 
     public String getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     /**
