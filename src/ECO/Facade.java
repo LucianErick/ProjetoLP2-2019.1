@@ -2,7 +2,6 @@
 package ECO;
 
 import easyaccept.EasyAccept;
-import ECO.Pessoa.ControllerPessoa;
 
 public class Facade {
     private ControllerGeral controladorGeral;
@@ -46,32 +45,25 @@ public class Facade {
     public void cadastrarComissao(String tema, String dniPoliticos) {
         this.controladorGeral.cadastrarComissao(tema, dniPoliticos);
     }
-
-
     // US6
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
         return this.controladorGeral.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
     }
-
     public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         return this.controladorGeral.cadastrarPLP(dni, ano, ementa, interesses, url, artigos);
     }
-
     public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         return this.controladorGeral.cadastrarPEC(dni, ano, ementa, interesses, url, artigos);
     }
-
     public String exibirProjeto(String codigo) {
         return this.controladorGeral.exibirProjeto(codigo);
     }
-
     // US7
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
         return controladorGeral.votarComissao(codigo, statusGovernista, proximoLocal);
     }
-
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }
@@ -79,8 +71,6 @@ public class Facade {
     public void salvarSistema() {}
     public void limparSistema() {}
     public void carregarSistema() {}
-
-
 
     public static void main(String[] args) {
         args = new String[] {
@@ -92,7 +82,4 @@ public class Facade {
 
         EasyAccept.main(args);
     }
-
-
-
 }

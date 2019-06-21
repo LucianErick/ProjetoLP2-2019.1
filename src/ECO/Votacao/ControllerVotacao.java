@@ -1,6 +1,5 @@
 package ECO.Votacao;
 
-import ECO.Comissao.Comissao;
 import ECO.Comissao.ControllerComissao;
 
 public class ControllerVotacao {
@@ -16,32 +15,18 @@ public class ControllerVotacao {
 
 
     public boolean votacaoPLConclusiva (String statusGovernista, int votoAFavor, int votoContra, int votoGovernista, int votoOposicao) {
-        if (statusGovernista.equals("GOVERNISTA")) {
-            if (votoGovernista > votoOposicao) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        switch (statusGovernista) {
+            case "GOVERNISTA":
+                return votoGovernista > votoOposicao;
 
-        if (statusGovernista.equals("OPOSICAO")){
-            if (votoOposicao > votoGovernista) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+            case "OPOSICAO":
+                return votoOposicao > votoGovernista;
 
-        if (statusGovernista.equals("LIVRE")) {
-            if (votoAFavor > votoContra) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            throw new IllegalArgumentException("algo errado");
+            case "LIVRE":
+                return votoAFavor > votoContra;
+
+            default:
+                throw new IllegalArgumentException("ERRO AE");
         }
     }
 //
