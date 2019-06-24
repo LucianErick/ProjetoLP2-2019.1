@@ -223,7 +223,7 @@ public class ControllerGeral {
 
 
 
-    
+
 
 
         private boolean aprovaGoverno(String comissaoAtual) {
