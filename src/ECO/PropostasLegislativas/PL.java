@@ -54,6 +54,6 @@ public class PL extends PropostaLegislativa {
 //    criado para a votacao, nao sei se vai continuar
     @Override
     public boolean verificaBooleanConclusivo(String codigo) {
-        return false;
+        return this.Conclusivo;
     }
 }

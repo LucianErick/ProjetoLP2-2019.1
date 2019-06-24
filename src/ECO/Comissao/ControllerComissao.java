@@ -55,4 +55,6 @@ public class ControllerComissao {
     public String getDniDeputados (String codigo) {
         return mapaComissoes.get(codigo).getDniDeputados();
     }
+
+    public int getQuantidadeDeputados (String codigo) { return mapaComissoes.get(codigo).getDniDeputados().length();}
 }

@@ -1,6 +1,10 @@
 package ECO.Pessoa;
 
+import ECO.Util.Conversoes;
+
 import static ECO.Util.Validador.*;
+import static ECO.Util.Conversoes.*;
+
 
 /**
  * Classe Deputado que tem Funcao como interface.
@@ -40,17 +44,7 @@ public class Deputado implements Funcao {
      */
 
     public String converteData(String dataDeInicio) {
-        String aux = "";
-        char[] array = dataDeInicio.toCharArray();
-        for(int i=0; i<array.length; i++) {
-            if(i == 1 || i == 3) {
-                aux += array[i] + "/";
-            }else {
-                aux += array[i];
-            }
-        }
-        dataDeInicio=aux;
-        return dataDeInicio;
+        return Conversoes.converteData(dataDeInicio);
     }
 
     /**

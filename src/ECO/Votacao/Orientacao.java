@@ -4,3 +4,5 @@ public enum Orientacao {
     GOVERNISTA, OPOSICAO, LIVRE;
 
 }
+
+

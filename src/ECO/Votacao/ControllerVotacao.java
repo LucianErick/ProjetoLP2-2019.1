@@ -1,55 +1,71 @@
 package ECO.Votacao;
 
 import ECO.Comissao.ControllerComissao;
+import ECO.Pessoa.ControllerPessoa;
 
 public class ControllerVotacao {
+
     private ControllerComissao controleComissao;
-    private Plenario plenario;
+    private ControllerPessoa controllerPessoa;
+
     private int ay;
     private int nay;
 
     public ControllerVotacao() {
         this.controleComissao = new ControllerComissao();
-        this.plenario = new Plenario();
+        this.controllerPessoa = new ControllerPessoa();
     }
 
 
-    public boolean votacaoPLConclusiva (String statusGovernista, int votoAFavor, int votoContra, int votoGovernista, int votoOposicao) {
-        switch (statusGovernista) {
-            case "GOVERNISTA":
-                return votoGovernista > votoOposicao;
-
-            case "OPOSICAO":
-                return votoOposicao > votoGovernista;
-
-            case "LIVRE":
-                return votoAFavor > votoContra;
-
-            default:
-                throw new IllegalArgumentException("ERRO AE");
+    public boolean quorumMininimo (String proposta, int deputadosPresentes, int totalDeDeputados) {
+        System.out.println(proposta);
+        System.out.println("PEC");
+        if (proposta.equals("PLP") || proposta.equals("PL")) {
+            return QuorumMinimoMetadeMaisUm(deputadosPresentes, totalDeDeputados);
+        }
+        if (proposta.equals("PEC")) {
+            return QuorumMinimoTresQuintosMaisUm(deputadosPresentes, totalDeDeputados);
+        }
+        else {
+            throw new IllegalArgumentException("erro no tipo de proposta");
         }
     }
-//
-//    public ControllerComissao getControleComissao() {
-//        return controleComissao;
-//    }
-//
-//    public Plenario getPlenario() {
-//        return plenario;
-//    }
-//
-//    public void verificaStatusGovernista(String statusGovernista) {
-//        if (!statusGovernista.equals(Orientacao.values())){
-//            throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
-//        }
-//    }
-//
-//    public void votacaoPLConclussiva (String codigo) {
-//
-//    }
-//
-//    public void votar () {
-//        if
-//    }
 
+
+    private boolean QuorumMinimoMetadeMaisUm(int presentes, int totalDeDeputados) {
+        if (!(presentes >= (totalDeDeputados / 2) + 1)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean QuorumMinimoTresQuintosMaisUm(int presentes, int totalDeDeputados) {
+        if (!(presentes >= (totalDeDeputados * 3 / 5) + 1)) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean votacao() {
+        return true;
+    }
+
+    public boolean aprovaVotos1(String comissaoAtual, String[] base, String[] listaDni) {
+
+        int baseGov = 0;
+        int oposicao = 0;
+        for(int i=0; i < listaDni.length; i++) {
+
+            for (int j = 0; j < base.length; j++) {
+                System.out.println(controllerPessoa.getControllerPessoa());
+
+                if (base[j].equals(controllerPessoa.getControllerPessoa().get(listaDni[i]).getPartido())) {
+                    baseGov += 1;
+                } else {
+                    oposicao += 1;
+                }
+            }
+        }
+        return baseGov > oposicao;
+    }
 }

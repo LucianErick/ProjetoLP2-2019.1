@@ -39,6 +39,8 @@ public class ControllerGeral {
         this.controlePessoas = new ControllerPessoa();
         this.controleComissao = new ControllerComissao();
         this.controllerPLS = new ControllerPLS();
+        this.controllerVotacao = new ControllerVotacao();
+
     }
 
     /**
@@ -217,12 +219,20 @@ public class ControllerGeral {
         return this.controllerPLS.exibirProjeto(codigo);
     }
 
-      public boolean aprovaVotos(String comissaoAtual) {
-    	String[] base = controlePessoas.exibirBase().split(",");
+
+
+
+
+    
+
+
+        private boolean aprovaGoverno(String comissaoAtual) {
+    	String[] base = controlePessoas.exibirBase().trim().split(",");
     	String[] listaDni = controleComissao.getDniDeputados(comissaoAtual).trim().split(",");
     	int baseGov = 0;
-    	int oposicao = 0; 
+    	int oposicao = 0;
     	for(int i=0; i < listaDni.length; i++) {
+
             for (int j = 0; j < base.length; j++) {
 
                 if (base[j].equals(controlePessoas.getControllerPessoa().get(listaDni[i]).getPartido())) {
@@ -232,95 +242,172 @@ public class ControllerGeral {
                 }
             }
         }
-    	
     	return baseGov > oposicao;
-
-		
 	}
 
-    
-    
-    public boolean votarComissao(String cod, String statusGovernista, String proxLocal) {
-    	boolean aprovacao = false; 
+
+
+    public boolean votarComissao(String codigo, String statusGovernista, String proxLocal) {
+        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+    	boolean aprovacao = false;
     	if(!controleComissao.getMapaComissoes().containsKey("CCJC")) {
     		throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
     	}
 
-//      validadorString(proxLocal,"Erro ao votar proposta: proximo local vazio");
-    	if(proxLocal.equals("") || proxLocal.trim().equals("")) {
-    		throw new IllegalArgumentException("Erro ao votar proposta: proximo local vazio"); 
-    	}
+        validadorString(proxLocal,"Erro ao votar proposta: proximo local vazio");
 
     	if(!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO") && !statusGovernista.equals("LIVRE")) {
-    		throw new IllegalArgumentException("Erro ao votar proposta: status invalido"); 
+    		throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
     	}
-    	if(!controllerPLS.getControllerPLS().containsKey(cod)) {
-    		throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente"); 
+    	if(!controllerPLS.getControllerPLS().containsKey(codigo)) {
+    		throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
     	}
-    	if(proxLocal.equals("-")) {
-    		return false;
-    	}
+//        System.out.println(controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual());
 
-    	if(aprovaVotos("CCJC") && statusGovernista.equals("GOVERNISTA")) {
-    		controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
+    	if (controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("ARQUIVADO") && controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("APROVADO")) {
+    	    throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
+        }
+
+        String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
+    	String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length()-1);
+
+//        System.out.println(controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo));
+//        System.out.println(localAtual);
+
+    	if(aprovaGoverno(localAtual) && statusGovernista.equals("GOVERNISTA")) {
+
+    		controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
       		aprovacao = true;
-    		if(aprovaVotos(proxLocal)) {
-    			controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("APROVADO");
-    		}
-    	} else if(aprovaVotos("CCJC") && statusGovernista.equals("OPOSICAO"))  {
-    		controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("ARQUIVADO");
-    		aprovacao = false;
+            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true && (!localAtual.equals("CCJC"))){
+//                System.out.println("oi");
+                controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("APROVADO");
+            }
+
+    	} else if(aprovaGoverno(localAtual) && statusGovernista.equals("OPOSICAO"))  {
+            aprovacao = false;
+    	    if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true  && (!localAtual.equals("CCJC"))) {
+                controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
+            }
     	}
     	return aprovacao;
     }
-    
-   /** public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
-
-        int votoGovernista = 0;
-        int votoOposicao = 0;
-        int votoAFavor = 0;
-        int votoContra = 0;
 
 
-        String[] dniDeputados = controleComissao.getDniDeputados(codigo).split(",");
-        String [][] interesses = new String[0][];
-        String[] partidos = new String[0];
-        for (int i = 0; i < dniDeputados.length; i++) {
-            partidos[i] = controlePessoas.getPartidos(dniDeputados[i]);
-            interesses[i] = controlePessoas.getInteresses(dniDeputados[i]).split(",");
-            if (controlePessoas.verificaPartidos(partidos[i])) {
-                votoGovernista += 1;
-            }
-            else {
-                votoOposicao += 1;
-            }
-            for (int o = 0; o < interesses.length; o++) {
-                if (controllerPLS.getInteressesRelacionados(codigo).equals(interesses[i][o])){
-                    votoAFavor += 1;
-                }
-                else {
-                    votoContra += 1;
-                }
-            }
-            }
-
-        if (controllerPLS.verificaBooleanConclusivo(codigo) == true) {
-            if (controllerVotacao.votacaoPLConclusiva (statusGovernista, votoAFavor, votoContra, votoGovernista, votoOposicao)){
-                controllerPLS.alteraSituacaoAtual(codigo,"APROVADO" );
-            }
-            controllerPLS.alteraSituacaoAtual(codigo, "ARQUIVADO");
-
-
-        }
-        else {}
-        return true; }
-**/
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
+
+        String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
+        String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length()-1);
+        String tipoDeProposta = controllerPLS.getControllerPLS().get(codigo).getCodigo().substring(0, 3).trim();
+
+        if ((controleComissao.getMapaComissoes().containsKey(localAtual))) {
+            throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
+        }
+        controllerVotacao.quorumMininimo(tipoDeProposta, presentes.length(), 10);
+
         validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
         validadorString(presentes, "");
         controllerPLS.verificaExistenciaProposta(codigo);
         controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
+
+//        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+        boolean aprovacao = false;
+
+//        if ()
+
+
+
+
+
+
+
+
+
         return true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    private boolean aprovaGoverno(String comissaoAtual) {
+//    	String[] base = controlePessoas.exibirBase().trim().split(",");
+//    	String[] listaDni = controleComissao.getDniDeputados(comissaoAtual).trim().split(",");
+//    	int baseGov = 0;
+//    	int oposicao = 0;
+//    	for(int i=0; i < listaDni.length; i++) {
+//
+//            for (int j = 0; j < base.length; j++) {
+//
+//                if (base[j].equals(controlePessoas.getControllerPessoa().get(listaDni[i]).getPartido())) {
+//                    baseGov += 1;
+//                } else {
+//                    oposicao += 1;
+//                }
+//            }
+//        }
+//    	return baseGov > oposicao;
+//	}
+//
+//
+//
+//    public boolean votarComissao(String cod, String statusGovernista, String proxLocal) {
+//        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+//    	boolean aprovacao = false;
+//    	if(!controleComissao.getMapaComissoes().containsKey("C")) {
+//    		throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
+//    	}
+//
+//        validadorString(proxLocal,"Erro ao votar proposta: proximo local vazio");
+//
+//    	if(!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO") && !statusGovernista.equals("LIVRE")) {
+//    		throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
+//    	}
+//    	if(!controllerPLS.getControllerPLS().containsKey(cod)) {
+//    		throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
+//    	}
+//    	if (controllerPLS.getControllerPLS().get(cod).getSituacaoAtual().equals("ARQUIVADO") && controllerPLS.getControllerPLS().get(cod).getSituacaoAtual().equals("APROVADO")) {
+//    	    throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
+//        }
+//    	if(proxLocal.equals("-")) {
+//    		return false;
+//    	}
+//
+//    	if(aprovaGoverno("CCJC") && statusGovernista.equals("GOVERNISTA")) {
+//    		controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
+//      		aprovacao = true;
+//    		if(aprovaGoverno(proxLocal)) {
+//    			controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("APROVADO");
+//    		}
+//    	} else if(aprovaGoverno("CCJC") && statusGovernista.equals("OPOSICAO"))  {
+//    		controllerPLS.getControllerPLS().get(cod).setSituacaoAtual("ARQUIVADO");
+//    		aprovacao = false;
+//    	}
+//    	return aprovacao;
+//    }
+//
+//
+//    public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
+//        if (controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("CCJC")) {
+//            throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
+//        }
+//        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
+//        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+//        validadorString(presentes, "");
+//        controllerPLS.verificaExistenciaProposta(codigo);
+//        controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
+//
+//        return true;
+//    }
 }
