@@ -3,12 +3,42 @@ package ECO;
 
 import easyaccept.EasyAccept;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Facade {
     private ControllerGeral controladorGeral;
+    private Dados dados;
 
     public Facade() {
         this.controladorGeral = new ControllerGeral();
     }
+    public void fechar() {
+        try {
+            GerenteArquivo.salvarObjeto(controladorGeral, "estoquePratos.bin");
+        } catch (IOException e) {
+            System.out.println("excecao de fechamento ");
+            e.printStackTrace();
+
+        }
+    }
+
+    public void iniciar() {
+        try {
+            controladorGeral = (ControllerGeral) GerenteArquivo.lerObjetos("estoquePratos.bin");
+        } catch (FileNotFoundException e) {
+            controladorGeral = new ControllerGeral();
+        } catch (ClassNotFoundException | IOException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+
+    public void salvarSistema() {}
+    public void limparSistema() {}
+    public void carregarSistema() {}
 
     //US1
 
@@ -71,10 +101,6 @@ public class Facade {
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }
-
-    public void salvarSistema() {}
-    public void limparSistema() {}
-    public void carregarSistema() {}
 
     public static void main(String[] args) {
         args = new String[] {
