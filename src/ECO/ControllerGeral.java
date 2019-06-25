@@ -229,6 +229,10 @@ public class ControllerGeral {
 
 
 public boolean votarComissao(String codigo, String statusGovernista, String proxLocal) {
+
+//        Verificacoes
+
+
 		validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
 		boolean aprovacao = false;
 		if (!controleComissao.getMapaComissoes().containsKey("CCJC")) {
@@ -252,9 +256,14 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 
 		String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
 		String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
+        System.out.println(localAtual);
 
-		// System.out.println("olá ");
-		// System.out.println(verificaInteresse("CCJC", codigo));
+		if (localAtual.trim().equals("plenario")){
+            System.out.println("oi");
+		    throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
+        }
+
+//		Governista
 
 		if (aprovaGoverno(localAtual) && statusGovernista.equals("GOVERNISTA")) {
 			controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
@@ -266,7 +275,8 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 				String dniAutor = controllerPLS.getControllerPLS().get(codigo).getDNIAutor();
 				controlePessoas.getDeputados().get(dniAutor).adicionaLei();
 			}
-		} else if (aprovaGoverno(localAtual) == false && statusGovernista.equals("GOVERNISTA")) {
+		}
+		else if (aprovaGoverno(localAtual) == false && statusGovernista.equals("GOVERNISTA")) {
 			controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
 
 			aprovacao = false;
@@ -274,14 +284,20 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 				controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
 
 			}
-		} else if (aprovaGoverno(localAtual) && statusGovernista.equals("OPOSICAO")) {
+		}
+
+//		Oposicao
+
+
+		else if (aprovaGoverno(localAtual) && statusGovernista.equals("OPOSICAO")) {
 			aprovacao = false;
 
 			if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true) {
 				controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
 
 			}
-		} else if (aprovaGoverno(localAtual) == false && statusGovernista.equals("OPOSICAO")) {
+		}
+		else if (aprovaGoverno(localAtual) == false && statusGovernista.equals("OPOSICAO")) {
 			controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
 
 			aprovacao = true;
@@ -294,6 +310,8 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 			}
 
 		}
+
+//		Livre
 		
 		else if (statusGovernista.equals("LIVRE")) {
 				if (verificaInteresse(localAtual, codigo)) {

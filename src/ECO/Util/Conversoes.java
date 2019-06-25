@@ -1,8 +1,5 @@
 package ECO.Util;
 
-import ECO.Votacao.Orientacao;
-
-import static ECO.Votacao.Orientacao.GOVERNISTA;
 
 public class Conversoes {
 
@@ -20,16 +17,4 @@ public class Conversoes {
         return dataDeInicio;
     }
 
-    public static Orientacao  converteStatusGovernistaEmEnum (String statusGovernista) {
-        if (statusGovernista.equals("GOVERNISTA")) {
-            return GOVERNISTA;
-        }
-        if (statusGovernista.equals("OPOSICAO")) {
-            return Orientacao.OPOSICAO;
-        }
-        if (statusGovernista.equals("LIVRE")) {
-            return Orientacao.LIVRE;
-        }
-        throw new IllegalArgumentException("erro, errou rude");
-    }
 }
