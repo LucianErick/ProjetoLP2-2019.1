@@ -1,6 +1,6 @@
 package ECO.Comissao;
 
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Classe responsavel por criar o objeto Comissao a partir de um tema e uma String composta pelos dnis responsaveis pela identificacao dos deputadps participantes da comissao.
@@ -15,6 +15,10 @@ public class Comissao {
      * Atributo dniDeputados responsavel por carregar uma String com os dnis dos deputados participantes do objeto Comissao criado;
      */
     private String dniDeputados;
+    /**
+     * Atributo listaDNI no qual converte o atributo dniDeputados para um Set.
+     */
+    private Set<String> listaDNI;
 
     /**
      * Construtor do objeto Comissao a partir do tema e da String de dnis recebidas como parametro;
@@ -24,7 +28,11 @@ public class Comissao {
 
     public Comissao(String tema, String dniDeputados) {
         this.tema = tema;
-        this.dniDeputados = dniDeputados;
+        this.listaDNI = new HashSet<>();
+        String[] listaDeputados = dniDeputados.split(",");
+        for(String dni : listaDeputados) {
+            this.listaDNI.add(dni);
+        }
     }
 
     /**
@@ -43,6 +51,10 @@ public class Comissao {
 
     public String getDniDeputados() {
         return dniDeputados;
+    }
+
+    public Set<String> getListaDNI() {
+        return listaDNI;
     }
 
     /**
