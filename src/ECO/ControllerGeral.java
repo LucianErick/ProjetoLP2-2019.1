@@ -5,6 +5,8 @@ import ECO.Pessoa.ControllerPessoa;
 import ECO.PropostasLegislativas.ControllerPLS;
 import ECO.Votacao.ControllerVotacao;
 
+import java.util.Set;
+
 import static ECO.Util.Validador.validadorDni;
 import static ECO.Util.Validador.validadorString;
 
@@ -379,12 +381,12 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 	private boolean aprovaGoverno(String comissaoAtual) {
 
 		String[] base = controlePessoas.exibirBase().trim().split(",");
-		String[] listaDni = controleComissao.getDniDeputados(comissaoAtual).trim().split(",");
+        Set<String> listaDni = controleComissao.getMapaComissoes().get(comissaoAtual).getListaDNI();
 		int baseGov = 0;
 		int oposicao = 0;
-		for (int i = 0; i < listaDni.length; i++) {
+		for (String F : listaDni ) {
 			for (int j = 0; j < base.length; j++) {
-				if (base[j].equals(controlePessoas.getDeputados().get(listaDni[i]).getPartido())) {
+				if (base[j].equals(controlePessoas.getDeputados().get(F).getPartido())) {
 					baseGov += 1;
 				} else {
 					oposicao += 1;
@@ -395,13 +397,13 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 	}
 
 	private boolean verificaInteresse(String comissaoAtual, String cod) {
-		String[] listaDni = controleComissao.getDniDeputados(comissaoAtual).trim().split(",");
+		Set<String> listaDni = controleComissao.getMapaComissoes().get(comissaoAtual).getListaDNI();
 		String[] interesse = controllerPLS.getInteressesRelacionados(cod).trim().split(",");
 		int aceita = 0;
 		int rejeita = 0;
 		for (int j = 0; j < interesse.length; j++) {
-			for (int i = 0; i < listaDni.length; i++) {
-				String[] interesseDNI = controlePessoas.getDeputados().get(listaDni[i]).getInteresses().trim().split(",");
+			for (String F : listaDni ) {
+				String[] interesseDNI = controlePessoas.getDeputados().get(F).getInteresses().trim().split(",");
 				for (int l = 0; l < interesseDNI.length; l++) {
 					if (interesseDNI[l].equals(interesse[j]))
 						aceita+=1;
