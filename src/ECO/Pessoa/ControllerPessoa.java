@@ -114,10 +114,10 @@ public class ControllerPessoa {
      */
 
     public void verificaDeputado(String dni) {
-//        if (!pessoas.containsKey(dni)){
-//            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
-//        }
-        if (deputados.containsKey(dni)){
+        if (!pessoas.containsKey(dni) && !deputados.containsKey(dni) ){
+            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
+        }
+        if (!deputados.containsKey(dni)){
             throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa nao eh deputado");
         }
     }
