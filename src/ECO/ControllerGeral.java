@@ -5,6 +5,7 @@ import ECO.Pessoa.ControllerPessoa;
 import ECO.PropostasLegislativas.ControllerPLS;
 import ECO.Votacao.ControllerVotacao;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static ECO.Util.Validador.validadorDni;
@@ -371,9 +372,7 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
         }
 		controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
-//        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-		boolean aprovacao = false;
-//        if ()
+
 
 		return true;
 	}
@@ -417,5 +416,29 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 		}
 		return false;
 	}
+
+	private boolean  aprovaGovernoPlenario(String presentes, String codigo){
+        HashSet<String> listaPartidoDosPresentes = new HashSet<>();
+
+        String[] base = controlePessoas.exibirBase().trim().split(",");
+        String[] DepPresentes = presentes.trim().split(",");
+        for ( int i = 0; i < DepPresentes.length; i++){
+            listaPartidoDosPresentes.add(controlePessoas.getPartidos(DepPresentes[i]));
+        }
+        int baseGov = 0;
+        int oposicao = 0;
+
+        for (String F : listaPartidoDosPresentes ) {
+            for (int j = 0; j < base.length; j++) {
+                if (listaPartidoDosPresentes.contains(base[j])) {
+                    baseGov += 1;
+                } else {
+                    oposicao += 1;
+                }
+            }
+        }
+        return baseGov > oposicao;
+    }
+
 
 }
