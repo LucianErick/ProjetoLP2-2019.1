@@ -14,7 +14,7 @@ public class ControllerPessoa {
      */
     private Map<String ,Pessoa> pessoas;
     private List<String> partidos;
-    private int deputados = 0;
+    private Map<String, Deputado> deputados;
 
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
@@ -23,10 +23,15 @@ public class ControllerPessoa {
     public ControllerPessoa() {
         this.pessoas = new HashMap<>();
         this.partidos = new ArrayList<>();
+        this.deputados = new HashMap<>();
     }
 
     public Map<String, Pessoa> getPessoas() {
         return pessoas;
+    }
+
+    public Map<String, Deputado> getDeputados() {
+        return deputados;
     }
 
     /**
@@ -93,8 +98,14 @@ public class ControllerPessoa {
             throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
         }
 
-        pessoas.get(dni).cadastraDeputado(dataDeInicio);
-        deputados += 1;
+        String nome = pessoas.get(dni).getNome();
+        String estadoDeOrigem = pessoas.get(dni).getEstadoOrigem();
+        String interesses = pessoas.get(dni).getInteresses();
+        String partido = pessoas.get(dni).getPartido();
+
+
+        deputados.put(dni, new Deputado(nome,dni, estadoDeOrigem, interesses, partido, dataDeInicio));
+        pessoas.remove(dni);
     }
 
     /**
@@ -103,10 +114,10 @@ public class ControllerPessoa {
      */
 
     public void verificaDeputado(String dni) {
-        if (!pessoas.containsKey(dni)){
-            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
-        }
-        if (pessoas.get(dni).getFuncao() == null){
+//        if (!pessoas.containsKey(dni)){
+//            throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa inexistente");
+//        }
+        if (deputados.containsKey(dni)){
             throw new IllegalArgumentException("Erro ao cadastrar projeto: pessoa nao eh deputado");
         }
     }
@@ -120,6 +131,11 @@ public class ControllerPessoa {
     public String exibirPessoa(String dni) {
         validadorString(dni, "Erro ao exibir pessoa: dni nao pode ser vazio ou nulo");
         validadorDni(dni, "Erro ao exibir pessoa: dni invalido");
+
+        if (deputados.containsKey(dni)) {
+            return deputados.get(dni).toString();
+        }
+
         if(!pessoas.containsKey(dni)) {
             throw new IllegalArgumentException("Erro ao exibir pessoa: pessoa nao encontrada");
         }
@@ -173,11 +189,11 @@ public class ControllerPessoa {
     }
 
     public void adicionaLeia (String dni) {
-        pessoas.get(dni).getFuncao().adicionaLei();
+        deputados.get(dni).adicionaLei();
     }
 
     public int qtdDeputados () {
-        return this.deputados;
+        return deputados.size();
     }
 
 }

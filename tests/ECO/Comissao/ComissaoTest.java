@@ -29,7 +29,7 @@ class ComissaoTest {
         comissao2 = new Comissao("SEILA", "123-0,234-0");
         comissao3 = new Comissao("CCJC", "0000-0");
 
-        assertEquals(comissao1.);
+//        assertEquals(comissao1.);
     }
 
 

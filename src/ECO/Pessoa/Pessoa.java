@@ -28,10 +28,7 @@ public class Pessoa {
      * Atributo que relaciona ao partido do objeto Pessoa.
      */
     private String partido;
-    /**
-     * Atributo relaciona a composicao da Classe Pessoa com interface Funcao.
-     */
-    private Funcao funcao;
+
 
     /**
      * Contrutor da classe Pessoa a partir dos atributos dela, menos o partido. Caso os parametros forem invalidos, lança-se uma excecao.
@@ -108,13 +105,6 @@ public class Pessoa {
         return interesses;
     }
 
-    /**
-     * Retorna o atributo funcao do objeto Pessoa.
-     * @return interesses
-     */
-    public Funcao getFuncao() {
-        return funcao;
-    }
 
     /**
      * Retorna o atributo partido do objeto Pessoa.
@@ -125,14 +115,6 @@ public class Pessoa {
         return partido;
     }
 
-    /**
-     * Edita a funcao relacionada ao objeto Pessoa.
-     * @param funcao relaciona a funcao politica que o objeto tem
-     */
-
-    public void setFuncao(Funcao funcao) {
-        this.funcao = funcao;
-    }
 
     /**
      * Representacao textual do objeto Pessoa
@@ -141,19 +123,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        if (this.funcao == null) {
-            return toStringPessoa();
-        }
-        else {
-            return toStringDeputado();
-        }
-    }
-
-    /**
-     * Representacao textual do objeto Pessoa quando sua funcao e nula.
-     * @return a representacao textual do objeto Pessoa relacionado.
-     */
-    private String toStringPessoa(){
         String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
         String partido = (this.partido == null || this.partido.equals("")) ? ""  : " - " +  this.partido;
 
@@ -162,23 +131,8 @@ public class Pessoa {
                 " (" + this.estadoOrigem + ")"
                 + partido
                 + interesses;
-
     }
 
-    /**
-     * Representacao textual do objeto Pessoa quando sua funcao e Deputado.
-     * @return a representacao textual do objeto Pessoa relacionado.
-     */
-    private String toStringDeputado(){
-        String interesses = this.interesses.equals("")  ?  ""  : " - Interesses: " + this.interesses;
-
-        return this.funcao.getFORMATO() + this.nome
-                + " - " + this.dni +
-                " (" + this.estadoOrigem + ")"
-                + " - " + this.partido
-                + interesses + " - "  + this.funcao.toString();
-
-    }
 
     /**
      * Compara dois objetos e retorna um boolean afirmando se sao ou nao iguais.
@@ -210,12 +164,4 @@ public class Pessoa {
      * @return um boolean relacionando a confirmacao do cadastro
      */
 
-    public boolean cadastraDeputado (String dataDeInicio){
-        validadorString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
-        validadorData(dataDeInicio, "Erro ao cadastrar deputado: data invalida");
-        validadorDataFutura(dataDeInicio, "Erro ao cadastrar deputado: data futura");
-
-        setFuncao(new Deputado(dni,dataDeInicio));
-        return true;
-    }
 }

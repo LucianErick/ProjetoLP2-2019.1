@@ -9,7 +9,7 @@ import static ECO.Util.Conversoes.*;
 /**
  * Classe Deputado que tem Funcao como interface.
  */
-public class Deputado implements Funcao {
+public class Deputado extends Pessoa {
     /**
      * Atributo do tipo Date que refere a data de inicio do objeto relacionado
      */
@@ -18,10 +18,6 @@ public class Deputado implements Funcao {
      * Atributo do tipo String que refere a quantidade de leis aprovadas pelo objeto Deputado.
      */
     private int quantidadeDeLeis;
-    /**
-     * Atributo que padroniza o formato do objeto Deputado.
-     */
-    private final String formato;
 
     /**
      * Construtor da classe Deputado  utilizando o dni e a data de inicio como essenciais para a caracterizacao do objeto Deputado.
@@ -29,13 +25,14 @@ public class Deputado implements Funcao {
      * @param dataDeInicio data de inicio na vida politica.
      */
 
-    public Deputado(String dni, String dataDeInicio){
+    public Deputado(String nome, String dni, String estadoOrigem, String interesses, String partido, String dataDeInicio){
+        super(nome, dni, estadoOrigem, interesses, partido);
+
         validadorString(dni, "");
         validadorString(dataDeInicio, "");
 
         this.dataDeInicio = converteData(dataDeInicio);
         this.quantidadeDeLeis = 0;
-        formato = "POL: ";
     }
     /**
      * Converte a data recebida para um padrão válido tradicional dd/mm/AAAA.
@@ -65,14 +62,9 @@ public class Deputado implements Funcao {
         return quantidadeDeLeis;
     }
 
-    /**
-     * Retorna o formato do objeto Deputado.
-     * @return o formato padronizado.
-     */
 
-    public String getFORMATO() {
-        return formato;
-    }
+
+
 
     /**
      * Representacao textual do objeto Deputado.
@@ -81,10 +73,21 @@ public class Deputado implements Funcao {
 
     @Override
     public String toString() {
-        return getDataDeInicio() + " - " + getQuantidadeDeLeis()+ " Leis";
+        String interesses = getInteresses().equals("")  ?  ""  : " - Interesses: " + getInteresses();
+
+        return "POL: " + getNome()
+                + " - " + getDni() +
+                " (" + getEstadoOrigem() + ")"
+                + " - " + getPartido()
+                + interesses + " - "  + getDataDeInicio() + " - "
+                + getQuantidadeDeLeis() + " Leis";
+
     }
+
 
     public void adicionaLei() {
         this.quantidadeDeLeis += 1;
     }
+
+
 }
