@@ -11,6 +11,7 @@ public class Facade {
     }
 
     //US1
+
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses);
     }
@@ -19,6 +20,7 @@ public class Facade {
     }
 
     // US2
+
     public void cadastrarDeputado(String dni, String dataInicio) {
         this.controladorGeral.cadastrarDeputado(dni, dataInicio);
     }
@@ -45,6 +47,7 @@ public class Facade {
     public void cadastrarComissao(String tema, String dniPoliticos) {
         this.controladorGeral.cadastrarComissao(tema, dniPoliticos);
     }
+
     // US6
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
@@ -59,6 +62,7 @@ public class Facade {
     public String exibirProjeto(String codigo) {
         return this.controladorGeral.exibirProjeto(codigo);
     }
+
     // US7
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {

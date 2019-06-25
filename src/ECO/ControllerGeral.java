@@ -320,25 +320,13 @@ public class ControllerGeral {
         controllerPLS.verificaExistenciaProposta(codigo);
         controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
-
-
 //        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
         boolean aprovacao = false;
-
 //        if ()
-
-
-
-
-
-
-
 
 
         return true;
     }
-
 
     private boolean aprovaGoverno(String comissaoAtual) {
 
@@ -358,9 +346,6 @@ public class ControllerGeral {
         System.out.println(baseGov > oposicao);
         return baseGov > oposicao;
     }
-
-
-
 
 
 
