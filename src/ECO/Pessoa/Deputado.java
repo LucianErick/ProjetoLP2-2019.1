@@ -83,4 +83,8 @@ public class Deputado implements Funcao {
     public String toString() {
         return getDataDeInicio() + " - " + getQuantidadeDeLeis()+ " Leis";
     }
+
+    public void adicionaLei() {
+        this.quantidadeDeLeis += 1;
+    }
 }

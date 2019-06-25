@@ -10,4 +10,6 @@ public interface Funcao {
     public String toString();
 
     public String getFORMATO();
+
+    public void adicionaLei();
 }

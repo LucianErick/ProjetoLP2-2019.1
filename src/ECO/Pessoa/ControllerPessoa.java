@@ -14,6 +14,7 @@ public class ControllerPessoa {
      */
     private Map<String ,Pessoa> pessoas;
     private List<String> partidos;
+    private int deputados = 0;
 
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
@@ -93,6 +94,7 @@ public class ControllerPessoa {
         }
 
         pessoas.get(dni).cadastraDeputado(dataDeInicio);
+        deputados += 1;
     }
 
     /**
@@ -168,6 +170,14 @@ public class ControllerPessoa {
             return true;
         }
         return false;
+    }
+
+    public void adicionaLeia (String dni) {
+        pessoas.get(dni).getFuncao().adicionaLei();
+    }
+
+    public int qtdDeputados () {
+        return this.deputados;
     }
 
 }

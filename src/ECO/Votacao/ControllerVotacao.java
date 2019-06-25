@@ -8,8 +8,7 @@ public class ControllerVotacao {
     private ControllerComissao controleComissao;
     private ControllerPessoa controllerPessoa;
 
-    private int ay;
-    private int nay;
+
 
     public ControllerVotacao() {
         this.controleComissao = new ControllerComissao();
@@ -18,8 +17,7 @@ public class ControllerVotacao {
 
 
     public boolean quorumMininimo (String proposta, int deputadosPresentes, int totalDeDeputados) {
-        System.out.println(proposta);
-        System.out.println("PEC");
+//        System.out.println(proposta);
         if (proposta.equals("PLP") || proposta.equals("PL")) {
             return QuorumMinimoMetadeMaisUm(deputadosPresentes, totalDeDeputados);
         }
