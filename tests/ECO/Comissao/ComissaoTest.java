@@ -20,7 +20,7 @@ class ComissaoTest {
         assertEquals("SEILA", comissao2.getTema());
         assertEquals("4444-0,5555-0,6666-0", comissao2.getDniDeputados());
 
-        assertThrows(IllegalArgumentException.class, () -> comissao3 = new Comissao(",,,,", "123-0"));
+        assertThrows(IllegalArgumentException.class, () -> comissao3 = new Comissao(" ", "123-0"));
     }
 
     @Test
@@ -29,7 +29,9 @@ class ComissaoTest {
         comissao2 = new Comissao("SEILA", "123-0,234-0");
         comissao3 = new Comissao("CCJC", "0000-0");
 
-//        assertEquals(comissao1.);
+        assertFalse(comissao1.equals(comissao2));
+        assertFalse(comissao2.equals(comissao3));
+        assertTrue(comissao1.equals(comissao3));
     }
 
 

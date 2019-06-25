@@ -1,6 +1,11 @@
 package ECO.Comissao;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import static ECO.Util.Validador.validadorDni;
+import static ECO.Util.Validador.validadorString;
 
 /**
  * Classe responsavel por criar o objeto Comissao a partir de um tema e uma String composta pelos dnis responsaveis pela identificacao dos deputadps participantes da comissao.
@@ -27,10 +32,15 @@ public class Comissao {
      */
 
     public Comissao(String tema, String dniDeputados) {
+        validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
+        validadorString(dniDeputados, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
+
         this.tema = tema;
         this.listaDNI = new HashSet<>();
+        this.dniDeputados = dniDeputados;
         String[] listaDeputados = dniDeputados.split(",");
         for(String dni : listaDeputados) {
+            validadorDni(dni, "Erro ao cadastrar comissao: dni invalido");
             this.listaDNI.add(dni);
         }
     }
