@@ -78,13 +78,6 @@ public class ControllerPLS {
     public boolean verificaBooleanConclusivo(String codigo) {
         return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo(codigo);
     }
-
-    //    criado para a votacao, nao sei se vai continuar
-    public void verificaExistenciaProposta (String codigo) {
-        if (!propostasDeLeis.containsValue(codigo)) {
-            throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
-        }
-    }
     
      public HashMap<String, PropostaLegislativa>  getControllerPLS() {
         return this.propostasDeLeis;
@@ -97,4 +90,5 @@ public class ControllerPLS {
     public void alteraSituacaoAtual (String codigo, String alteracao) {
         propostasDeLeis.get(codigo).setSituacaoAtual(alteracao);
     }
+
 }

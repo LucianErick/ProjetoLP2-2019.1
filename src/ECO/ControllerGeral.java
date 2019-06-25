@@ -256,10 +256,8 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 
 		String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
 		String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
-        System.out.println(localAtual);
 
 		if (localAtual.trim().equals("plenario")){
-            System.out.println("oi");
 		    throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
         }
 
@@ -292,7 +290,7 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 		else if (aprovaGoverno(localAtual) && statusGovernista.equals("OPOSICAO")) {
 			aprovacao = false;
 
-			if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true) {
+			if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true ) {
 				controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
 
 			}
@@ -319,6 +317,9 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 					controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
 					if(verificaInteresse(localAtual, codigo) && !localAtual.equals("CCJC")) {
 						controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("APROVADO");
+
+                        System.out.println(controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual());
+                        System.out.println(localAtual);
 					}
 				}
 				if (verificaInteresse(localAtual, codigo) == false) {
@@ -326,6 +327,9 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 					controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proxLocal + ")");
 					if(verificaInteresse(localAtual, codigo) == false && !localAtual.equals("CCJC")) {
 						controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
+
+                        System.out.println(controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual());
+                        System.out.println(localAtual);
 					}
 				}
 			}
@@ -335,6 +339,9 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 
 
 	public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
+
+
+
 
 		if (controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("ARQUIVADO")
 				|| controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("APROVADO")) {
@@ -347,12 +354,19 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 		if ((controleComissao.getMapaComissoes().containsKey(localAtual))) {
 			throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
 		}
-		controllerVotacao.quorumMininimo(tipoDeProposta, presentes.length(), controlePessoas.qtdDeputados());
 
-		validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
+		String[] deputadosPresentes = presentes.split(",");
+
+        int DepPresentes = deputadosPresentes.length;
+		controllerVotacao.quorumMininimo(tipoDeProposta, DepPresentes, controlePessoas.qtdDeputados());
+
+
+        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
 		validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
 		validadorString(presentes, "");
-		controllerPLS.verificaExistenciaProposta(codigo);
+        if (!controllerPLS.getControllerPLS().containsKey(codigo)) {
+            throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
+        }
 		controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
 //        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
