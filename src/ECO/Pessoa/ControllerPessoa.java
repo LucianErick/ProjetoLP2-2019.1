@@ -1,5 +1,6 @@
 package ECO.Pessoa;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static ECO.Util.Validador.*;
@@ -8,7 +9,7 @@ import static ECO.Util.Validador.*;
  * Classe ControllerPessoa que serve para armazenar os objetos Pessoa e objetos Deputado.
  */
 
-public class ControllerPessoa {
+public class ControllerPessoa implements Serializable {
     /**
      * Atributo que refere-se ao mapa para armazenar objetos Pessoa.
      */

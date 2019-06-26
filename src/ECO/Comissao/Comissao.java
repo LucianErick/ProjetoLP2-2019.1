@@ -1,5 +1,6 @@
 package ECO.Comissao;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -11,7 +12,7 @@ import static ECO.Util.Validador.validadorString;
  * Classe responsavel por criar o objeto Comissao a partir de um tema e uma String composta pelos dnis responsaveis pela identificacao dos deputadps participantes da comissao.
  */
 
-public class Comissao {
+public class Comissao implements Serializable {
     /**
      * Atributo tema responsavel por carregar o tema do objeto Comissao
      */

@@ -1,12 +1,13 @@
 package ECO.Pessoa;
 
+import java.io.Serializable;
 import java.util.Objects;
 import static ECO.Util.Validador.*;
 
 /**
  * Classe Pessoa onde o objeto Pessoa se forma a partir dos atributos relacionados.
  */
-public class Pessoa {
+public class Pessoa implements Serializable {
     /**
      * Atributo dni que se torna o codigo de identificacao do objeto Pessoa.
      */

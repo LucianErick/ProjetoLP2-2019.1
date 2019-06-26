@@ -2,6 +2,8 @@ package ECO.Pessoa;
 
 import ECO.Util.Conversoes;
 
+import java.io.Serializable;
+
 import static ECO.Util.Validador.*;
 import static ECO.Util.Conversoes.*;
 
@@ -9,7 +11,7 @@ import static ECO.Util.Conversoes.*;
 /**
  * Classe Deputado que tem Funcao como interface.
  */
-public class Deputado extends Pessoa {
+public class Deputado extends Pessoa implements Serializable {
     /**
      * Atributo do tipo Date que refere a data de inicio do objeto relacionado
      */

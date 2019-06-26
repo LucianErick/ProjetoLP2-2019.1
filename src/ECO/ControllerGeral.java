@@ -5,6 +5,7 @@ import ECO.Pessoa.ControllerPessoa;
 import ECO.PropostasLegislativas.ControllerPLS;
 import ECO.Votacao.ControllerVotacao;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import static ECO.Util.Validador.validadorString;
  * Classe responsavel por controller todos os controllers das classes mais especificas
  */
 
-public class ControllerGeral {
+public class ControllerGeral implements Serializable {
     /**
      * Atributo do tipo ControllerPessoa responsavel por armazenar pessoas.
      */
@@ -63,13 +64,22 @@ public class ControllerGeral {
         return controleComissao;
     }
 
-    /**
+	public ControllerPLS getControllerPLS() {
+		return controllerPLS;
+	}
+
+	public ControllerVotacao getControllerVotacao() {
+		return controllerVotacao;
+	}
+
+	/**
      * Cadastra o objeto Pessoa atraves dos parametros nome, dni, estado de origem e intesses
      * @param nome
      * @param dni
      * @param estadoOrigem
      * @param interesses
      */
+
 
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controlePessoas.cadastraPessoa(nome, dni, estadoOrigem, interesses);

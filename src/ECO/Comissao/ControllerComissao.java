@@ -1,5 +1,6 @@
 package ECO.Comissao;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import static ECO.Util.Validador.validadorString;
  * Classe responsavel por controlar todas as acoes relacionadas ao objeto Comissao armazenando-os em uma colecao para melhor administracao
  */
 
-public class ControllerComissao {
+public class ControllerComissao implements Serializable {
     /**
      * Atributo responsavel por armazenar os objetos Comissoes cadastrados;
      */

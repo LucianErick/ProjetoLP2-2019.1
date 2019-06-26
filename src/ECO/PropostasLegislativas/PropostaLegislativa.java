@@ -1,10 +1,12 @@
 package ECO.PropostasLegislativas;
 
+import java.io.Serializable;
+
 /**
  * Super Classe responsavel por padronizar os distintos objetos relacionados a proposta legislativa com os atributos e metodos em comum as classes filhas
  */
 
-public abstract class PropostaLegislativa {
+public abstract class PropostaLegislativa implements Serializable {
     /**
      * Atributo String que armazena o dni do autor da proposta legislativa
      */

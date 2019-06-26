@@ -2,11 +2,12 @@ package ECO.PropostasLegislativas;
 
 import ECO.Util.Validador;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import static ECO.Util.Validador.*;
 
-public class ControllerPLS {
+public class ControllerPLS implements Serializable {
 
     private int numeroPL = 1;
     private int numeroPLP = 1;
@@ -78,8 +79,12 @@ public class ControllerPLS {
     public boolean verificaBooleanConclusivo(String codigo) {
         return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo(codigo);
     }
-    
-     public HashMap<String, PropostaLegislativa>  getControllerPLS() {
+
+    public HashMap<String, PropostaLegislativa> getPropostasDeLeis() {
+        return propostasDeLeis;
+    }
+
+    public HashMap<String, PropostaLegislativa>  getControllerPLS() {
         return this.propostasDeLeis;
     }
 

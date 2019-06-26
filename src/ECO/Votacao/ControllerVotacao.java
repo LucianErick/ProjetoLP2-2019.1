@@ -3,7 +3,9 @@ package ECO.Votacao;
 import ECO.Comissao.ControllerComissao;
 import ECO.Pessoa.ControllerPessoa;
 
-public class ControllerVotacao {
+import java.io.Serializable;
+
+public class ControllerVotacao implements Serializable {
 
     private ControllerComissao controleComissao;
     private ControllerPessoa controllerPessoa;

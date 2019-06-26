@@ -4,44 +4,19 @@ package ECO;
 import easyaccept.EasyAccept;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 
 public class Facade {
     private ControllerGeral controladorGeral;
-    private Dados dados;
+    private Persistencia persistencia;
 
     public Facade() {
         this.controladorGeral = new ControllerGeral();
+        this.persistencia = new Persistencia(controladorGeral);
     }
-    public void fechar() {
-        try {
-            GerenteArquivo.salvarObjeto(controladorGeral, "estoquePratos.bin");
-        } catch (IOException e) {
-            System.out.println("excecao de fechamento ");
-            e.printStackTrace();
-
-        }
-    }
-
-    public void iniciar() {
-        try {
-            controladorGeral = (ControllerGeral) GerenteArquivo.lerObjetos("estoquePratos.bin");
-        } catch (FileNotFoundException e) {
-            controladorGeral = new ControllerGeral();
-        } catch (ClassNotFoundException | IOException e) {
-            System.out.println(e.getMessage());
-
-        }
-    }
-
-    public void salvarSistema() {}
-    public void limparSistema() {}
-    public void carregarSistema() {}
 
     //US1
-
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses);
     }
@@ -102,15 +77,27 @@ public class Facade {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }
 
+    public void salvarSistema() throws IOException {
+        this.persistencia.salvar();
+    }
+    public void carregarSistema() throws IOException{
+        this.persistencia.carregar();
+    }
+
+    public void limparSistema(){
+        this.persistencia.limpar();
+        this.controladorGeral = new ControllerGeral();
+    }
+
     public static void main(String[] args) {
         args = new String[] {
                 "ECO.Facade",
-//                "acceptance_tests/use_case_1.txt", "acceptance_tests/use_case_2.txt",
-//                "acceptance_tests/use_case_3.txt", "acceptance_tests/use_case_4.txt",
-//                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
+                "acceptance_tests/use_case_1.txt", "acceptance_tests/use_case_2.txt",
+                "acceptance_tests/use_case_3.txt", "acceptance_tests/use_case_4.txt",
+                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
                 "acceptance_tests/use_case_7.txt",
-//                "acceptance_tests/use_case_8.txt",
-//                "acceptance_tests/use_case_9.txt",
+                //    "acceptance_tests/use_case_8.txt",
+                //    "acceptance_tests/use_case_9.txt",
                 };
 
         EasyAccept.main(args);
