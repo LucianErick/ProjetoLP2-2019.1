@@ -160,7 +160,6 @@ public class ControllerGeral implements Serializable {
             }
             if (!this.controlePessoas.getPessoas().containsKey(dni) && !this.controlePessoas.getDeputados().containsKey(dni)) {
                 throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa inexistente");
-
             }
             else {
                 this.controleComissao.cadastrarComissao(tema, dniPoliticos);

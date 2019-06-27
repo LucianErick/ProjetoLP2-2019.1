@@ -46,11 +46,12 @@ public class ControllerComissao implements Serializable {
         this.mapaComissoes.put(tema, new Comissao(tema, dniPoliticos));
     }
 
-    public void verificaComissao(String nome, String mensagem) {
-        validadorString(nome, "Nome commisao nao pode ser mull ou vazio");
-        if (!this.mapaComissoes.containsKey(nome)) {
+    public void verificaComissao(String tema, String mensagem) {
+        validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
+        if (!this.mapaComissoes.containsKey(tema)) {
             throw new IllegalArgumentException(mensagem);
         }
+
     }
 
     public String getDniDeputados (String codigo) {
