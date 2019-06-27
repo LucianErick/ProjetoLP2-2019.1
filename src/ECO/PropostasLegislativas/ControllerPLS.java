@@ -97,4 +97,7 @@ public class ControllerPLS implements Serializable {
         propostasDeLeis.get(codigo).quorumMininimo(deputadosPresentes, totalDeDeputados);
     }
 
+    public String exibirTramitacao(String codigo) {
+        return propostasDeLeis.get(codigo).exibirTramitacao(codigo);
+    }
 }

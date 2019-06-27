@@ -63,4 +63,9 @@ public class PL extends PropostaLegislativa {
             throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
         }
     }
+
+    @Override
+    public String exibirTramitacao() {
+        return null;
+    }
 }

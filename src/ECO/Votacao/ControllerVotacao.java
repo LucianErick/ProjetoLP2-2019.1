@@ -181,6 +181,7 @@ public class ControllerVotacao implements Serializable {
             }
             rejeita += 1;
         }
+
         if (aceita > rejeita) {
             return true;
         }

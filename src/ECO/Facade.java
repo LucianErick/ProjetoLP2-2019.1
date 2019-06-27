@@ -81,6 +81,12 @@ public class Facade {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }
 
+//    US8
+
+    public String exibirTramitacao(String codigo) {
+        return exibirTramitacao(codigo);
+    }
+
     public void salvarSistema() throws IOException {
         this.persistencia.salvar();
     }

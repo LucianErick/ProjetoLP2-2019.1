@@ -38,6 +38,11 @@ public abstract class PropostaLegislativa implements Serializable {
 
     private String situacaoAtual;
     /**
+     * Atributo String que armazena a tramitacao da proposta legislativa (caminhio ao qual a proposta passou em suas votacoes)
+     */
+
+    private String tramitacao;
+    /**
      * Atributo String que armazena o endereco do documento
      */
 
@@ -61,18 +66,10 @@ public abstract class PropostaLegislativa implements Serializable {
         this.url = url;
         this.codigo = codigo;
         this.situacaoAtual = "EM VOTACAO (CCJC)";
+        this.tramitacao = "";
     }
 
-    /**
-     * Exibe o projeto responsavel pela proposta legislativa
-     * @param codigo
-     * @return String com o projeto da proposta legislativa
-     */
 
-    public String ExibeProjeto(String codigo) {
-        String saida = "";
-        return saida;
-    }
 
     /**
      * Retorna o ano que a proposta legislativa foi inicializada
@@ -141,4 +138,6 @@ public abstract class PropostaLegislativa implements Serializable {
     }
 
     public abstract void quorumMininimo (int deputadosPresentes, int totalDeDeputados);
+
+    public abstract String exibirTramitacao(String codigo);
 }

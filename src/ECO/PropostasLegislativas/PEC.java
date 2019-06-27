@@ -63,4 +63,11 @@ public class PEC extends PropostaLegislativa {
             throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
         }
     }
+
+    @Override
+    public String exibirTramitacao(String codigo) {
+        return null;
+    }
+
+
 }

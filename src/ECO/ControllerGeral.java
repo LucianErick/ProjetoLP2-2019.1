@@ -311,6 +311,13 @@ public class ControllerGeral implements Serializable {
     }
 
 
+//    US8
+
+    public String exibirTramitacao(String codigo) {
+        return controllerPLS.exibirTramitacao(codigo);
+    }
+
+
 
 
 
