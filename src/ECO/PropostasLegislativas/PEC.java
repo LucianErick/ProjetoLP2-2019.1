@@ -53,7 +53,7 @@ public class PEC extends PropostaLegislativa {
 
     //    criado para a votacao, nao sei se vai continuar
     @Override
-    public boolean verificaBooleanConclusivo(String codigo) {
+    public boolean verificaBooleanConclusivo() {
         return false;
     }
 
