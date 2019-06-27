@@ -43,7 +43,7 @@ public class ControllerGeral implements Serializable {
         this.controlePessoas = new ControllerPessoa();
         this.controleComissao = new ControllerComissao();
         this.controllerPLS = new ControllerPLS();
-        this.controllerVotacao = new ControllerVotacao(this.controleComissao, this.controlePessoas, this.controllerPLS);
+        this.controllerVotacao = new ControllerVotacao();
 
     }
 
@@ -258,27 +258,56 @@ public class ControllerGeral implements Serializable {
                 && !statusGovernista.equals("LIVRE")) {
             throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
         }
-        if (!controllerPLS.getControllerPLS().containsKey(codigo)) {
+        if (!controllerPLS.getPropostasDeLeis().containsKey(codigo)) {
             throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
 
-        if (controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("ARQUIVADO")
-                || controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("APROVADO")) {
+        if (controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().equals("ARQUIVADO")
+                || controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().equals("APROVADO")) {
             throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
         }
 
-        String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
+        String[] situacaoAtual = controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().split("VOTACAO");
         String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
 
         if (localAtual.trim().equals("plenario")){
             throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
             
         }
-        return controllerVotacao.votarComissao(codigo, statusGovernista, proximoLocal);
+        return controllerVotacao.votarComissao(codigo, statusGovernista, proximoLocal, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(),
+                this.controlePessoas.getDeputados(), this.controlePessoas.exibirBase(),this.controllerPLS.getInteressesRelacionados(codigo));
     }
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
-        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes);
+
+        if (controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().equals("ARQUIVADO")
+                || controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().equals("APROVADO")) {
+            throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
+        }
+        String[] situacaoAtual = controllerPLS.getPropostasDeLeis().get(codigo).getSituacaoAtual().split("VOTACAO");
+        String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
+        String tipoDeProposta = controllerPLS.getPropostasDeLeis().get(codigo).getCodigo().substring(0, 3).trim();
+
+        if ((controleComissao.getMapaComissoes().containsKey(localAtual))) {
+            throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
+        }
+
+        String[] deputadosPresentes = presentes.split(",");
+
+        int DepPresentes = deputadosPresentes.length;
+
+        controllerPLS.quorumMininimo(codigo, DepPresentes, controlePessoas.qtdDeputados());
+
+
+        validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
+        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+        validadorString(presentes, "");
+        if (!controllerPLS.getPropostasDeLeis().containsKey(codigo)) {
+            throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
+        }
+        controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
+
+        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(), this.controlePessoas.getDeputados());
     }
 
 

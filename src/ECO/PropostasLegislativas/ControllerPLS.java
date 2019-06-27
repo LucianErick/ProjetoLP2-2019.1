@@ -84,9 +84,6 @@ public class ControllerPLS implements Serializable {
         return propostasDeLeis;
     }
 
-    public HashMap<String, PropostaLegislativa>  getControllerPLS() {
-        return this.propostasDeLeis;
-    }
 
     public String  getInteressesRelacionados(String codigo) {
         return propostasDeLeis.get(codigo).getInteressesRelacionados();
