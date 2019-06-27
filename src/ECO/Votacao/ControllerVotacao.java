@@ -44,9 +44,10 @@ public class ControllerVotacao implements Serializable {
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 
 //        Verificacoes
-
+    	
 
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+    	
         boolean aprovacao = false;
         if (!controleComissao.getMapaComissoes().containsKey("CCJC")) {
             throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
@@ -66,11 +67,13 @@ public class ControllerVotacao implements Serializable {
                 || controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().equals("APROVADO")) {
             throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
         }
+        
+
 
         String[] situacaoAtual = controllerPLS.getControllerPLS().get(codigo).getSituacaoAtual().split("VOTACAO");
         String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
 
-        if (localAtual.trim().equals("plenario")){
+        if (localAtual.trim().equals("plenario") && proximoLocal.equals("plenario")){
             throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
         }
 
@@ -78,9 +81,9 @@ public class ControllerVotacao implements Serializable {
 
         if (aprovaGoverno(localAtual) && statusGovernista.equals("GOVERNISTA")) {
             controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
-
             aprovacao = true;
-            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true
+ 
+            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo() == true
                     && (!localAtual.equals("CCJC"))) {
                 controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = controllerPLS.getControllerPLS().get(codigo).getDNIAutor();
@@ -91,7 +94,7 @@ public class ControllerVotacao implements Serializable {
             controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             aprovacao = false;
-            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true) {
+            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo() == true) {
                 controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
 
             }
@@ -103,16 +106,19 @@ public class ControllerVotacao implements Serializable {
         else if (aprovaGoverno(localAtual) && statusGovernista.equals("OPOSICAO")) {
             aprovacao = false;
 
-            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true ) {
+            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo() == true ) {
                 controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("ARQUIVADO");
 
+            }
+            else {
+            	controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
             }
         }
         else if (aprovaGoverno(localAtual) == false && statusGovernista.equals("OPOSICAO")) {
             controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             aprovacao = true;
-            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo(codigo) == true
+            if (controllerPLS.getControllerPLS().get(codigo).verificaBooleanConclusivo() == true
                     && (!localAtual.equals("CCJC"))) {
 
                 controllerPLS.getControllerPLS().get(codigo).setSituacaoAtual("APROVADO");
@@ -178,10 +184,13 @@ public class ControllerVotacao implements Serializable {
             throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
         controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
-
+        
         boolean aprovacao = false;
         int turno = 0;
-
+        
+        if(aprovaPlPlenario(presentes))
+        	aprovacao = true;
+        	
 
 
 
@@ -193,8 +202,8 @@ public class ControllerVotacao implements Serializable {
 
 
     private boolean aprovaGoverno(String comissaoAtual) {
-
-        String[] base = controllerPessoa.exibirBase().trim().split(",");
+    	
+    	String[] base = controllerPessoa.exibirBase().trim().split(",");
         Set<String> listaDni = controleComissao.getMapaComissoes().get(comissaoAtual).getListaDNI();
         int baseGov = 0;
         int oposicao = 0;
@@ -255,14 +264,24 @@ public class ControllerVotacao implements Serializable {
         return baseGov > oposicao;
     }
 
-
-
-
-
-
-
-
-
+    private boolean aprovaPlPlenario(String presentes) {
+    	String[] listaPresentes = presentes.trim().split(",");
+    	String base = controllerPessoa.exibirBase();
+    	
+    	 int baseGov = 0;
+         int oposicao = 0;
+    	for(int i = 0; i < listaPresentes.length; i++) {
+    		if(controllerPessoa.getControllerPessoa().get(listaPresentes[i]).getPartido().equals(base)){
+    			baseGov += 1;
+    		}else {
+    			oposicao +=1;
+    		}
+    	}
+    	if(baseGov > oposicao) {
+    		return true;
+    	}
+    	return false;
+    }
 
 
 
