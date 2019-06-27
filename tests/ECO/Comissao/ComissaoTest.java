@@ -1,10 +1,8 @@
 package ECO.Comissao;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComissaoTest {
@@ -32,9 +30,9 @@ class ComissaoTest {
         comissao2 = new Comissao("SEILA", "123-0,234-0");
         comissao3 = new Comissao("CCJC", "0000-0");
 
-        assertFalse(comissao1.equals(comissao2));
-        assertFalse(comissao2.equals(comissao3));
-        assertTrue(comissao1.equals(comissao3));
+        assertNotEquals(comissao1, comissao2);
+        assertNotEquals(comissao2, comissao3);
+        assertEquals(comissao1, comissao3);
     }
 
 

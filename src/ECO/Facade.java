@@ -20,6 +20,7 @@ public class Facade {
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses);
     }
+
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses, String partido) {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses, partido);
     }
