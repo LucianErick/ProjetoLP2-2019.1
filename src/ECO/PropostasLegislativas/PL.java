@@ -32,7 +32,7 @@ public class PL extends PropostaLegislativa {
      * @return boolean com a confirmacao ou nao da conclusao
      */
 
-    public String  isConclusivo() {
+    public String isConclusivo() {
         if ( this.Conclusivo == true) {
             return " - Conclusiva";
         }
@@ -40,14 +40,13 @@ public class PL extends PropostaLegislativa {
 
     }
 
-
     /**
      * Representacao textual do objeto PL relacionado
      * @return representacao textual
      */
 
     @Override
-    public String ToString() {
+    public String toString() {
         return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + isConclusivo() + " - " + getSituacaoAtual();
     }
 

@@ -85,9 +85,7 @@ public abstract class PropostaLegislativa implements Serializable {
      * @return String com a representacao textual
      */
 
-    public abstract String ToString(); {
-
-    }
+    public abstract String toString();
 
     /**
      * Retorna a String com o dni do autor da proposta legislativa
@@ -125,6 +123,14 @@ public abstract class PropostaLegislativa implements Serializable {
         return situacaoAtual;
     }
 
+    /**
+     * Retorna a String com o endereço eletronico da proposta.
+     * @return a url da proposta
+     */
+
+    public String getUrl() {
+        return url;
+    }
 
     //    criado para a votacao, nao sei se vai continuar
     public abstract boolean verificaBooleanConclusivo();

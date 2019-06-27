@@ -1,7 +1,5 @@
 package ECO.PropostasLegislativas;
 
-import ECO.Util.Validador;
-
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -73,7 +71,7 @@ public class ControllerPLS implements Serializable {
      * @return o toString do projeto relacionado
      */
     public String exibirProjeto(String codigo){
-        return  propostasDeLeis.get(codigo).ToString();
+        return  propostasDeLeis.get(codigo).toString();
     }
 
      public boolean verificaBooleanConclusivo(String codigo) {

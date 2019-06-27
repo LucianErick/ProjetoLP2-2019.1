@@ -47,7 +47,7 @@ public class PEC extends PropostaLegislativa {
      */
 
     @Override
-    public String ToString() {
+    public String toString() {
         return "Projeto de Emenda Constitucional - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + getArtigo() + " - " + getSituacaoAtual();
     }
 
@@ -71,3 +71,4 @@ public class PEC extends PropostaLegislativa {
 
 
 }
+

@@ -47,7 +47,7 @@ public class PLP extends PropostaLegislativa {
      */
 
     @Override
-    public String ToString() {
+    public String toString() {
         return "Projeto de Lei Complementar - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + getArtigo() + " - " + getSituacaoAtual();
     }
 
