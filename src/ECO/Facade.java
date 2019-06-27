@@ -100,8 +100,8 @@ public class Facade {
                 "acceptance_tests/use_case_3.txt", "acceptance_tests/use_case_4.txt",
                 "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
                 "acceptance_tests/use_case_7.txt",
-                //    "acceptance_tests/use_case_8.txt",
-                //    "acceptance_tests/use_case_9.txt",
+                    "acceptance_tests/use_case_8.txt",
+                    "acceptance_tests/use_case_9.txt",
                 };
 
         EasyAccept.main(args);
