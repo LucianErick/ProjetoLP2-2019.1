@@ -76,9 +76,7 @@ public class ControllerPLS implements Serializable {
         return  propostasDeLeis.get(codigo).ToString();
     }
 
-    public boolean verificaBooleanConclusivo(String codigo) {
-        return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo(codigo);
-    }
+    public abstract boolean verificaBooleanConclusivo();
 
     public HashMap<String, PropostaLegislativa> getPropostasDeLeis() {
         return propostasDeLeis;
