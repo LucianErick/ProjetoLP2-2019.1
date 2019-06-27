@@ -23,14 +23,14 @@ class DeputadoTest {
         pessoa3 = new Pessoa("Ana", "213292925-5", "PB","");
         deputado1 = new Deputado("Ana", "213292925-4", "PB", "saude, economia", "PMDB", "09082007");
         deputado2 = new Deputado("Ana", "213292925-6", "PB", "", "PT",  "10052015");
-        deputado3 = new Deputado("Ana", "14071997","PB");
+        deputado3 = new Deputado("Aécio", "14071997","MG", "Cocaina", "P$DB", "06062006");
     }
 
     @Test
     void converteData() {
         assertEquals("09/08/2007", deputado1.converteData("09082007"));
-        assertEquals("POL: Ana - 213292925-4 (PB) - PMDB - Interesses: saude, economia - 09/08/2007 - 0 Leis", pessoa1.toString());
-        assertEquals("POL: Ana - 213292925-6 (PB) - PT - 10/05/2015 - 0 Leis", pessoa2.toString());
+        assertEquals("Ana - 213292925-4 (PB) - PMDB - Interesses: saude, economia", pessoa1.toString());
+        assertEquals("Ana - 213292925-6 (PB) - PT", pessoa2.toString());
     }
 
     @Test
@@ -48,8 +48,8 @@ class DeputadoTest {
 
     @Test
     void toString1() {
-        assertEquals("09/08/2007 - 0 Leis", deputado1.toString());
-        assertEquals("10/05/2015 - 0 Leis", deputado2.toString());
-        assertEquals("14/07/1997 - 0 Leis", deputado3.toString());
+        assertEquals("POL: Ana - 213292925-4 (PB) - PMDB - Interesses: saude, economia - 09/08/2007 - 0 Leis", deputado1.toString());
+        assertEquals("POL: Ana - 213292925-6 (PB) - PT - 10/05/2015 - 0 Leis", deputado2.toString());
+        assertEquals("POL: Aécio - 14071997 (MG) - P$DB - Interesses: Cocaina - 06/06/2006 - 0 Leis", deputado3.toString());
     }
 }

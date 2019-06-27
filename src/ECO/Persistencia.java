@@ -12,7 +12,7 @@ public class Persistencia {
 
     private ControllerGeral controleGeral;
 
-    public Persistencia(ControllerGeral controleGeral) {
+     public Persistencia(ControllerGeral controleGeral) {
         this.controleGeral = controleGeral;
     }
 

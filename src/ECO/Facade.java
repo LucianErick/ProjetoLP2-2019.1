@@ -59,12 +59,15 @@ public class Facade {
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
         return this.controladorGeral.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
     }
+
     public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         return this.controladorGeral.cadastrarPLP(dni, ano, ementa, interesses, url, artigos);
     }
+
     public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos) {
         return this.controladorGeral.cadastrarPEC(dni, ano, ementa, interesses, url, artigos);
     }
+
     public String exibirProjeto(String codigo) {
         return this.controladorGeral.exibirProjeto(codigo);
     }

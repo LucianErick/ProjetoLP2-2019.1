@@ -29,9 +29,8 @@ class ControllerGeralTest {
     @Test
     void cadastraComissaoDniInvalidoTest() {
 
-        this.controleGeral.getControlePessoas().cadastraPessoa("Ana Carolina","111A22-2","PB","Música","PT");
-        this.controleGeral.getControlePessoas().cadastraPessoa("Luciano Erick","6*66-5","PB","Funk","BRASIL");
-
+        assertThrows(IllegalArgumentException.class, () -> this.controleGeral.getControlePessoas().cadastraPessoa("Ana Carolina","111A22-2","PB","Música","PT"));
+        assertThrows(IllegalArgumentException.class, () -> this.controleGeral.getControlePessoas().cadastraPessoa("Luciano Erick","6*66-5","PB","Funk","BRASIL"));
         assertThrows(IllegalArgumentException.class, () -> this.controleGeral.getControleComissao().cadastrarComissao("NILSO","111A22-2,6*66-5"));
     }
 

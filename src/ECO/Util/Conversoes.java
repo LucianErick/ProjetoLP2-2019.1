@@ -1,7 +1,7 @@
 package ECO.Util;
 
 
-public class Conversoes {
+public class  Conversoes {
 
     public static String converteData(String dataDeInicio) {
         String aux = "";
