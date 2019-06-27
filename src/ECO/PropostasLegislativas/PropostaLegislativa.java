@@ -130,7 +130,7 @@ public abstract class PropostaLegislativa implements Serializable {
 
 
     //    criado para a votacao, nao sei se vai continuar
-    public abstract boolean verificaBooleanConclusivo(String codigo);
+    public abstract boolean verificaBooleanConclusivo();
 
     public void setSituacaoAtual(String novaSituacao) {
         this.situacaoAtual = novaSituacao;
