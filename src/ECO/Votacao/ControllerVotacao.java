@@ -4,6 +4,7 @@ import ECO.Comissao.ControllerComissao;
 import ECO.Pessoa.ControllerPessoa;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class ControllerVotacao implements Serializable {
 
@@ -44,5 +45,38 @@ public class ControllerVotacao implements Serializable {
             throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

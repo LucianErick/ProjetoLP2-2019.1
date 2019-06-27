@@ -139,4 +139,6 @@ public abstract class PropostaLegislativa implements Serializable {
     public String getInteressesRelacionados() {
         return interessesRelacionados;
     }
+
+    public abstract void quorumMininimo (int deputadosPresentes, int totalDeDeputados);
 }

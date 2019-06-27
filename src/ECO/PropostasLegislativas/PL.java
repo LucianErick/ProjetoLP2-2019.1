@@ -56,4 +56,11 @@ public class PL extends PropostaLegislativa {
     public boolean verificaBooleanConclusivo(String codigo) {
         return this.Conclusivo;
     }
+
+    @Override
+    public void quorumMininimo(int deputadosPresentes, int totalDeDeputados) {
+        if (!(deputadosPresentes >= Math.floor((totalDeDeputados / 2) + 1))) {
+            throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
+        }
+    }
 }

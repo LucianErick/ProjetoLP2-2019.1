@@ -56,4 +56,11 @@ public class PEC extends PropostaLegislativa {
     public boolean verificaBooleanConclusivo(String codigo) {
         return false;
     }
+
+    @Override
+    public void quorumMininimo(int deputadosPresentes, int totalDeDeputados) {
+        if (!(deputadosPresentes >= Math.floor((totalDeDeputados * 3 / 5) + 1))) {
+            throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
+        }
+    }
 }

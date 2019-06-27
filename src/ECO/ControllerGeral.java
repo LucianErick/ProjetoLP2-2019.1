@@ -371,7 +371,7 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
 		String[] deputadosPresentes = presentes.split(",");
 
         int DepPresentes = deputadosPresentes.length;
-		controllerVotacao.quorumMininimo(tipoDeProposta, DepPresentes, controlePessoas.qtdDeputados());
+		controllerPLS.quorumMininimo(tipoDeProposta, DepPresentes, controlePessoas.qtdDeputados());
 
 
         validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
@@ -382,10 +382,18 @@ public boolean votarComissao(String codigo, String statusGovernista, String prox
         }
 		controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
+        boolean aprovacao = false;
+        int turno = 0;
+
+		
 
 
-		return true;
+
+		return aprovacao;
 	}
+
+
+
 
 	private boolean aprovaGoverno(String comissaoAtual) {
 
