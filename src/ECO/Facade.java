@@ -90,7 +90,7 @@ public class Facade {
     public void salvarSistema() throws IOException {
         this.persistencia.salvar();
     }
-    public void carregarSistema() throws IOException{
+    public void carregarSistema() throws IOException {
         this.persistencia.carregar();
     }
 
