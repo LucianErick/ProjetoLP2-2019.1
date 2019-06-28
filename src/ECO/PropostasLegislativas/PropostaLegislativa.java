@@ -66,7 +66,7 @@ public abstract class PropostaLegislativa implements Serializable {
         this.url = url;
         this.codigo = codigo;
         this.situacaoAtual = "EM VOTACAO (CCJC)";
-        this.tramitacao = "EM VOTACAO (CCJC)";
+        this.tramitacao = "";
     }
 
 

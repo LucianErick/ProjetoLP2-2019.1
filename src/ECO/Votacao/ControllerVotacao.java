@@ -127,6 +127,10 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
+        if (propostasLegislativas.get(codigo).exibirTramitacao(codigo).equals("")) {
+        propostasLegislativas.get(codigo).setTramitacao("EM VOTACAO (CCJC)"); }
+
+        propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).exibirTramitacao(codigo) + ", APROVADO (" + localAtual + ")");
         return aprovacao;
     }
 
