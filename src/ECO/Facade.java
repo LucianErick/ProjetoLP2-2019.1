@@ -1,7 +1,6 @@
 
 package ECO;
 
-import ECO.Util.Persistencia;
 import easyaccept.EasyAccept;
 
 import java.io.IOException;
