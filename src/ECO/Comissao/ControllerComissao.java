@@ -1,6 +1,6 @@
 package ECO.Comissao;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,4 +59,48 @@ public class ControllerComissao implements Serializable {
     }
 
     public int getQuantidadeDeputados (String codigo) { return mapaComissoes.get(codigo).getDniDeputados().length();}
+
+    /**
+     * Metodo responsavel por inicializar o sistema chamando o metodo de ler os arquivos.
+     */
+    public void inicializaSistema() {
+        this.lerArquivos();
+    }
+
+    /**
+     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
+     */
+    public void finalizaSistema() {
+        this.escreverArquivos();
+    }
+
+    private void escreverArquivos() {
+        ObjectOutputStream comissaoArq = null;
+
+        try {
+            comissaoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "comissaoController.dat"));
+            comissaoArq.writeObject(this.mapaComissoes);
+
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+    }
+
+    private void lerArquivos() {
+        ObjectInputStream comissaoArq = null;
+
+        try {
+            comissaoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "comissaoController.dat"));
+            Map<String, Comissao> comissaoHashMap = (HashMap<String, Comissao>) comissaoArq.readObject();
+            this.mapaComissoes = comissaoHashMap;
+
+        } catch (IOException e) {
+            this.escreverArquivos();
+            this.inicializaSistema();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

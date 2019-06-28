@@ -100,17 +100,16 @@ public class Facade {
 
 
 //   US10
-
-//    public void salvarSistema() throws IOException {
-//        this.persistencia.salvar(this.controladorGeral.getControleComissao(), this.controladorGeral.getControlePessoas(), this.controladorGeral.getControllerPLS());
-//    }
-//    public void carregarSistema() throws IOException, ClassNotFoundException {
-//        this.persistencia.carregar(controladorGeral);
-//    }
-
-    public void limparSistema(){
-        this.persistencia.limpar();
+    public void salvarSistema() throws IOException {
+         this.controladorGeral.finalizaSistema();
     }
+    public void carregarSistema() throws IOException, ClassNotFoundException {
+        this.controladorGeral.iniciaSistema();
+    }
+
+ //   public void limparSistema(){
+  //      this.persistencia.limpar();
+//    }
 
     public static void main(String[] args) {
         args = new String[] {

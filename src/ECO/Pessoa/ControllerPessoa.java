@@ -1,6 +1,8 @@
 package ECO.Pessoa;
 
-import java.io.Serializable;
+import ECO.Comissao.Comissao;
+
+import java.io.*;
 import java.util.*;
 
 import static ECO.Util.Validador.*;
@@ -195,6 +197,113 @@ public class ControllerPessoa implements Serializable {
 
     public int qtdDeputados () {
         return deputados.size();
+    }
+
+
+    public void inicializaSistema() {
+        this.lerArquivosPessoa();
+        this.lerArquivosDeputado();
+        this.lerArquivosPartido();
+    }
+
+    /**
+     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
+     */
+    public void finalizaSistema() {
+        this.escreverArquivosPessoa();
+        this.escreverArquivosDeputado();
+        this.escreverArquivosPartido();
+    }
+
+    private void escreverArquivosPessoa() {
+        ObjectOutputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
+            pessoaArq.writeObject(this.pessoas);
+
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+    }
+    private void escreverArquivosDeputado() {
+        ObjectOutputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
+            pessoaArq.writeObject(this.deputados);
+
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+    }
+    private void escreverArquivosPartido() {
+        ObjectOutputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
+            pessoaArq.writeObject(this.partidos);
+
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+    }
+
+    private void lerArquivosPessoa() {
+        ObjectInputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
+            Map<String, Pessoa> comissaoHashMap1 = (HashMap<String, Pessoa>) pessoaArq.readObject();
+            this.pessoas = comissaoHashMap1;
+
+
+        } catch (IOException e) {
+            this.escreverArquivosPessoa();
+            this.inicializaSistema();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void lerArquivosDeputado() {
+        ObjectInputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
+            HashMap<String, Deputado> comissaoHashMap2 = (HashMap<String, Deputado>) pessoaArq.readObject();
+            this.deputados = comissaoHashMap2;
+
+
+        } catch (IOException e) {
+            this.escreverArquivosDeputado();
+            this.inicializaSistema();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void lerArquivosPartido() {
+        ObjectInputStream pessoaArq = null;
+
+        try {
+            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
+            ArrayList<String> listaPartidos = (ArrayList<String>) pessoaArq.readObject();
+            this.partidos = listaPartidos;
+
+
+        } catch (IOException e) {
+            this.escreverArquivosDeputado();
+            this.inicializaSistema();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

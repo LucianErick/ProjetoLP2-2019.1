@@ -1,7 +1,10 @@
 package ECO.PropostasLegislativas;
 
-import java.io.Serializable;
+import ECO.Comissao.Comissao;
+
+import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 
 import static ECO.Util.Validador.*;
 
@@ -97,5 +100,46 @@ public class ControllerPLS implements Serializable {
 
     public String exibirTramitacao(String codigo) {
         return propostasDeLeis.get(codigo).exibirTramitacao(codigo);
+    }
+
+    public void inicializaSistema() {
+        this.lerArquivos();
+    }
+
+    /**
+     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
+     */
+    public void finalizaSistema() {
+        this.escreverArquivos();
+    }
+
+    private void escreverArquivos() {
+        ObjectOutputStream plsArq = null;
+
+        try {
+            plsArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "plsController.dat"));
+            plsArq.writeObject(this.propostasDeLeis);
+
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+    }
+
+    private void lerArquivos() {
+        ObjectInputStream plsArq = null;
+
+        try {
+            plsArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "plsController.dat"));
+            HashMap<String, PropostaLegislativa> propostaLegislativaHashMap = (HashMap<String, PropostaLegislativa>) plsArq.readObject();
+            this.propostasDeLeis = propostaLegislativaHashMap;
+
+        } catch (IOException e) {
+            this.escreverArquivos();
+            this.inicializaSistema();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

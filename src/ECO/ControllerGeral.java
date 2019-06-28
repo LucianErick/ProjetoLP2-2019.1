@@ -234,11 +234,6 @@ public class ControllerGeral implements Serializable {
 
 
 
-
-
-
-
-
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 
         //        Verificacoes
@@ -328,6 +323,22 @@ public class ControllerGeral implements Serializable {
 
     public String pegarPropostaRelacionada(String dni) {
         return "oi";
+    }
+
+
+    public void iniciaSistema() {
+        this.controlePessoas.inicializaSistema();
+        this.controleComissao.inicializaSistema();
+        this.controllerPLS.inicializaSistema();
+    }
+
+    /**
+     * Metodo responsavel por finalizar o sistema, escrevendo arquivos
+     */
+    public void finalizaSistema() {
+        this.controlePessoas.finalizaSistema();
+        this.controleComissao.finalizaSistema();
+        this.controllerPLS.finalizaSistema();
     }
 
 
