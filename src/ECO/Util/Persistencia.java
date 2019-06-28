@@ -53,9 +53,9 @@ public class Persistencia {
 
 
     public void salvar(ControllerComissao controleComissao, ControllerPessoa controlePessoas, ControllerPLS controllerPLS) {
-        this.salvarPessoas();
-        this.salvarComissoes();
-        this.salvarPropostasLegislativas();
+//        this.salvarPessoas();
+//        this.salvarComissoes();
+//        this.salvarPropostasLegislativas();
     }
     private void salvarPessoas(HashMap<String, Pessoa> pessoas) {
         try {

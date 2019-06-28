@@ -65,6 +65,6 @@ public class PL extends PropostaLegislativa {
 
     @Override
     public String exibirTramitacao(String codigo) {
-        return null;
-    }
+        String saida = getTramitacao();
+        return saida;    }
 }

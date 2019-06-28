@@ -84,15 +84,29 @@ public class Facade {
 //    US8
 
     public String exibirTramitacao(String codigo) {
-        return exibirTramitacao(codigo);
+        return controladorGeral.exibirTramitacao(codigo);
     }
 
-    public void salvarSistema() throws IOException {
-        this.persistencia.salvar(this.controladorGeral.getControleComissao(), this.controladorGeral.getControlePessoas(), this.controladorGeral.getControllerPLS()));
+//   US9
+
+    public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+        controladorGeral.configurarEstrategiaPropostaRelacionada(dni, estrategia);
     }
-    public void carregarSistema() throws IOException, ClassNotFoundException {
-        this.persistencia.carregar(controladorGeral);
+
+
+    public String pegarPropostaRelacionada(String dni) {
+        return controladorGeral.pegarPropostaRelacionada(dni);
     }
+
+
+//   US10
+
+//    public void salvarSistema() throws IOException {
+//        this.persistencia.salvar(this.controladorGeral.getControleComissao(), this.controladorGeral.getControlePessoas(), this.controladorGeral.getControllerPLS());
+//    }
+//    public void carregarSistema() throws IOException, ClassNotFoundException {
+//        this.persistencia.carregar(controladorGeral);
+//    }
 
     public void limparSistema(){
         this.persistencia.limpar();
@@ -101,11 +115,11 @@ public class Facade {
     public static void main(String[] args) {
         args = new String[] {
                 "ECO.Facade",
-                "acceptance_tests/use_case_1.txt", "acceptance_tests/use_case_2.txt",
-                "acceptance_tests/use_case_3.txt", "acceptance_tests/use_case_4.txt",
-                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
+//                "acceptance_tests/use_case_1.txt", "acceptance_tests/use_case_2.txt",
+//                "acceptance_tests/use_case_3.txt", "acceptance_tests/use_case_4.txt",
+//                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
                 "acceptance_tests/use_case_7.txt",
-//                    "acceptance_tests/use_case_8.txt",
+                "acceptance_tests/use_case_8.txt",
 //                    "acceptance_tests/use_case_9.txt",
                 };
 

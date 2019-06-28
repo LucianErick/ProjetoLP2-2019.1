@@ -232,6 +232,13 @@ public class ControllerGeral implements Serializable {
         return this.controllerPLS.exibirProjeto(codigo);
     }
 
+
+
+
+
+
+
+
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 
         //        Verificacoes
@@ -305,7 +312,22 @@ public class ControllerGeral implements Serializable {
 //    US8
 
     public String exibirTramitacao(String codigo) {
+        validadorString(codigo, "");
+        if (!controllerPLS.getPropostasDeLeis().containsKey(codigo)) {
+            throw new IllegalArgumentException("Erro ao exibir tramitacao: projeto inexistente");
+
+        }
         return controllerPLS.exibirTramitacao(codigo);
+    }
+
+
+
+    public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+
+    }
+
+    public String pegarPropostaRelacionada(String dni) {
+        return "oi";
     }
 
 

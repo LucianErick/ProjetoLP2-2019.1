@@ -66,7 +66,7 @@ public abstract class PropostaLegislativa implements Serializable {
         this.url = url;
         this.codigo = codigo;
         this.situacaoAtual = "EM VOTACAO (CCJC)";
-        this.tramitacao = "";
+        this.tramitacao = "EM VOTACAO (CCJC)";
     }
 
 
@@ -113,11 +113,30 @@ public abstract class PropostaLegislativa implements Serializable {
     public String getEmenta() {
         return ementa;
     }
+    /**
+     * Retorna a String com a tramitacao da proposta legislativa (O caminho e os diferentes tipos de resultados de votações em comissões e plenários)
+     * @return situacao tramitacao
+     */
+
+    public String getTramitacao() {
+        return tramitacao;
+    }
+
+
+
+
+
+
+    public void setTramitacao(String tramitacao) {
+        this.tramitacao = tramitacao;
+    }
 
     /**
      * Retorna a String com a situacao atual da proposta legislativa
      * @return situacao atual
      */
+
+
 
     public String getSituacaoAtual() {
         return situacaoAtual;
