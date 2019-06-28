@@ -5,8 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PLTest {
+
     private PL pl1;
     private PL pl2;
+
+    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testeConstrutor(){
@@ -19,6 +22,8 @@ class PLTest {
         assertEquals("umsitequalquerai.com", pl1.getUrl());
         assertEquals("1111", pl1.getCodigo());
     }
+
+    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testToString() {

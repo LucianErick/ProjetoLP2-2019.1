@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PECTest {
-        private PEC pec1;
-        private PEC pec2;
 
+    private PEC pec1;
+    private PEC pec2;
+
+        // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
         @Test
         void testeConstrutor(){
             pec1 = new PEC("12345-0", 2000, "P000", "Economia", "umsitequalquerai.com", "Prenderam o marquin!", "1111");
@@ -21,6 +23,7 @@ class PECTest {
             assertEquals("1111", pec1.getCodigo());
         }
 
+        // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
         @Test
         void testToString() {
             pec1 = new PEC("12345-0", 2000, "P000", "Economia", "umsitequalquerai.com", "to com fome", "1111");

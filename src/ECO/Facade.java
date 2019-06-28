@@ -12,8 +12,8 @@ public class Facade {
     private Persistencia persistencia;
 
     public Facade() {
-        this.controladorGeral = new ControllerGeral();
-        this.persistencia = new Persistencia(controladorGeral);
+     //   this.controladorGeral = new ControllerGeral();
+     //   this.persistencia = new Persistencia(controladorGeral);
     }
 
     //US1

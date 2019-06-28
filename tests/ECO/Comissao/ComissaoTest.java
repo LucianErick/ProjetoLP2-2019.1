@@ -10,6 +10,8 @@ class ComissaoTest {
     private Comissao comissao2;
     private Comissao comissao3;
 
+    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
+
     @Test
     void testeConstrutor() {
 
@@ -22,7 +24,10 @@ class ComissaoTest {
         assertEquals("4444-0,5555-0,6666-0", comissao2.getDniDeputados());
 
         assertThrows(IllegalArgumentException.class, () -> comissao3 = new Comissao(" ", "123-0"));
+        assertThrows(IllegalArgumentException.class, () -> comissao3 = new Comissao("a", "    "));
     }
+
+    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testeEquals() {
@@ -34,7 +39,4 @@ class ComissaoTest {
         assertNotEquals(comissao2, comissao3);
         assertEquals(comissao1, comissao3);
     }
-
-
-
 }

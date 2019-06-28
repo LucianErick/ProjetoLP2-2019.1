@@ -65,7 +65,7 @@ public class PLP extends PropostaLegislativa {
     }
 
     @Override
-    public String exibirTramitacao() {
+    public String exibirTramitacao(String codigo) {
         return null;
     }
 }

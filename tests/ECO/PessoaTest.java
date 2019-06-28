@@ -64,13 +64,13 @@ class PessoaTest {
 
     @Test
     void equalsTest1() {
-        assertFalse(pessoa1.equals(pessoa2));
-        assertFalse(pessoa1.equals(pessoa3));
-        assertFalse(pessoa1.equals(pessoa4));
+        assertNotEquals(pessoa1, pessoa2);
+        assertNotEquals(pessoa1, pessoa3);
+        assertNotEquals(pessoa1, pessoa4);
 
     }
     @Test
     void equalsTest2() {
-        assertTrue(pessoa1.equals(pessoa5));
+        assertEquals(pessoa1, pessoa5);
     }
 }

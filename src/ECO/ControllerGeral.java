@@ -232,15 +232,6 @@ public class ControllerGeral implements Serializable {
         return this.controllerPLS.exibirProjeto(codigo);
     }
 
-
-
-
-
-
-
-
-
-
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 
         //        Verificacoes

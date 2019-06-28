@@ -17,6 +17,7 @@ class ControllerComissaoTest {
         controlePessoa = new ControllerPessoa();
     }
 
+    // CREIO JA TER TERMINADO, LOGO, NAO MEXEREI MAIS.
     @Test
     void cadastrarComissao() {
 
@@ -43,6 +44,5 @@ class ControllerComissaoTest {
         this.controlePessoa.cadastraPessoa("Nilso", "123", "PB", "Saúde", "PMLS");
 
         this.controleComissao.cadastrarComissao("Turminha da programação", "111,123");
-
     }
 }
