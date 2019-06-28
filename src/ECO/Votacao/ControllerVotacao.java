@@ -12,6 +12,8 @@ import static ECO.Util.Validador.validadorString;
 public class ControllerVotacao implements Serializable {
 
 
+
+
     public ControllerVotacao() {
 
     }
@@ -133,27 +135,40 @@ public class ControllerVotacao implements Serializable {
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
 
-        System.out.println(codigo);
-        System.out.println(codigo.contains("PL "));
         boolean aprovacao = false;
-        int turno = 0;
-        
+        int turno;
+        if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("1")) {
+            turno = 0;
+        }
+        else {
+            turno = 1;
+        }
+
+
         if (propostasLegislativas.get(codigo).getSituacaoAtual().equals("ARQUIVADO")
                 || propostasLegislativas.get(codigo).getSituacaoAtual().equals("APROVADO")) {
             throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
         }
-        
-        if(aprovaPlenario(presentes,partidosBase, deputados)) {
+
+        if(plenarioDiferenciacao(codigo, statusGovernista, presentes, comissoes, propostasLegislativas, deputados, partidosBase)) {
         	aprovacao = true;
-        	propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
-            String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
-            deputados.get(dniAutor).adicionaLei();
-        }else {
+        	propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - " + (turno + 1) + "o turno)");
+        	if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("2")) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
+                String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
+                deputados.get(dniAutor).adicionaLei();
+            }
+
+        }
+        else {
         	aprovacao = false;
         	propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
         }
 
-
+        System.out.println(turno);
+        System.out.println(aprovacao);
+        System.out.println(propostasLegislativas.get(codigo).toString());
+        System.out.println(" ");
         return aprovacao;
     }
 
@@ -201,7 +216,7 @@ public class ControllerVotacao implements Serializable {
         return false;
     }
     
-    private boolean aprovaPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
+    private int aprovaPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
     	String[] listaPresentes = presentes.trim().split(",");
     	String[] base = base1.trim().split(",");
     	
@@ -215,30 +230,40 @@ public class ControllerVotacao implements Serializable {
     			}
     		}
     	}
-    	
-    	if(baseGov >= Math.floor(listaPresentes.length/2)+1) {
-    		return true;
-    	}
-    	return false;
+        System.out.println(baseGov);
+        System.out.println(listaPresentes.length);
+        System.out.println(deputados.size());
+    	return baseGov;
     }
 
     private boolean plenarioDiferenciacao (String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
+        String[] listaPresentes = presentes.trim().split(",");
+        String[] base = partidosBase.trim().split(",");
         if (codigo.contains("PL ")) {
-            if (1 == 1) {
+            int meta = (int) Math.round(Math.floor(listaPresentes.length/2)+1);
+            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
         }
 
         if (codigo.contains("PLP")) {
-            if (1 == 1) {
+
+            int meta = (int) Math.round(Math.floor(deputados.size()/2)+1);
+
+            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
+
         }
 
         if (codigo.contains("PEC")) {
-            if (1 == 1) {
+
+            int meta = (int) Math.round(Math.floor(deputados.size() * 3 / 5)+1);
+
+            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
+
         }
         return false;
     }

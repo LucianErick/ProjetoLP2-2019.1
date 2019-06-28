@@ -76,7 +76,7 @@ public class PEC extends PropostaLegislativa {
         if ( saida.equals("EM VOTACAO (CCJC)")){
             return saida;
         }
-        String saidaFinal = saida.substring(17);
+        String saidaFinal = saida.substring(18);
         return saidaFinal;
     }
 
