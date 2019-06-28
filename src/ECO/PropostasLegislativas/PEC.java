@@ -67,7 +67,17 @@ public class PEC extends PropostaLegislativa {
     @Override
     public String exibirTramitacao(String codigo) {
         String saida = getTramitacao();
-        return saida;
+//        System.out.println(saida);
+//        System.out.println(saida.length());
+//        System.out.println(" ");
+        if ( saida.equals("")) {
+            throw new IllegalArgumentException("Isso nem existe");
+        }
+        if ( saida.equals("EM VOTACAO (CCJC)")){
+            return saida;
+        }
+        String saidaFinal = saida.substring(17);
+        return saidaFinal;
     }
 
 

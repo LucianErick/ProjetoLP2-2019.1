@@ -1,11 +1,7 @@
 package ECO.Votacao;
 
 import ECO.Comissao.Comissao;
-import ECO.Comissao.ControllerComissao;
-import ECO.Pessoa.ControllerPessoa;
 import ECO.Pessoa.Deputado;
-import ECO.Pessoa.Pessoa;
-import ECO.PropostasLegislativas.ControllerPLS;
 import ECO.PropostasLegislativas.PropostaLegislativa;
 
 import java.io.Serializable;
@@ -137,7 +133,8 @@ public class ControllerVotacao implements Serializable {
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
 
-
+        System.out.println(codigo);
+        System.out.println(codigo.contains("PL "));
         boolean aprovacao = false;
         int turno = 0;
         
@@ -146,7 +143,7 @@ public class ControllerVotacao implements Serializable {
             throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
         }
         
-        if(aprovaPlPlenario(presentes,partidosBase, deputados)) {
+        if(aprovaPlenario(presentes,partidosBase, deputados)) {
         	aprovacao = true;
         	propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
             String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
@@ -204,7 +201,7 @@ public class ControllerVotacao implements Serializable {
         return false;
     }
     
-    private boolean aprovaPlPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
+    private boolean aprovaPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
     	String[] listaPresentes = presentes.trim().split(",");
     	String[] base = base1.trim().split(",");
     	
@@ -224,6 +221,28 @@ public class ControllerVotacao implements Serializable {
     	}
     	return false;
     }
+
+    private boolean plenarioDiferenciacao (String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
+        if (codigo.contains("PL ")) {
+            if (1 == 1) {
+                return true;
+            }
+        }
+
+        if (codigo.contains("PLP")) {
+            if (1 == 1) {
+                return true;
+            }
+        }
+
+        if (codigo.contains("PEC")) {
+            if (1 == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 
