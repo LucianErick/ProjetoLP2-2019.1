@@ -1,9 +1,9 @@
 
 package ECO;
 
+import ECO.Util.Persistencia;
 import easyaccept.EasyAccept;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -12,8 +12,8 @@ public class Facade {
     private Persistencia persistencia;
 
     public Facade() {
-     //   this.controladorGeral = new ControllerGeral();
-     //   this.persistencia = new Persistencia(controladorGeral);
+          this.controladorGeral = new ControllerGeral();
+          this.persistencia = new Persistencia(controladorGeral);
     }
 
     //US1
@@ -88,15 +88,14 @@ public class Facade {
     }
 
     public void salvarSistema() throws IOException {
-        this.persistencia.salvar();
+        this.persistencia.salvar(this.controladorGeral.getControleComissao(), this.controladorGeral.getControlePessoas(), this.controladorGeral.getControllerPLS()));
     }
-    public void carregarSistema() throws IOException {
-        this.persistencia.carregar();
+    public void carregarSistema() throws IOException, ClassNotFoundException {
+        this.persistencia.carregar(controladorGeral);
     }
 
     public void limparSistema(){
         this.persistencia.limpar();
-        this.controladorGeral = new ControllerGeral();
     }
 
     public static void main(String[] args) {
