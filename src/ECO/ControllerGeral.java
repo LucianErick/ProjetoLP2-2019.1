@@ -305,7 +305,7 @@ public class ControllerGeral implements Serializable {
         }
         controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
-        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(), this.controlePessoas.getDeputados());
+        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(), this.controlePessoas.getDeputados(),this.controlePessoas.exibirBase());
     }
 
 

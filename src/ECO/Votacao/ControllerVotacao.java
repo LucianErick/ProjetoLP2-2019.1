@@ -135,14 +135,26 @@ public class ControllerVotacao implements Serializable {
     }
 
 
-    public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados) {
+    public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
 
 
-        boolean aprovacao = true;
+        boolean aprovacao = false;
         int turno = 0;
-
-//        if(aprovaPlPlenario(presentes))
-//        	aprovacao = true;
+        
+        if (propostasLegislativas.get(codigo).getSituacaoAtual().equals("ARQUIVADO")
+                || propostasLegislativas.get(codigo).getSituacaoAtual().equals("APROVADO")) {
+            throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
+        }
+        
+        if(aprovaPlPlenario(presentes,partidosBase, deputados)) {
+        	aprovacao = true;
+        	propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
+            String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
+            deputados.get(dniAutor).adicionaLei();
+        }else {
+        	aprovacao = false;
+        	propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
+        }
 
 
         return aprovacao;
@@ -190,6 +202,27 @@ public class ControllerVotacao implements Serializable {
             return true;
         }
         return false;
+    }
+    
+    private boolean aprovaPlPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
+    	String[] listaPresentes = presentes.trim().split(",");
+    	String[] base = base1.trim().split(",");
+    	
+    	
+    	int baseGov = 0;
+    	
+    	for(int i = 0; i< listaPresentes.length; i++) {
+    		for(int j = 0;j < base.length; j++) {
+    			if(deputados.get(listaPresentes[i]).getPartido().equals(base[j])) {
+    				baseGov += 1;
+    			}
+    		}
+    	}
+    	
+    	if(baseGov >= Math.floor(listaPresentes.length/2)+1) {
+    		return true;
+    	}
+    	return false;
     }
 
 
