@@ -199,107 +199,127 @@ public class ControllerPessoa implements Serializable {
         return deputados.size();
     }
 
-
-    public void inicializaSistema() {
-        this.lerArquivosPessoa();
-        this.lerArquivosDeputado();
-        this.lerArquivosPartido();
+    public List<String> getPartidos() {
+        return partidos;
     }
 
-    public void finalizaSistema() {
-        this.escreverArquivosPessoa();
-        this.escreverArquivosDeputado();
-        this.escreverArquivosPartido();
-    }
-
-    private void escreverArquivosPessoa() {
-        ObjectOutputStream pessoaArq = null;
-
+    public void escreverArquivosPessoa(Map<String, Pessoa> map, String arquivo){
+        FileOutputStream arquivoPessoas;
         try {
-            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
-            pessoaArq.writeObject(this.pessoas);
-
-        } catch (IOException e2) {
-            e2.printStackTrace();
+            arquivoPessoas = new FileOutputStream(arquivo);
+            ObjectOutputStream gravarPessoa = new ObjectOutputStream(arquivoPessoas);
+            gravarPessoa.writeObject(map);
+            gravarPessoa.flush();
+            gravarPessoa.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
-    private void escreverArquivosDeputado() {
-        ObjectOutputStream deputadoArq = null;
-
+    public void escreverArquivosDeputado(Map<String, Deputado> map, String arquivo){
+        FileOutputStream arquivoDeputados;
         try {
-            deputadoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "deputadoController.dat"));
-            deputadoArq.writeObject(this.deputados);
-
-        } catch (IOException e2) {
-            e2.printStackTrace();
+            arquivoDeputados = new FileOutputStream(arquivo);
+            ObjectOutputStream gravarDeputado= new ObjectOutputStream(arquivoDeputados);
+            gravarDeputado.writeObject(map);
+            gravarDeputado.flush();
+            gravarDeputado.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
-    private void escreverArquivosPartido() {
-        ObjectOutputStream partidoArq = null;
-
+    public void escreverArquivosPartido(List<String> list, String arquivo){
+        FileOutputStream arquivoPartido;
         try {
-            partidoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "partidoController.dat"));
-            partidoArq.writeObject(this.partidos);
-
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        }
-    }
-
-    private void lerArquivosPessoa() {
-        ObjectInputStream pessoaArq = null;
-
-        try {
-            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
-            Map<String, Pessoa> pesssoaHashMap = (HashMap<String, Pessoa>) pessoaArq.readObject();
-            this.pessoas = pesssoaHashMap;
-
-
-        } catch (IOException e) {
-            this.escreverArquivosPessoa();
-            this.inicializaSistema();
-
-        } catch (ClassNotFoundException e) {
+            arquivoPartido = new FileOutputStream(arquivo);
+            ObjectOutputStream gravarPartido = new ObjectOutputStream(arquivoPartido);
+            gravarPartido.writeObject(list);
+            gravarPartido.flush();
+            gravarPartido.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private void lerArquivosDeputado() {
-        ObjectInputStream deputadoArq = null;
-
+    public Map<String, Pessoa> lerArquivosPessoa(String arquivo){
+        File arquivoPessoa = null;
+        arquivoPessoa = new File(arquivo);
+        Map<String, Pessoa> map = new HashMap<>();
+        FileInputStream fis;
         try {
-            deputadoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "deputadoController.dat"));
-            Map<String, Deputado> deputadoHashMap = (HashMap<String, Deputado>) deputadoArq.readObject();
-            this.deputados = deputadoHashMap;
+            if (!arquivoPessoa.exists()) {
+                arquivoPessoa.createNewFile();
+            }
+            else if (arquivo.length() == 0) {
+                System.out.println("ARQUIVO VAZIO");
 
-
-        } catch (IOException e) {
-            this.escreverArquivosDeputado();
-            this.inicializaSistema();
-
-        } catch (ClassNotFoundException e) {
+            }else{
+                fis = new FileInputStream(arquivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                map = (Map<String, Pessoa>) ois.readObject();
+                ois.close();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return map;
+
 
     }
 
-    private void lerArquivosPartido() {
-        ObjectInputStream partidoArq = null;
-
+    public Map<String, Deputado> lerArquivosDeputado(String arquivo){
+        File arquivoDeputado = null;
+        arquivoDeputado = new File(arquivo);
+        Map<String, Deputado> map = new HashMap<>();
+        FileInputStream fis;
         try {
-            partidoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "partidoController.dat"));
-            List<String> listaPartidos = (List<String>) partidoArq.readObject();
-            this.partidos = listaPartidos;
+            if (!arquivoDeputado.exists()) {
+                arquivoDeputado.createNewFile();
+            }
+            else if (arquivo.length() == 0) {
+                System.out.println("ARQUIVO VAZIO");
 
-
-        } catch (IOException e) {
-            this.escreverArquivosPartido();
-            this.inicializaSistema();
-
-        } catch (ClassNotFoundException e) {
+            }else{
+                fis = new FileInputStream(arquivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                map = (Map<String, Deputado>) ois.readObject();
+                ois.close();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return map;
+
+    }
+
+    public List<String> lerArquivosPartido(String arquivo){
+        File arquivoPartido = null;
+        arquivoPartido = new File(arquivo);
+        List<String> list = new HashMap<>();
+        FileInputStream fis;
+        try {
+            if (!arquivoPartido.exists()) {
+                arquivoPartido.createNewFile();
+            }
+            else if (arquivo.length() == 0) {
+                System.out.println("ARQUIVO VAZIO");
+
+            }else{
+                fis = new FileInputStream(arquivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                list = (List<String>) ois.readObject();
+                ois.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
 
     }
     public void limpar() {

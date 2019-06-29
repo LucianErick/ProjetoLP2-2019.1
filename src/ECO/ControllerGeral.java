@@ -331,9 +331,11 @@ public class ControllerGeral implements Serializable {
      */
 
     public void iniciaSistema() {
-        this.controlePessoas.inicializaSistema();
-        this.controleComissao.inicializaSistema();
-        this.controllerPLS.inicializaSistema();
+        this.controlePessoas.lerArquivosPessoa("Pessoa.dat");
+        this.controlePessoas.lerArquivosDeputado("Deputado.dat");
+        this.controlePessoas.lerArquivosPartido("Partido.dat");
+        this.controleComissao.lerArquivos("Comissao.dat");
+        this.controllerPLS.lerArquivos("Propostas.dat");
     }
 
     /**
@@ -341,9 +343,11 @@ public class ControllerGeral implements Serializable {
      * nos controladores de comissao, pls e pessoa.
      */
     public void finalizaSistema() {
-        this.controlePessoas.finalizaSistema();
-        this.controleComissao.finalizaSistema();
-        this.controllerPLS.finalizaSistema();
+        this.controlePessoas.escreverArquivosPessoa(controlePessoas.getPessoas(), "Pessoa.dat");
+        this.controlePessoas.escreverArquivosDeputado(controlePessoas.getDeputados(), "Deputado.dat");
+        this.controlePessoas.escreverArquivosPartido(controlePessoas.getPartidos(), "Partido.dat");
+        this.controleComissao.escreverArquivos(controleComissao.getMapaComissoes(), "Comissao.dat");
+        this.controllerPLS.escreverArquivos(controllerPLS.getPropostasDeLeis(), "Propostas.dat");
     }
 
     public void limparSistema() {

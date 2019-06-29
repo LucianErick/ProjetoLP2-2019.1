@@ -60,47 +60,46 @@ public class ControllerComissao implements Serializable {
 
     public int getQuantidadeDeputados (String codigo) { return mapaComissoes.get(codigo).getDniDeputados().length();}
 
-    /**
-     * Metodo responsavel por inicializar o sistema chamando o metodo de ler os arquivos.
-     */
-    public void inicializaSistema() {
-        this.lerArquivos();
-    }
 
-    /**
-     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
-     */
-    public void finalizaSistema() {
-        this.escreverArquivos();
-    }
-
-    private void escreverArquivos() {
-        ObjectOutputStream comissaoArq = null;
-
+    public void escreverArquivos(Map<String, Comissao> map, String arquivo){
+        FileOutputStream arquivoComissao;
         try {
-            comissaoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "comissaoController.dat"));
-            comissaoArq.writeObject(this.mapaComissoes);
+            arquivoComissao = new FileOutputStream(arquivo);
+            ObjectOutputStream gravarComissao = new ObjectOutputStream(arquivoComissao);
+            gravarComissao.writeObject(map);
+            gravarComissao.flush();
+            gravarComissao.close();
 
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        }
-    }
-
-    private void lerArquivos() {
-        ObjectInputStream comissaoArq = null;
-
-        try {
-            comissaoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "comissaoController.dat"));
-            Map<String, Comissao> comissaoHashMap = (HashMap<String, Comissao>) comissaoArq.readObject();
-            this.mapaComissoes = comissaoHashMap;
-
-        } catch (IOException e) {
-            this.escreverArquivos();
-            this.inicializaSistema();
-
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public Map<String, Comissao> lerArquivos (String arquivo){
+        File arquivoComissao = null;
+        arquivoComissao = new File(arquivo);
+        Map<String, Comissao> map = new HashMap<>();
+        FileInputStream fis;
+        try {
+            if (!arquivoComissao.exists()) {
+                arquivoComissao.createNewFile();
+            }
+            else if (arquivoComissao.length() == 0) {
+                System.out.println("ARQUIVO VAZIO");
+
+            }else{
+                fis = new FileInputStream(arquivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                map = (Map<String, Comissao>) ois.readObject();
+                ois.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return map;
+
 
     }
     public void limpar() {

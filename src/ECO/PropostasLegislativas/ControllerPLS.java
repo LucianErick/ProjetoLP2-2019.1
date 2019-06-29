@@ -103,48 +103,49 @@ public class ControllerPLS implements Serializable {
     }
 
 
+    public void escreverArquivos(Map<String, PropostaLegislativa> map, String arquivo){
 
-    public void inicializaSistema() {
-        this.lerArquivos();
-    }
-
-
-    public void finalizaSistema() {
-        this.escreverArquivos();
-    }
-
-
-    private void escreverArquivos() {
-        ObjectOutputStream plsArq = null;
+        FileOutputStream arquivoPLS;
 
         try {
-            plsArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "plsController.dat"));
-            plsArq.writeObject(this.propostasDeLeis);
-
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        }
-    }
-
-
-    private void lerArquivos() {
-        ObjectInputStream plsArq = null;
-
-        try {
-            plsArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "plsController.dat"));
-            HashMap<String, PropostaLegislativa> propostaLegislativaHashMap = (HashMap<String, PropostaLegislativa>) plsArq.readObject();
-            this.propostasDeLeis = propostaLegislativaHashMap;
-
-        } catch (IOException e) {
-            this.escreverArquivos();
-            this.inicializaSistema();
-
-        } catch (ClassNotFoundException e) {
+            arquivoPLS = new FileOutputStream(arquivo);
+            ObjectOutputStream gravarPLS = new ObjectOutputStream(arquivoPLS);
+            gravarPLS.writeObject(map);
+            gravarPLS.flush();
+            gravarPLS.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
+    public Map<String, PropostaLegislativa> lerArquivos (String arquivo){
+        File arquivoPLS = null;
+        arquivoPLS = new File(arquivo);
+        Map<String, PropostaLegislativa> map = new HashMap<>();
+        FileInputStream fis;
+
+        try {
+            if (!arquivoPLS.exists()) {
+                arquivoPLS.createNewFile();
+            }
+            else if (arquivoPLS.length() == 0) {
+                System.out.println("ARQUIVO VAZIO");
+
+            }else{
+                fis = new FileInputStream(arquivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                map = (Map<String, PropostaLegislativa>) ois.readObject();
+                ois.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return map;
+
+
+    }
     public void limpar() {
         this.propostasDeLeis = new HashMap<>();
     }
