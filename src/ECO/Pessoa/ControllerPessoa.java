@@ -206,9 +206,6 @@ public class ControllerPessoa implements Serializable {
         this.lerArquivosPartido();
     }
 
-    /**
-     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
-     */
     public void finalizaSistema() {
         this.escreverArquivosPessoa();
         this.escreverArquivosDeputado();
@@ -227,22 +224,22 @@ public class ControllerPessoa implements Serializable {
         }
     }
     private void escreverArquivosDeputado() {
-        ObjectOutputStream pessoaArq = null;
+        ObjectOutputStream deputadoArq = null;
 
         try {
-            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
-            pessoaArq.writeObject(this.deputados);
+            deputadoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "deputadoController.dat"));
+            deputadoArq.writeObject(this.deputados);
 
         } catch (IOException e2) {
             e2.printStackTrace();
         }
     }
     private void escreverArquivosPartido() {
-        ObjectOutputStream pessoaArq = null;
+        ObjectOutputStream partidoArq = null;
 
         try {
-            pessoaArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "pessoaController.dat"));
-            pessoaArq.writeObject(this.partidos);
+            partidoArq = new ObjectOutputStream(new FileOutputStream( "saves" + File.separator + "partidoController.dat"));
+            partidoArq.writeObject(this.partidos);
 
         } catch (IOException e2) {
             e2.printStackTrace();
@@ -254,8 +251,8 @@ public class ControllerPessoa implements Serializable {
 
         try {
             pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
-            Map<String, Pessoa> comissaoHashMap1 = (HashMap<String, Pessoa>) pessoaArq.readObject();
-            this.pessoas = comissaoHashMap1;
+            Map<String, Pessoa> pesssoaHashMap = (HashMap<String, Pessoa>) pessoaArq.readObject();
+            this.pessoas = pesssoaHashMap;
 
 
         } catch (IOException e) {
@@ -269,12 +266,12 @@ public class ControllerPessoa implements Serializable {
     }
 
     private void lerArquivosDeputado() {
-        ObjectInputStream pessoaArq = null;
+        ObjectInputStream deputadoArq = null;
 
         try {
-            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
-            HashMap<String, Deputado> comissaoHashMap2 = (HashMap<String, Deputado>) pessoaArq.readObject();
-            this.deputados = comissaoHashMap2;
+            deputadoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "deputadoController.dat"));
+            Map<String, Deputado> deputadoHashMap = (HashMap<String, Deputado>) deputadoArq.readObject();
+            this.deputados = deputadoHashMap;
 
 
         } catch (IOException e) {
@@ -288,16 +285,16 @@ public class ControllerPessoa implements Serializable {
     }
 
     private void lerArquivosPartido() {
-        ObjectInputStream pessoaArq = null;
+        ObjectInputStream partidoArq = null;
 
         try {
-            pessoaArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "pessoaController.dat"));
-            ArrayList<String> listaPartidos = (ArrayList<String>) pessoaArq.readObject();
+            partidoArq = new ObjectInputStream(new FileInputStream("saves" + File.separator + "partidoController.dat"));
+            List<String> listaPartidos = (List<String>) partidoArq.readObject();
             this.partidos = listaPartidos;
 
 
         } catch (IOException e) {
-            this.escreverArquivosDeputado();
+            this.escreverArquivosPartido();
             this.inicializaSistema();
 
         } catch (ClassNotFoundException e) {
