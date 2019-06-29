@@ -306,9 +306,9 @@ public class ControllerPessoa implements Serializable {
 
     }
     public void limpar() {
-        this.partidos = new ArrayList<String>();
-        this.deputados = new HashMap<String, Deputado>();
-        this.pessoas = new HashMap<String, Pessoa>();
+        this.partidos = new ArrayList<>();
+        this.deputados = new HashMap<>();
+        this.pessoas = new HashMap<>();
     }
 
 }

@@ -146,6 +146,6 @@ public class ControllerPLS implements Serializable {
     }
 
     public void limpar() {
-        this.propostasDeLeis = new HashMap<String, PropostaLegislativa>();
+        this.propostasDeLeis = new HashMap<>();
     }
 }

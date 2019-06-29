@@ -105,6 +105,6 @@ public class ControllerComissao implements Serializable {
     }
     public void limpar() {
 
-        this.mapaComissoes = new HashMap<String, Comissao>();
+        this.mapaComissoes = new HashMap<>();
     }
 }
