@@ -325,6 +325,10 @@ public class ControllerGeral implements Serializable {
         return "oi";
     }
 
+    /**
+     * Metodo responsavel por iniciar o sistema, fazendo a leitura dos arquivos
+     * nos controladores de comissao, pls e pessoa.
+     */
 
     public void iniciaSistema() {
         this.controlePessoas.inicializaSistema();
@@ -334,11 +338,18 @@ public class ControllerGeral implements Serializable {
 
     /**
      * Metodo responsavel por finalizar o sistema, escrevendo arquivos
+     * nos controladores de comissao, pls e pessoa.
      */
     public void finalizaSistema() {
         this.controlePessoas.finalizaSistema();
         this.controleComissao.finalizaSistema();
         this.controllerPLS.finalizaSistema();
+    }
+
+    public void limparSistema() {
+        this.controlePessoas.limpar();
+        this.controleComissao.limpar();
+        this.controllerPLS.limpar();
     }
 
 

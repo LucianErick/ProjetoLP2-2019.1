@@ -102,16 +102,17 @@ public class ControllerPLS implements Serializable {
         return propostasDeLeis.get(codigo).exibirTramitacao(codigo);
     }
 
+
+
     public void inicializaSistema() {
         this.lerArquivos();
     }
 
-    /**
-     * Metodo responsavel por finalizar o sistema chamando o metodo de escrever os arquivos.
-     */
+
     public void finalizaSistema() {
         this.escreverArquivos();
     }
+
 
     private void escreverArquivos() {
         ObjectOutputStream plsArq = null;
@@ -124,6 +125,7 @@ public class ControllerPLS implements Serializable {
             e2.printStackTrace();
         }
     }
+
 
     private void lerArquivos() {
         ObjectInputStream plsArq = null;
@@ -141,5 +143,9 @@ public class ControllerPLS implements Serializable {
             e.printStackTrace();
         }
 
+    }
+
+    public void limpar() {
+        this.propostasDeLeis = new HashMap<String, PropostaLegislativa>();
     }
 }

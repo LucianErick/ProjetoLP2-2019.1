@@ -8,11 +8,15 @@ import java.io.IOException;
 
 public class Facade {
     private ControllerGeral controladorGeral;
-    private Persistencia persistencia;
+
 
     public Facade() {
           this.controladorGeral = new ControllerGeral();
-          this.persistencia = new Persistencia(controladorGeral);
+
+    }
+
+    public void carregarSistema() throws IOException, ClassNotFoundException {
+        this.controladorGeral.iniciaSistema();
     }
 
     //US1
@@ -102,13 +106,11 @@ public class Facade {
     public void salvarSistema() throws IOException {
          this.controladorGeral.finalizaSistema();
     }
-    public void carregarSistema() throws IOException, ClassNotFoundException {
-        this.controladorGeral.iniciaSistema();
-    }
 
- //   public void limparSistema(){
-  //      this.persistencia.limpar();
-//    }
+
+    public void limparSistema(){
+         this.controladorGeral.limparSistema();
+   }
 
     public static void main(String[] args) {
         args = new String[] {
