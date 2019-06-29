@@ -240,7 +240,6 @@ public class ControllerGeral implements Serializable {
 
 
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
-        boolean aprovacao = false;
         if (!controleComissao.getMapaComissoes().containsKey("CCJC")) {
             throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
         }

@@ -76,7 +76,7 @@ public class PLP extends PropostaLegislativa {
         if ( saida.equals("EM VOTACAO (CCJC)")){
             return saida;
         }
-        String saidaFinal = saida.substring(18);
+        String saidaFinal = saida.substring(19);
         return saidaFinal;
     }
 }

@@ -125,8 +125,6 @@ public abstract class PropostaLegislativa implements Serializable {
 
 
 
-
-
     public void setTramitacao(String tramitacao) {
         this.tramitacao = tramitacao;
     }
