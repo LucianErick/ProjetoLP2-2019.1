@@ -120,9 +120,127 @@ public class Facade {
 //                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
                 "acceptance_tests/use_case_7.txt",
                 "acceptance_tests/use_case_8.txt",
-          //      "acceptance_tests/use_case_9.txt",
+//                "acceptance_tests/use_case_9.txt",
                 };
 
         EasyAccept.main(args);
+
+//
+//        ControllerGeral controllerGeral = new ControllerGeral();
+//
+//        controllerGeral.cadastrarPessoa("Artur1", "1111-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur2", "2222-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur3", "3333-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur4", "4444-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur5", "5555-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur6", "6666-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur7", "7777-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur8", "8888-1", "PB", "SAUDE,COMIDA", "GOVERNO");
+//        controllerGeral.cadastrarPessoa("Artur9", "9999-2", "PB", "SAUDE,COMIDA", "OPOSICAO");
+//        controllerGeral.cadastrarPessoa("Artur10", "1010-2", "PB", "SAUDE,COMIDA", "OPOSICAO");
+//
+//        controllerGeral.cadastrarDeputado("1111-1", "12012000");
+//        controllerGeral.cadastrarDeputado("2222-1", "12012000");
+//        controllerGeral.cadastrarDeputado("3333-1", "12012000");
+//        controllerGeral.cadastrarDeputado("4444-1", "12012000");
+//        controllerGeral.cadastrarDeputado("5555-1", "12012000");
+//        controllerGeral.cadastrarDeputado("6666-1", "12012000");
+//        controllerGeral.cadastrarDeputado("7777-1", "12012000");
+//        controllerGeral.cadastrarDeputado("8888-1", "12012000");
+//        controllerGeral.cadastrarDeputado("9999-2", "12012000");
+//        controllerGeral.cadastrarDeputado("1010-2", "12012000");
+//
+//        controllerGeral.cadastrarPartido("GOVERNO");
+//
+//        System.out.println(controllerGeral.exibeBase());
+//        System.out.println(" ");
+//
+//        System.out.println(controllerGeral.exibePessoa("1111-1"));
+//        System.out.println(controllerGeral.exibePessoa("2222-1"));
+//        System.out.println(controllerGeral.exibePessoa("3333-1"));
+//        System.out.println(controllerGeral.exibePessoa("4444-1"));
+//        System.out.println(controllerGeral.exibePessoa("5555-1"));
+//        System.out.println(controllerGeral.exibePessoa("6666-1"));
+//        System.out.println(controllerGeral.exibePessoa("7777-1"));
+//        System.out.println(controllerGeral.exibePessoa("8888-1"));
+//        System.out.println(controllerGeral.exibePessoa("9999-2"));
+//        System.out.println(controllerGeral.exibePessoa("1010-2"));
+//        System.out.println(" ");
+//
+//        controllerGeral.cadastrarComissao("CCJC","1111-1,2222-1,3333-1,4444-1,5555-1,8888-1,9999-2,1010-2");
+//        controllerGeral.cadastrarComissao("SAUDE","1111-1,2222-1,3333-1,4444-1,9999-2");
+//
+//        controllerGeral.cadastrarPL("1111-1", 2015, "SAUDE", "SAUDE", "OI", true);
+//        controllerGeral.cadastrarPL("1111-1", 2015, "SAUDE", "SAUDE", "OI", false);
+//        controllerGeral.cadastrarPL("1111-1", 2015, "SAUDE", "SAUDE", "OI", true);
+//
+//
+//        controllerGeral.cadastrarPLP("1111-1", 2015, "SAUDE", "SAUDE", "OI", "OI");
+//        controllerGeral.cadastrarPEC("1111-1", 2015, "SAUDE", "SAUDE", "OI", "OI");
+//
+//        System.out.println(controllerGeral.exibirProjeto("PL 1/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PL 2/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PL 3/2015"));
+//        System.out.println(" ");
+//
+//
+//        System.out.println(controllerGeral.exibirProjeto("PLP 1/2015"));
+//        System.out.println(" ");
+//
+//
+//        System.out.println(controllerGeral.exibirProjeto("PEC 1/2015"));
+//        System.out.println(" ");
+//
+//        controllerGeral.votarComissao("PL 1/2015", "GOVERNISTA", "SAUDE");
+//        controllerGeral.votarComissao("PL 1/2015", "GOVERNISTA", "-");
+//        controllerGeral.votarComissao("PL 2/2015", "OPOSICAO", "plenario");
+//        controllerGeral.votarComissao("PL 3/2015", "OPOSICAO", "plenario");
+//        controllerGeral.votarComissao("PLP 1/2015", "GOVERNISTA", "plenario");
+//        controllerGeral.votarComissao("PEC 1/2015", "GOVERNISTA", "plenario");
+//
+//        System.out.println(controllerGeral.exibePessoa("1111-1"));
+//        System.out.println(" ");
+//
+//        System.out.println(controllerGeral.exibirProjeto("PL 1/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PL 2/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PL 3/2015"));
+//        System.out.println(" ");
+//
+//
+//        System.out.println(controllerGeral.exibirProjeto("PLP 1/2015"));
+//        System.out.println(" ");
+//
+//        System.out.println(controllerGeral.exibirProjeto("PEC 1/2015"));
+//        System.out.println(" ");
+//
+////        controllerGeral.votarComissao("PL 1/2015", "OPOSICAO", "-");
+//
+//        System.out.println(controllerGeral.exibirTramitacao("PL 1/2015"));
+//        System.out.println(controllerGeral.exibirTramitacao("PL 2/2015"));
+//        System.out.println(controllerGeral.exibirTramitacao("PL 3/2015"));
+//        System.out.println(controllerGeral.exibirTramitacao("PLP 1/2015"));
+//        System.out.println(controllerGeral.exibirTramitacao("PEC 1/2015"));
+//        System.out.println(" ");
+//
+//        controllerGeral.votarPlenario("PL 2/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//        controllerGeral.votarPlenario("PLP 1/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//        controllerGeral.votarPlenario("PEC 1/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//
+//        System.out.println(" ");
+//        System.out.println(controllerGeral.exibirProjeto("PL 2/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PLP 1/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PEC 1/2015"));
+//        System.out.println(" ");
+//
+//        controllerGeral.votarPlenario("PL 2/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//        controllerGeral.votarPlenario("PLP 1/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//        controllerGeral.votarPlenario("PEC 1/2015", "GOVERNISTA", "1111-1,2222-1,3333-1,4444-1,5555-1,6666-1,8888-1,9999-2,1010-2");
+//
+//        System.out.println(" ");
+//        System.out.println(controllerGeral.exibirProjeto("PL 2/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PLP 1/2015"));
+//        System.out.println(controllerGeral.exibirProjeto("PEC 1/2015"));
+//        System.out.println(" ");
+
     }
 }

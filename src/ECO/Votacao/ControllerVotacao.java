@@ -137,7 +137,7 @@ public class ControllerVotacao implements Serializable {
 
         boolean aprovacao = false;
         int turno;
-        if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("1")) {
+        if (!propostasLegislativas.get(codigo).getSituacaoAtual().contains("1")) {
             turno = 0;
         }
         else {
@@ -165,10 +165,7 @@ public class ControllerVotacao implements Serializable {
         	propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
         }
 
-        System.out.println(turno);
-        System.out.println(aprovacao);
-        System.out.println(propostasLegislativas.get(codigo).toString());
-        System.out.println(" ");
+
         return aprovacao;
     }
 
@@ -230,9 +227,7 @@ public class ControllerVotacao implements Serializable {
     			}
     		}
     	}
-        System.out.println(baseGov);
-        System.out.println(listaPresentes.length);
-        System.out.println(deputados.size());
+
     	return baseGov;
     }
 
