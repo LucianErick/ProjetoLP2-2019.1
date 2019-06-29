@@ -299,7 +299,7 @@ public class ControllerPessoa implements Serializable {
     public List<String> lerArquivosPartido(String arquivo){
         File arquivoPartido = null;
         arquivoPartido = new File(arquivo);
-        List<String> list = new HashMap<>();
+        List<String> list = new ArrayList<>(); 
         FileInputStream fis;
         try {
             if (!arquivoPartido.exists()) {
