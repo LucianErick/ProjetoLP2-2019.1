@@ -136,7 +136,13 @@ public class ControllerPLS implements Serializable {
     }
 
     public String exibirTramitacao(String codigo) {
-        return propostasDeLeis.get(codigo).exibirTramitacao(codigo);
+        String complemento = "";
+        
+        if (!(propostasDeLeis.get(codigo).getSituacaoAtual().contains("ARQUIVADO")) && !(propostasDeLeis.get(codigo).getSituacaoAtual().contains("APROVADO"))
+        && !(propostasDeLeis.get(codigo).exibirTramitacao(codigo).equals("EM VOTACAO (CCJC)"))) {
+            complemento = ", " + propostasDeLeis.get(codigo).getSituacaoAtual();
+        }
+        return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
     }
 
 

@@ -209,7 +209,16 @@ public class ControllerVotacao implements Serializable {
         if(plenarioDiferenciacao(codigo, statusGovernista, presentes, comissoes, propostasLegislativas, deputados, partidosBase)) {
         	aprovacao = true;
         	propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - " + (turno + 1) + "o turno)");
-        	if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("3") || codigo.contains("PL ")) {
+
+        	if (codigo.contains("PL ")) {
+                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + "Plenario" + ")");
+            }
+        	else {
+                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + "Plenario - " + turno + "o turno)");
+            }
+
+
+            if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("3") || codigo.contains("PL ")) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
                 deputados.get(dniAutor).adicionaLei();
@@ -219,6 +228,12 @@ public class ControllerVotacao implements Serializable {
         else {
             aprovacao = false;
             propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
+            if (codigo.contains("PL ")) {
+                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + "Plenario" + ")");
+            }
+            else {
+                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + "Plenario - " + turno + "o turno)");
+            }
         }
 
 
