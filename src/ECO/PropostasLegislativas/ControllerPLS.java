@@ -154,6 +154,11 @@ public class ControllerPLS implements Serializable {
         return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
     }
 
+    /**
+     * Método de gravação da map de propostas legislativas, o objeto é gravado após o sistema ser fechado.
+     * @param map de propostas legislativas
+     * @param arquivo, nome do arquivo de destino.
+     */
 
     public void escreverArquivos(Map<String, PropostaLegislativa> map, String arquivo){
 
@@ -170,6 +175,11 @@ public class ControllerPLS implements Serializable {
         }
 
     }
+    /**
+     * Método de recuperação de mapa gravado.
+     * @param arquivo, nome do arquivo onde os dados serão buscados.
+     * @return, retorna um mapa com as propostas legislativas gravado anteriormente.
+     */
 
     public void lerArquivos (String arquivo){
         File arquivoPLS = null;
@@ -195,6 +205,10 @@ public class ControllerPLS implements Serializable {
         }
 
     }
+
+    /**
+     * Inicializa um novo mapa sem informacoes salvas
+     */
     public void limpar() {
         this.propostasDeLeis = new HashMap<>();
     }
