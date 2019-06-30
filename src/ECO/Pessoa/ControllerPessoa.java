@@ -16,9 +16,18 @@ public class ControllerPessoa implements Serializable {
      * Atributo que refere-se ao mapa para armazenar objetos Pessoa.
      */
     private Map<String ,Pessoa> pessoas;
+    /**
+     * Atributo que refere-se a uma lista para armazenar String partido
+     */
     private List<String> partidos;
+    /**
+     * Atributo que refere-se ao mapa para armazenar objetos Deputado.
+     */
     private Map<String, Deputado> deputados;
-
+    /**
+     * Serve para identificacao das informacoes apos a execucao do programa.
+     */
+    private static final long serialVersionUID = 1L;
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
      */
@@ -243,7 +252,7 @@ public class ControllerPessoa implements Serializable {
 
     }
 
-    public Map<String, Pessoa> lerArquivosPessoa(String arquivo){
+    public void lerArquivosPessoa(String arquivo){
         File arquivoPessoa = null;
         arquivoPessoa = new File(arquivo);
         Map<String, Pessoa> map = new HashMap<>();
@@ -258,19 +267,17 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                map = (Map<String, Pessoa>) ois.readObject();
+                this.pessoas = (HashMap<String, Pessoa>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return map;
-
 
     }
 
-    public Map<String, Deputado> lerArquivosDeputado(String arquivo){
+    public void lerArquivosDeputado(String arquivo){
         File arquivoDeputado = null;
         arquivoDeputado = new File(arquivo);
         Map<String, Deputado> map = new HashMap<>();
@@ -285,18 +292,16 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                map = (Map<String, Deputado>) ois.readObject();
+                this.deputados = (Map<String, Deputado>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return map;
-
     }
 
-    public List<String> lerArquivosPartido(String arquivo){
+    public void lerArquivosPartido(String arquivo){
         File arquivoPartido = null;
         arquivoPartido = new File(arquivo);
         List<String> list = new ArrayList<>();
@@ -311,15 +316,12 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                list = (List<String>) ois.readObject();
+                this.partidos = (ArrayList<String>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return list;
-
 
     }
     public void limpar() {

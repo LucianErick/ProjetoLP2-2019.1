@@ -16,6 +16,10 @@ public class ControllerPLS implements Serializable {
 //    private int numeroPEC = 1;
 
     private HashMap<String, PropostaLegislativa> propostasDeLeis;
+    /**
+     * Identificacao das informacoes sobre as propostas legistativas depois da finalizacao da execucao do programa
+     */
+    private static final long serialVersionUID = 1L;
 
     private HashMap<Integer, Integer> numeroPL;
     private HashMap<Integer, Integer> numeroPLP;
@@ -167,7 +171,7 @@ public class ControllerPLS implements Serializable {
 
     }
 
-    public Map<String, PropostaLegislativa> lerArquivos (String arquivo){
+    public void lerArquivos (String arquivo){
         File arquivoPLS = null;
         arquivoPLS = new File(arquivo);
         Map<String, PropostaLegislativa> map = new HashMap<>();
@@ -183,15 +187,12 @@ public class ControllerPLS implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                map = (Map<String, PropostaLegislativa>) ois.readObject();
+                this.propostasDeLeis = (HashMap<String, PropostaLegislativa>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return map;
-
 
     }
     public void limpar() {
