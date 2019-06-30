@@ -137,10 +137,15 @@ public class ControllerPLS implements Serializable {
 
     public String exibirTramitacao(String codigo) {
         String complemento = "";
-        
+
         if (!(propostasDeLeis.get(codigo).getSituacaoAtual().contains("ARQUIVADO")) && !(propostasDeLeis.get(codigo).getSituacaoAtual().contains("APROVADO"))
         && !(propostasDeLeis.get(codigo).exibirTramitacao(codigo).equals("EM VOTACAO (CCJC)"))) {
             complemento = ", " + propostasDeLeis.get(codigo).getSituacaoAtual();
+//            proximoLocal = plenario, mas tramitacao tem que ser Plenario.
+            String complemento1[] = complemento.split("plenario");
+            if (complemento1.length == 2) {
+                complemento = ", EM VOTACAO (Plenario)";
+            }
         }
         return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
     }
