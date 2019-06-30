@@ -16,18 +16,9 @@ public class ControllerPessoa implements Serializable {
      * Atributo que refere-se ao mapa para armazenar objetos Pessoa.
      */
     private Map<String ,Pessoa> pessoas;
-    /**
-     * Atributo que refere-se a uma lista para armazenar String partido
-     */
     private List<String> partidos;
-    /**
-     * Atributo que refere-se ao mapa para armazenar objetos Deputado.
-     */
     private Map<String, Deputado> deputados;
-    /**
-     * Serve para identificacao das informacoes apos a execucao do programa.
-     */
-    private static final long serialVersionUID = 1L;
+
     /**
      * Construtor da classe ControllerPessoa inicializa o mapa de pessoas cadastradas.
      */
@@ -38,19 +29,9 @@ public class ControllerPessoa implements Serializable {
         this.deputados = new HashMap<>();
     }
 
-    /**
-     * Retorna o mapa que contem todas as pessoas ja cadastradas
-     * @return mapa pessoas
-     */
-
     public Map<String, Pessoa> getPessoas() {
         return pessoas;
     }
-
-    /**
-     * Retorna o mapa que contem todos os deputados ja cadastrados
-     * @return mapa deputados
-     */
 
     public Map<String, Deputado> getDeputados() {
         return deputados;
@@ -190,38 +171,21 @@ public class ControllerPessoa implements Serializable {
         }
         return saida;
     }
-
+    
     public Map<String ,Pessoa> getControllerPessoa() {
         return this.pessoas;
     }
 
-    /**
-     * Retorna o partido do objeto Pessoa que possue o dni recebido com parametro.
-     * @param dni meio de identificacao da pessoa com o partido relacionado
-     * @return partido da pessoa relacionada
-     */
     public String getPartidos (String dni) {
         return pessoas.get(dni).getPartido();
     }
-
-    /**
-     * Retorna os interesses do objeto Pessoa que possue o dni recebido como parametro
-     * @param dni meio de identificacao do objeto Pessoa
-     * @return interesses da pessoa relacionada
-     */
 
     public String getInteresses (String dni) {
         return pessoas.get(dni).getInteresses();
     }
 
-    /**
-     * Verifica se o partido recebido como parametro faz parte da lista de partidos.
-     * @param partidos o partido a ser verificado
-     * @return boolean de acordo com a existencia do partido na lista.
-     */
-
     public boolean verificaPartidos (String partidos) {
-        if (this.partidos.contains(partidos)) {
+        if ( this.partidos.contains(partidos)) {
             return true;
         }
         return false;
@@ -231,29 +195,13 @@ public class ControllerPessoa implements Serializable {
         deputados.get(dni).adicionaLei();
     }
 
-    /**
-     * Retorna o inteiro contendo com a quantidade de deputados ja cadastrados
-     * @return
-     */
-
     public int qtdDeputados () {
         return deputados.size();
     }
 
-    /**
-     * Retorna a lista com os partidos ja armazenados
-     * @return
-     */
-
     public List<String> getPartidos() {
         return partidos;
     }
-
-    /**
-     * Método de gravação de mapa de usuários, o objeto é gravado após o sistema ser fechado.
-     * @param map, mapa de pessoas.
-     * @param arquivo, nome do arquivo de destino.
-     */
 
     public void escreverArquivosPessoa(Map<String, Pessoa> map, String arquivo){
         FileOutputStream arquivoPessoas;
@@ -266,13 +214,8 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    /**
-     * Método de gravação de mapa de deputados, o objeto é gravado após o sistema ser fechado.
-     * @param map, mapa de deputados.
-     * @param arquivo, nome do arquivo de destino.
-     */
 
+    }
     public void escreverArquivosDeputado(Map<String, Deputado> map, String arquivo){
         FileOutputStream arquivoDeputados;
         try {
@@ -286,12 +229,6 @@ public class ControllerPessoa implements Serializable {
         }
 
     }
-
-    /**
-     * Método de gravação da lista de partidos, o objeto é gravado após o sistema ser fechado.
-     * @param list de partidos.
-     * @param arquivo, nome do arquivo de destino.
-     */
     public void escreverArquivosPartido(List<String> list, String arquivo){
         FileOutputStream arquivoPartido;
         try {
@@ -303,15 +240,10 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    /**
-     * Método de recuperação de mapa gravado.
-     * @param arquivo, nome do arquivo onde os dados serão buscados.
-     * @return, retorna um mapa de pessoas gravado anteriormente.
-     */
-
-    public void lerArquivosPessoa(String arquivo){
+    public Map<String, Pessoa> lerArquivosPessoa(String arquivo){
         File arquivoPessoa = null;
         arquivoPessoa = new File(arquivo);
         Map<String, Pessoa> map = new HashMap<>();
@@ -326,21 +258,19 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.pessoas = (HashMap<String, Pessoa>) ois.readObject();
+                map = (Map<String, Pessoa>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return map;
+
+
     }
 
-    /**
-     * Método de recuperação de mapa gravado.
-     * @param arquivo, nome do arquivo onde os dados serão buscados.
-     * @return, retorna um mapa de deputados gravado anteriormente.
-     */
-
-    public void lerArquivosDeputado(String arquivo){
+    public Map<String, Deputado> lerArquivosDeputado(String arquivo){
         File arquivoDeputado = null;
         arquivoDeputado = new File(arquivo);
         Map<String, Deputado> map = new HashMap<>();
@@ -355,25 +285,21 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.deputados = (Map<String, Deputado>) ois.readObject();
+                map = (Map<String, Deputado>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return map;
+
     }
 
-    /**
-     * Método de recuperação de mapa gravado.
-     * @param arquivo, nome do arquivo onde os dados serão buscados.
-     * @return, retorna um lista com os partidos gravada anteriormente.
-     */
-
-    public void lerArquivosPartido(String arquivo){
+    public List<String> lerArquivosPartido(String arquivo){
         File arquivoPartido = null;
         arquivoPartido = new File(arquivo);
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>(); 
         FileInputStream fis;
         try {
             if (!arquivoPartido.exists()) {
@@ -385,18 +311,17 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.partidos = (ArrayList<String>) ois.readObject();
+                list = (List<String>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
+        return list;
 
-    /**
-     * Inicializa novos mapas e uma lista para limpar o sistema envolvido.
-     */
+
+    }
     public void limpar() {
         this.partidos = new ArrayList<>();
         this.deputados = new HashMap<>();

@@ -172,7 +172,6 @@ public class ControllerPLS implements Serializable {
 		estrategia = new HashMap<>();
 		for(Map.Entry<String,Pessoa> entry2 : pessoa.entrySet()) {
 			this.estrategia.put(entry2.getKey(),"CONSTITUCIONAL");
-			System.out.println(this.estrategia);
 		}
 		
 		String retorno = "";
@@ -181,7 +180,6 @@ public class ControllerPLS implements Serializable {
 		for (Map.Entry<String, PropostaLegislativa> entry : leis.entrySet()) {
 			for (int i = 0; i < interesses.length; i++) {
 				if (interesses[i].equals(entry.getValue().getInteressesRelacionados())) {
-					System.out.println(entry);
 					if (entry.getKey().substring(0, 3).equals("PEC") ) {
 						return entry.getValue().getCodigo();
 					}
@@ -196,6 +194,9 @@ public class ControllerPLS implements Serializable {
 			
 		}
 	}
+		if(this.estrategia.get(dni).equals("CONCLUSAO")) {
+			
+		}
 	return retorno;
 
 	}

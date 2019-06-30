@@ -240,6 +240,7 @@ class ControllerGeralTest {
 
         assertEquals("APROVADO (Plenario)", this.controlador.exibirTramitacao("PL 1/2012"));
         assertThrows(IllegalArgumentException.class, () -> this.controleVotacao.votarPlenario("PL 1/2012", "GOVERNISTA", "118110400,116161056,13210361", this.controlador.getControleComissao().getMapaComissoes(), this.controlador.getControllerPLS().getPropostasDeLeis(), this.controlador.getControlePessoas().getDeputados(), "PT","Educação"));
+
     }
   /**
     @Test

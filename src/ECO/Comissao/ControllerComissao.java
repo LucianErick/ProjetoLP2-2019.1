@@ -16,10 +16,6 @@ public class ControllerComissao implements Serializable {
      */
 
     private Map<String, Comissao> mapaComissoes;
-    /**
-     * Identificacao do objeto mapa Comissao salvo apos o fim da execucao.
-     */
-    private static final long serialVersionUID = 1L;
 
     /**
      * Construtor da classe ControllerComissao que inicializar o mapaComissoes responsavel por armazenar os objetos cadastrados
@@ -88,11 +84,6 @@ public class ControllerComissao implements Serializable {
 //
 //    }
 
-    /**
-     * Método de gravação da map de comissoes, o objeto é gravado após o sistema ser fechado.
-     * @param map de comissoes
-     * @param arquivo, nome do arquivo de destino.
-     */
 
     public void escreverArquivos(Map<String, Comissao> map, String arquivo){
         FileOutputStream arquivoComissao;
@@ -108,13 +99,8 @@ public class ControllerComissao implements Serializable {
         }
 
     }
-    /**
-     * Método de recuperação de mapa gravado.
-     * @param arquivo, nome do arquivo onde os dados serão buscados.
-     * @return, retorna um mapa com as comissoes gravado anteriormente.
-     */
 
-    public void lerArquivos (String arquivo){
+    public Map<String, Comissao> lerArquivos (String arquivo){
         File arquivoComissao = null;
         arquivoComissao = new File(arquivo);
         Map<String, Comissao> map = new HashMap<>();
@@ -129,18 +115,17 @@ public class ControllerComissao implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.mapaComissoes = (HashMap<String, Comissao>) ois.readObject();
+                map = (Map<String, Comissao>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
+        return map;
 
-    /**
-     * Inicializa um nome mapa de comissoes sem nenhuma informacao salva do sistema
-     */
+
+    }
     public void limpar() {
 
         this.mapaComissoes = new HashMap<>();

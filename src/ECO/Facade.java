@@ -11,7 +11,7 @@ public class Facade {
 
 
     public Facade() {
-        this.controladorGeral = new ControllerGeral();
+          this.controladorGeral = new ControllerGeral();
 
     }
 
@@ -103,15 +103,15 @@ public class Facade {
     }
 
 
-    //   US10
+//   US10
     public void salvarSistema() throws IOException {
-        this.controladorGeral.finalizaSistema();
+         this.controladorGeral.finalizaSistema();
     }
 
 
     public void limparSistema(){
-        this.controladorGeral.limparSistema();
-    }
+         this.controladorGeral.limparSistema();
+   }
 
     public static void main(String[] args) {
         args = new String[] {
@@ -121,8 +121,8 @@ public class Facade {
 //                "acceptance_tests/use_case_5.txt", "acceptance_tests/use_case_6.txt",
                 "acceptance_tests/use_case_7.txt",
                 "acceptance_tests/use_case_8.txt",
-//                "acceptance_tests/use_case_9.txt",
-        };
+                "acceptance_tests/use_case_9.txt",
+                };
 
         EasyAccept.main(args);
 

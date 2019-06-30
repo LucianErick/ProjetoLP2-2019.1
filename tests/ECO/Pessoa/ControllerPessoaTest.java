@@ -96,4 +96,14 @@ class ControllerPessoaTest {
 
         assertEquals("AA,PSDF,PSOL,PSTS,PT,ZZ", this.controle.exibirBase());
     }
+    @Test
+    void testQtdDeputados() {
+        this.controle.cadastraPessoa("Seu pereira", "112", "PE", "","PL");
+        this.controle.cadastraPessoa("Seu joão", "3214", "CE", "", "PT");
+
+        this.controle.cadastraDeputado("112", "12121999");
+        this.controle.cadastraDeputado("3214", "09012004");
+
+        assertEquals(2, this.controle.qtdDeputados());
+    }
 }

@@ -44,7 +44,6 @@ public class ControllerGeral implements Serializable {
         this.controleComissao = new ControllerComissao();
         this.controllerPLS = new ControllerPLS();
         this.controllerVotacao = new ControllerVotacao();
-
     }
 
     /**
