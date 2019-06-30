@@ -217,7 +217,7 @@ public class ControllerPLS implements Serializable {
 
 	}
 
-	public Map<String, PropostaLegislativa> lerArquivos(String arquivo) {
+	public void lerArquivos(String arquivo) {
 		File arquivoPLS = null;
 		arquivoPLS = new File(arquivo);
 		Map<String, PropostaLegislativa> map = new HashMap<>();
@@ -232,14 +232,12 @@ public class ControllerPLS implements Serializable {
 			} else {
 				fis = new FileInputStream(arquivo);
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				map = (Map<String, PropostaLegislativa>) ois.readObject();
+				this.propostasDeLeis = (HashMap<String, PropostaLegislativa>) ois.readObject();
 				ois.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return map;
 
 	}
 

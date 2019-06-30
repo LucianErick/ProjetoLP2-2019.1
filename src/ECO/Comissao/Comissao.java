@@ -64,6 +64,11 @@ public class Comissao implements Serializable {
         return dniDeputados;
     }
 
+    /**
+     * Retorna a lista que contem os dni dos deputados que participam do objeto Comissao relacionado.
+     * @return
+     */
+
     public Set<String> getListaDNI() {
         return listaDNI;
     }

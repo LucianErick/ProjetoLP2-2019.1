@@ -83,6 +83,11 @@ public class ControllerComissao implements Serializable {
 //
 //
 //    }
+    /**
+     * Método de gravação de mapa de commisao, o objeto é gravado após o sistema ser fechado.
+     * @param map, mapa de comissoes.
+     * @param arquivo, nome do arquivo de destino.
+     */
 
 
     public void escreverArquivos(Map<String, Comissao> map, String arquivo){
@@ -99,8 +104,13 @@ public class ControllerComissao implements Serializable {
         }
 
     }
+    /**
+     * Método de recuperação de mapa gravado.
+     * @param arquivo, nome do arquivo onde os dados serão buscados.
+     * @return, retorna um mapa de comissao gravado anteriormente.
+     */
 
-    public Map<String, Comissao> lerArquivos (String arquivo){
+    public void lerArquivos (String arquivo){
         File arquivoComissao = null;
         arquivoComissao = new File(arquivo);
         Map<String, Comissao> map = new HashMap<>();
@@ -115,17 +125,19 @@ public class ControllerComissao implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                map = (Map<String, Comissao>) ois.readObject();
+                this.mapaComissoes = (Map<String, Comissao>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return map;
-
 
     }
+
+    /**
+     * Inicializa outro mapa de comissoes em prol da limpeza do sistema.
+     */
     public void limpar() {
 
         this.mapaComissoes = new HashMap<>();
