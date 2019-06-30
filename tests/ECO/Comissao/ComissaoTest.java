@@ -10,7 +10,6 @@ class ComissaoTest {
     private Comissao comissao2;
     private Comissao comissao3;
 
-    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testeConstrutor() {
@@ -27,7 +26,6 @@ class ComissaoTest {
         assertThrows(IllegalArgumentException.class, () -> comissao3 = new Comissao("a", "    "));
     }
 
-    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testeEquals() {

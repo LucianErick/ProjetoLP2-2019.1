@@ -136,8 +136,6 @@ public class ControllerGeral implements Serializable {
         return this.controlePessoas.exibirBase();
     }
 
-
-
     /**
      * Cadastra o objeto Comissao de acordo com exigencias estabelecidas como: tema ja cadastrado, tema ou String dniPoliticos nulo ou vazia.
      * @param tema meio de identificacao do objeto Comissao

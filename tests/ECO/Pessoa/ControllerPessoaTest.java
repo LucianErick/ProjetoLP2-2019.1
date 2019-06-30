@@ -1,4 +1,4 @@
-package ECO;
+package ECO.Pessoa;
 
 import ECO.Pessoa.ControllerPessoa;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,5 +67,33 @@ class ControllerPessoaTest {
         assertThrows(IllegalArgumentException.class, () -> controle.cadastraDeputado("123321456-9", "11111111111"));
         assertThrows(IllegalArgumentException.class, () -> controle.cadastraDeputado("123321456-9", "35102000"));
         assertThrows(IllegalArgumentException.class, () -> controle.cadastraDeputado("123321456-9", "20112020"));
+    }
+
+    @Test
+    void testExibePessoa() {
+        this.controle.cadastraPessoa("Luciano", "11", "PB", "");
+        this.controle.cadastraPessoa("Ana", "12", "PB", "nada", "PT");
+        this.controle.cadastraPessoa("Artur", "13", "PB", "nada");
+        this.controle.cadastraPessoa("Gutemberg", "14", "PB", "");
+
+        assertEquals("Luciano - 11 (PB)", this.controle.exibirPessoa("11"));
+        assertEquals("Ana - 12 (PB) - PT - Interesses: nada", this.controle.exibirPessoa("12"));
+        assertEquals("Artur - 13 (PB) - Interesses: nada" , this.controle.exibirPessoa("13"));
+        assertEquals("Gutemberg - 14 (PB)", this.controle.exibirPessoa("14"));
+    }
+
+    @Test
+    void testCadastrarPartido() {
+        this.controle.cadastrarPartido("PT");
+        this.controle.cadastrarPartido("PSDF");
+        this.controle.cadastrarPartido("PSOL");
+        this.controle.cadastrarPartido("PSTS");
+
+        assertEquals("PSDF,PSOL,PSTS,PT", this.controle.exibirBase());
+
+        this.controle.cadastrarPartido("AA");
+        this.controle.cadastrarPartido("ZZ");
+
+        assertEquals("AA,PSDF,PSOL,PSTS,PT,ZZ", this.controle.exibirBase());
     }
 }

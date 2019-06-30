@@ -36,7 +36,10 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPL("118110400", 2015, "terminar esse projeto","Tecnologia", "www.canvas.com", true);
+
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
         assertTrue(this.controllerVotacao.votarComissao("PL 1/2015", "OPOSICAO", "Plenario", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PLS,PT,PNR", "Tecnologia"));
+        assertEquals("APROVADO (CCJC), EM VOTACAO (Plenario)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
     }
 
     @Test
@@ -59,8 +62,9 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPL("118110400", 2015, "terminar esse projeto","Tecnologia", "www.canvas.com", true);
-
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
         assertFalse(this.controllerVotacao.votarComissao("PL 1/2015", "GOVERNISTA", "Plenario", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PLS,PT,PNR", "Tecnologia"));
+        assertEquals("REJEITADO (CCJC)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
     }
 
     @Test
@@ -83,8 +87,9 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPL("118110400", 2015, "terminar esse projeto","Tecnologia", "www.canvas.com", true);
-
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
         assertTrue(this.controllerVotacao.votarComissao("PL 1/2015", "LIVRE", "Plenario", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PLS,PT,PNR", "Tecnologia"));
+        assertEquals("APROVADO (CCJC), EM VOTACAO (Plenario)", this.controllerGeral.exibirTramitacao("PL 1/2015"));
     }
 
     @Test
@@ -117,6 +122,7 @@ class ControllerVotacaoTest {
         assertThrows(NullPointerException.class, () -> this.controllerVotacao.votarComissao("PL 1/2015", "GOVERNISTA", "Plenario", null , this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PLS,PT,PNR", "Tecnologia"));
         assertThrows(NullPointerException.class, () -> this.controllerVotacao.votarComissao("PL 1/2015", "GOVERNISTA", "Plenario", this.controllerGeral.getControleComissao().getMapaComissoes(), null, this.controllerGeral.getControlePessoas().getDeputados(), "PLS,PT,PNR", "Tecnologia"));
         assertThrows(NullPointerException.class, () -> this.controllerVotacao.votarComissao("PL 1/2015", "GOVERNISTA", "Plenario", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), null, "PLS,PT,PNR", "Tecnologia"));
+        assertThrows(IllegalArgumentException.class, () -> this.controllerGeral.exibirTramitacao("PLP 1/1500"));
     }
 
     @Test
@@ -139,7 +145,9 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPL("116161056", 2012, "Terminar o projeto", "Tecnologia", "www.plmdds_acaba.com", false);
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PL 1/2012"));
         assertTrue(controllerVotacao.votarPlenario("PL 1/2012", "OPOSICAO", "118110400,116161056", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(),"PLS,PT,PNR","Tecnologia,Educacao"));
+        assertEquals("APROVADO (Plenario)", this.controllerGeral.exibirTramitacao("PL 1/2012"));
     }
 
     @Test
@@ -162,7 +170,9 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPLP("118110400", 2014, "Terminar o projeto", "Tecnologia", "www.plmdds_acaba.com", "US7,US8,US9");
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PLP 1/2014"));
         assertFalse(this.controllerVotacao.votarPlenario("PLP 1/2014", "GOVERNISTA", "118110400,116161056,13210361", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PT","Educação"));
+        assertEquals("REJEITADO (Plenario - 2o turno)", this.controllerGeral.exibirTramitacao("PLP 1/2014"));
     }
 
     @Test
@@ -185,7 +195,9 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarComissao("Medicina", "13210361,36146311");
 
         controllerGeral.cadastrarPEC("118110400", 2014, "Terminar o projeto", "Tecnologia", "www.plmdds_acaba.com", "US7,US8,US9");
+        assertEquals("EM VOTACAO (CCJC)", this.controllerGeral.exibirTramitacao("PEC 1/2014"));
         assertTrue(this.controllerVotacao.votarPlenario("PEC 1/2014", "LIVRE", "118110400,116161056,13210361", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PT","Educação"));
+        assertEquals("APROVADO (Plenario - 2o turno)", this.controllerGeral.exibirTramitacao("PEC 1/2014"));
     }
 
     @Test
@@ -210,5 +222,6 @@ class ControllerVotacaoTest {
         controllerGeral.cadastrarPEC("118110400", 2014, "Terminar o projeto", "Tecnologia", "www.plmdds_acaba.com", "US7,US8,US9");
         assertThrows(NullPointerException.class, () -> this.controllerVotacao.votarPlenario("    ", "LIVRE", "118110400,116161056,13210361", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PT","Educação"));
         assertThrows(NullPointerException.class, () -> this.controllerVotacao.votarPlenario("PEC 3/2014", "LIVRE", "118110400,116161056,13210361", this.controllerGeral.getControleComissao().getMapaComissoes(), this.controllerGeral.getControllerPLS().getPropostasDeLeis(), this.controllerGeral.getControlePessoas().getDeputados(), "PT","Educação"));
+        assertThrows(IllegalArgumentException.class, () -> this.controllerGeral.exibirTramitacao("PLP 1/1500"));
     }
 }

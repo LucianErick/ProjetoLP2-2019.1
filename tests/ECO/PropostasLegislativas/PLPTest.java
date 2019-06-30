@@ -10,7 +10,6 @@ class PLPTest {
     private PLP plp2;
 
 
-    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
     @Test
     void testeConstrutor(){
         plp1 = new PLP("12345-0", 2000, "P000", "Economia", "umsitequalquerai.com", "Prenderam o marquin!", "1111");
@@ -23,8 +22,6 @@ class PLPTest {
         assertEquals("umsitequalquerai.com", plp1.getUrl());
         assertEquals("1111", plp1.getCodigo());
     }
-
-    // CREIO JA TER TERMINADO, AFINAL, NAO TEM TANTA COISA.
 
     @Test
     void testToString() {

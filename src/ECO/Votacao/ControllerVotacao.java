@@ -12,13 +12,6 @@ import static ECO.Util.Validador.validadorString;
 
 public class ControllerVotacao implements Serializable {
 
-
-
-
-    public ControllerVotacao() {
-    }
-
-
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, Map<String, Comissao> comissoes, HashMap<String,
             PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase, String interessesRelacionados) {
 
@@ -235,10 +228,6 @@ public class ControllerVotacao implements Serializable {
                 propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + "Plenario - " + turno + "o turno)");
             }
         }
-
-
-
-
 
         return aprovacao;
     }

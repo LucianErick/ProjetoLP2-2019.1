@@ -64,10 +64,6 @@ public class Deputado extends Pessoa implements Serializable {
         return quantidadeDeLeis;
     }
 
-
-
-
-
     /**
      * Representacao textual do objeto Deputado.
      * @return representacao textual.
@@ -85,11 +81,7 @@ public class Deputado extends Pessoa implements Serializable {
                 + getQuantidadeDeLeis() + " Leis";
 
     }
-
-
     public void adicionaLei() {
         this.quantidadeDeLeis += 1;
     }
-
-
 }

@@ -1,4 +1,4 @@
-package ECO;
+package ECO.Pessoa;
 
 import ECO.Pessoa.Deputado;
 import ECO.Pessoa.Pessoa;
@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaTest {
+
     private Pessoa pessoa1;
     private Pessoa pessoa2;
     private Pessoa pessoa3;
@@ -16,7 +17,6 @@ class PessoaTest {
 
     private Deputado deputado1;
     private Deputado deputado2;
-
 
     @BeforeEach
     void setUp() {

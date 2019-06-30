@@ -17,7 +17,6 @@ class ControllerComissaoTest {
         controlePessoa = new ControllerPessoa();
     }
 
-    // CREIO JA TER TERMINADO, LOGO, NAO MEXEREI MAIS.
     @Test
     void cadastrarComissao() {
 
@@ -42,7 +41,13 @@ class ControllerComissaoTest {
     void verificaComissao() {
         this.controlePessoa.cadastraPessoa("Toin", "111", "CE", "Economia", "PTS");
         this.controlePessoa.cadastraPessoa("Nilso", "123", "PB", "Saúde", "PMLS");
-
         this.controleComissao.cadastrarComissao("Turminha da programação", "111,123");
+        this.controleComissao.cadastrarComissao("Projeto", "111,123");
+        try {
+            this.controleComissao.verificaComissao("Turminha da programação", "nao sei");
+            this.controleComissao.verificaComissao("Projeto", "nao sei");
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 }
