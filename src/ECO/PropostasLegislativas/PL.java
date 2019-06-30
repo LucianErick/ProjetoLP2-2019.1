@@ -50,7 +50,7 @@ public class PL extends PropostaLegislativa {
         return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + isConclusivo() + " - " + getSituacaoAtual();
     }
 
-//    criado para a votacao, nao sei se vai continuar
+    //    criado para a votacao, nao sei se vai continuar
     @Override
     public boolean verificaBooleanConclusivo() {
         return this.Conclusivo;

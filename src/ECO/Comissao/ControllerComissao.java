@@ -16,7 +16,6 @@ public class ControllerComissao implements Serializable {
      */
 
     private Map<String, Comissao> mapaComissoes;
-    private static final long serialVersionUID = 1L;
 
     /**
      * Construtor da classe ControllerComissao que inicializar o mapaComissoes responsavel por armazenar os objetos cadastrados
@@ -101,7 +100,7 @@ public class ControllerComissao implements Serializable {
 
     }
 
-    public void lerArquivos (String arquivo){
+    public Map<String, Comissao> lerArquivos (String arquivo){
         File arquivoComissao = null;
         arquivoComissao = new File(arquivo);
         Map<String, Comissao> map = new HashMap<>();
@@ -116,12 +115,15 @@ public class ControllerComissao implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.mapaComissoes = (Map<String, Comissao>) ois.readObject();
+                map = (Map<String, Comissao>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return map;
+
 
     }
     public void limpar() {

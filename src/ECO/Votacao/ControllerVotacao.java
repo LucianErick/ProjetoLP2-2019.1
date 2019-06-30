@@ -207,13 +207,13 @@ public class ControllerVotacao implements Serializable {
         }
 
         if(plenarioDiferenciacao(codigo, statusGovernista, presentes, comissoes, propostasLegislativas, deputados, partidosBase)) {
-        	aprovacao = true;
-        	propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - " + (turno + 1) + "o turno)");
+            aprovacao = true;
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - " + (turno + 1) + "o turno)");
 
-        	if (codigo.contains("PL ")) {
+            if (codigo.contains("PL ")) {
                 propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + "Plenario" + ")");
             }
-        	else {
+            else {
                 propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + "Plenario - " + turno + "o turno)");
             }
 
@@ -286,23 +286,23 @@ public class ControllerVotacao implements Serializable {
         }
         return false;
     }
-    
-    private int aprovaPlenarioGovernista(String presentes, String base1, Map<String,Deputado> deputados) {
-    	String[] listaPresentes = presentes.trim().split(",");
-    	String[] base = base1.trim().split(",");
-    	
-    	
-    	int baseGov = 0;
-    	
-    	for(int i = 0; i< listaPresentes.length; i++) {
-    		for(int j = 0;j < base.length; j++) {
-    			if(deputados.get(listaPresentes[i]).getPartido().equals(base[j])) {
-    				baseGov += 1;
-    			}
-    		}
-    	}
 
-    	return baseGov;
+    private int aprovaPlenarioGovernista(String presentes, String base1, Map<String,Deputado> deputados) {
+        String[] listaPresentes = presentes.trim().split(",");
+        String[] base = base1.trim().split(",");
+
+
+        int baseGov = 0;
+
+        for(int i = 0; i< listaPresentes.length; i++) {
+            for(int j = 0;j < base.length; j++) {
+                if(deputados.get(listaPresentes[i]).getPartido().equals(base[j])) {
+                    baseGov += 1;
+                }
+            }
+        }
+
+        return baseGov;
     }
 
     private int aprovaPlenarioLivre (String presentes, Map<String,Deputado> deputados, String interessesRelacionados) {
@@ -346,9 +346,9 @@ public class ControllerVotacao implements Serializable {
             int meta = (int) Math.round(Math.floor(deputados.size()/2)+1);
 
             if (statusGovernista.equals("LIVRE")) {
-                    if (aprovaPlenarioLivre(presentes, deputados, propostasLegislativas.get(codigo).getInteressesRelacionados()) >= meta) {
-                        return true;
-                    }
+                if (aprovaPlenarioLivre(presentes, deputados, propostasLegislativas.get(codigo).getInteressesRelacionados()) >= meta) {
+                    return true;
+                }
             }
             else if ((aprovaPlenarioGovernista(presentes, partidosBase, deputados)) >= meta) {
                 return true;

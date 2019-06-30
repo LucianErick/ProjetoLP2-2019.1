@@ -3,6 +3,7 @@ package ECO.PropostasLegislativas;
 import ECO.Comissao.Comissao;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,15 +11,22 @@ import static ECO.Util.Validador.*;
 
 public class ControllerPLS implements Serializable {
 
-    private int numeroPL = 1;
-    private int numeroPLP = 1;
-    private int numeroPEC = 1;
-    private static final long serialVersionUID = 1L;
+//    private int numeroPL = 1;
+//    private int numeroPLP = 1;
+//    private int numeroPEC = 1;
 
     private HashMap<String, PropostaLegislativa> propostasDeLeis;
 
+    private HashMap<Integer, Integer> numeroPL;
+    private HashMap<Integer, Integer> numeroPLP;
+    private HashMap<Integer, Integer> numeroPEC;
+
+
     public ControllerPLS() {
         this.propostasDeLeis = new HashMap<>();
+        this.numeroPL = new HashMap<>();
+        this.numeroPLP = new HashMap<>();
+        this.numeroPEC = new HashMap<>();
 
     }
 
@@ -31,9 +39,8 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PL "+ this.numeroPL + "/" + ano;
+        String codigo = "PL " + contadorPL(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PL(dni,ano,ementa,interesses,url,conclusivo, codigo));
-        this.numeroPL ++;
         return codigo;
     }
 
@@ -47,9 +54,8 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PLP "+ this.numeroPLP + "/" + ano;
+        String codigo = "PLP " + contadorPLP(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PLP(dni,ano,ementa,interesses,url,artigos, codigo));
-        this.numeroPLP ++;
         return codigo;
 
     }
@@ -64,10 +70,39 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PEC "+ this.numeroPEC + "/" + ano;
+        String codigo = "PEC " + contadorPEC(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PEC(dni,ano,ementa,interesses,url,artigos, codigo));
-        this.numeroPEC ++;
         return codigo;
+    }
+
+    private Integer contadorPL(Integer ano) {
+        if (numeroPL.containsKey(ano)) {
+            numeroPL.put(ano,numeroPL.get(ano) + 1);
+            return numeroPL.get(ano);
+        } else {
+            numeroPL.put(ano, 0);
+            return contadorPL(ano);
+        }
+    }
+
+    private Integer contadorPLP(Integer ano) {
+        if (numeroPLP.containsKey(ano)) {
+            numeroPLP.put(ano,numeroPLP.get(ano) + 1);
+            return numeroPLP.get(ano);
+        } else {
+            numeroPLP.put(ano, 0);
+            return contadorPLP(ano);
+        }
+    }
+
+    private Integer contadorPEC(Integer ano) {
+        if (numeroPEC.containsKey(ano)) {
+            numeroPEC.put(ano,numeroPEC.get(ano) + 1);
+            return numeroPEC.get(ano);
+        } else {
+            numeroPEC.put(ano, 0);
+            return contadorPEC(ano);
+        }
     }
 
     /**
@@ -79,7 +114,7 @@ public class ControllerPLS implements Serializable {
         return  propostasDeLeis.get(codigo).toString();
     }
 
-     public boolean verificaBooleanConclusivo(String codigo) {
+    public boolean verificaBooleanConclusivo(String codigo) {
         return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo();
     }
 
@@ -101,7 +136,18 @@ public class ControllerPLS implements Serializable {
     }
 
     public String exibirTramitacao(String codigo) {
-        return propostasDeLeis.get(codigo).exibirTramitacao(codigo);
+        String complemento = "";
+
+        if (!(propostasDeLeis.get(codigo).getSituacaoAtual().contains("ARQUIVADO")) && !(propostasDeLeis.get(codigo).getSituacaoAtual().contains("APROVADO"))
+                && !(propostasDeLeis.get(codigo).exibirTramitacao(codigo).equals("EM VOTACAO (CCJC)"))) {
+            complemento = ", " + propostasDeLeis.get(codigo).getSituacaoAtual();
+//            proximoLocal = plenario, mas tramitacao tem que ser Plenario.
+            String complemento1[] = complemento.split("plenario");
+            if (complemento1.length == 2) {
+                complemento = ", EM VOTACAO (Plenario)";
+            }
+        }
+        return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
     }
 
 

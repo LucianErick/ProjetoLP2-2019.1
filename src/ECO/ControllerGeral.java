@@ -64,15 +64,15 @@ public class ControllerGeral implements Serializable {
         return controleComissao;
     }
 
-	public ControllerPLS getControllerPLS() {
-		return controllerPLS;
-	}
+    public ControllerPLS getControllerPLS() {
+        return controllerPLS;
+    }
 
-	public ControllerVotacao getControllerVotacao() {
-		return controllerVotacao;
-	}
+    public ControllerVotacao getControllerVotacao() {
+        return controllerVotacao;
+    }
 
-	/**
+    /**
      * Cadastra o objeto Pessoa atraves dos parametros nome, dni, estado de origem e intesses
      * @param nome
      * @param dni
@@ -135,8 +135,8 @@ public class ControllerGeral implements Serializable {
     public String exibeBase() {
         return this.controlePessoas.exibirBase();
     }
-    
-    
+
+
 
     /**
      * Cadastra o objeto Comissao de acordo com exigencias estabelecidas como: tema ja cadastrado, tema ou String dniPoliticos nulo ou vazia.
@@ -264,7 +264,7 @@ public class ControllerGeral implements Serializable {
 
         if (localAtual.trim().equals("plenario")){
             throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
-            
+
         }
         return controllerVotacao.votarComissao(codigo, statusGovernista, proximoLocal, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(),
                 this.controlePessoas.getDeputados(), this.controlePessoas.exibirBase(),this.controllerPLS.getInteressesRelacionados(codigo));
