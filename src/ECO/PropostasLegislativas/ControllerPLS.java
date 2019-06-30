@@ -153,6 +153,44 @@ public class ControllerPLS implements Serializable {
         }
         return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
     }
+    
+    public void configuraEstrategiaProposta(String dni, String estrategia) {
+		switch (estrategia) {
+		case "CONSTITUCIONAL":
+			break;
+		case "CONCLUSAO":
+			break;
+		case "APROVACAO":
+			break;
+		default:
+			throw new IllegalArgumentException("Erro ao configurar estrategia: estrategia invalida");
+		}
+
+	}
+
+	public String pegarPropostaRelacionada(String dni, Map<String, Pessoa> pessoa,Map<String, PropostaLegislativa> leis) {
+		String retorno = "";
+		String[] interesses = pessoa.get(dni).getInteresses().trim().split(",");
+		for (Map.Entry<String, PropostaLegislativa> entry : leis.entrySet()) {
+			for (int i = 0; i < interesses.length; i++) {
+				if (interesses[i].equals(entry.getValue().getInteressesRelacionados())) {
+					System.out.println(entry);
+					if (entry.getKey().substring(0, 3).equals("PEC") ) {
+						return entry.getValue().getCodigo();
+					}
+					else if (entry.getKey().substring(0, 3).equals("PLP")) {
+						retorno = entry.getValue().getCodigo();
+					} 
+					else if (entry.getKey().substring(0, 2).equals("PL")) {
+						retorno = entry.getValue().getCodigo();
+					}
+				}
+			}
+			
+		}
+	return retorno;
+
+	}
 
     /**
      * Método de gravação da map de propostas legislativas, o objeto é gravado após o sistema ser fechado.
