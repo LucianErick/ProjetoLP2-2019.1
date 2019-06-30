@@ -314,6 +314,30 @@ public class ControllerGeral implements Serializable {
         }
         return controllerPLS.exibirTramitacao(codigo);
     }
+    
+    //	  US9
+    
+    
+    public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+    	if(dni.trim().equals("")) {
+			throw new IllegalArgumentException("Erro ao configurar estrategia: pessoa nao pode ser vazia ou nula");
+		}
+    	validadorDni(dni, "Erro ao configurar estrategia: dni invalido");
+    	if(estrategia.trim().equals("")) {
+			throw new IllegalArgumentException("Erro ao configurar estrategia: estrategia vazia");
+		}
+    	
+    	controllerPLS.configuraEstrategiaProposta(dni, estrategia);
+    }
+
+    public String pegarPropostaRelacionada(String dni) {
+    	if(dni.trim().equals("")) {
+			throw new IllegalArgumentException("Erro ao pegar proposta relacionada: pessoa nao pode ser vazia ou nula");
+		}
+    	validadorDni(dni, "Erro ao pegar proposta relacionada: dni invalido");
+    	
+        return controllerPLS.pegarPropostaRelacionada(dni,  this.controlePessoas.getPessoas(), this.controllerPLS.getPropostasDeLeis());
+    }
 
 
 
