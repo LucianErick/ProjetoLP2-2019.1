@@ -339,14 +339,6 @@ public class ControllerGeral implements Serializable {
 
 
 
-    public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
-
-    }
-
-    public String pegarPropostaRelacionada(String dni) {
-        return "oi";
-    }
-
     /**
      * Metodo responsavel por iniciar o sistema, fazendo a leitura dos arquivos
      * nos controladores de comissao, pls e pessoa.
