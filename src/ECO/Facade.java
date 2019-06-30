@@ -80,6 +80,7 @@ public class Facade {
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
         return controladorGeral.votarComissao(codigo, statusGovernista, proximoLocal);
     }
+
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }

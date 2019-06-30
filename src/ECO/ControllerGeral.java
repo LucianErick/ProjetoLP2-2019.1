@@ -290,16 +290,17 @@ public class ControllerGeral implements Serializable {
 
         controllerPLS.quorumMininimo(codigo, DepPresentes, controlePessoas.qtdDeputados());
 
-
         validadorString(codigo, "Erro ao votar proposta: projeto inexistente");
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
         validadorString(presentes, "");
+
         if (!controllerPLS.getPropostasDeLeis().containsKey(codigo)) {
             throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
         controleComissao.verificaComissao("CCJC", "Erro ao votar proposta: CCJC nao cadastrada");
 
-        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(), this.controlePessoas.getDeputados(),this.controlePessoas.exibirBase());
+        return controllerVotacao.votarPlenario(codigo,statusGovernista, presentes, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(),
+                this.controlePessoas.getDeputados(),this.controlePessoas.exibirBase(), this.controllerPLS.getInteressesRelacionados(codigo));
     }
 
 

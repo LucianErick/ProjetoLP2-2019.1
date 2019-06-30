@@ -23,21 +23,21 @@ public class ControllerVotacao implements Serializable {
             PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase, String interessesRelacionados) {
 
 
-////        Verificacoes
-//
-//        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
-//
+//        Verificacoes
+
+        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
+
         boolean aprovacao = false;
-//        if (!comissoes.containsKey("CCJC")) {
-//            throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
-//        }
-//
-//        validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
-//
-//        if (!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO")
-//                && !statusGovernista.equals("LIVRE")) {
-//            throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
-//        }
+        if (!comissoes.containsKey("CCJC")) {
+            throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
+        }
+
+        validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
+
+        if (!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO")
+                && !statusGovernista.equals("LIVRE")) {
+            throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
+        }
         if (!propostasLegislativas.containsKey(codigo)) {
             throw new IllegalArgumentException("Erro ao votar proposta: projeto inexistente");
         }
@@ -64,16 +64,22 @@ public class ControllerVotacao implements Serializable {
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
 
 
+            
+
+
             if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true
                     && (!localAtual.equals("CCJC"))) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
                 deputados.get(dniAutor).adicionaLei();
             }
+
         } else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) == false && statusGovernista.equals("GOVERNISTA")) {
             propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             aprovacao = false;
+
+
 
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
@@ -92,6 +98,7 @@ public class ControllerVotacao implements Serializable {
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
 
+
             if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
 
@@ -99,13 +106,17 @@ public class ControllerVotacao implements Serializable {
                 propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
             }
 
+
+
         } else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) == false && statusGovernista.equals("OPOSICAO")) {
 
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
 
             propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
+
             aprovacao = true;
+
             if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true
                     && (!localAtual.equals("CCJC"))) {
 
@@ -127,8 +138,14 @@ public class ControllerVotacao implements Serializable {
 
                 propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
+                if (proximoLocal.equals("plenario")) {
+                    propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + " - 1o turno)");
+                }
+
                 if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) && !localAtual.equals("CCJC")) {
                     propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
+                    String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
+                    deputados.get(dniAutor).adicionaLei();
                 }
             }
             if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) == false) {
@@ -138,6 +155,8 @@ public class ControllerVotacao implements Serializable {
 
                 propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
+
+
                 if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) == false && !localAtual.equals("CCJC")) {
                     propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
 
@@ -145,12 +164,22 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
-        
+
+
+
+        System.out.println(" ");
+        System.out.println(localAtual);
+        System.out.println(proximoLocal);
+        System.out.println(propostasLegislativas.get(codigo).getSituacaoAtual());
+        System.out.println(" ");
+        System.out.println(" ");
         return aprovacao;
     }
 
 
-    public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
+    public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes,
+                                 HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados,
+                                 String partidosBase, String interessesRelacionados) {
 
         boolean aprovacao = false;
         int turno;
@@ -178,10 +207,26 @@ public class ControllerVotacao implements Serializable {
 
         }
         else {
-        	aprovacao = false;
-        	propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
+            aprovacao = false;
+            propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
         }
 
+        if (codigo.contains("PL ") && aprovacao == true) {
+
+            propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
+            String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
+            deputados.get(dniAutor).adicionaLei();
+        }
+
+
+//        System.out.println(statusGovernista);
+//        System.out.println(codigo);
+//        System.out.println(presentes);
+//        System.out.println(propostasLegislativas.get(codigo).toString());
+//        System.out.println(aprovacao);
+//        System.out.println(propostasLegislativas.get(codigo).getSituacaoAtual());
+//        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+//        System.out.println(" ");
 
         return aprovacao;
     }
@@ -230,7 +275,7 @@ public class ControllerVotacao implements Serializable {
         return false;
     }
     
-    private int aprovaPlenario(String presentes, String base1, Map<String,Deputado> deputados) {
+    private int aprovaPlenarioGovernista(String presentes, String base1, Map<String,Deputado> deputados) {
     	String[] listaPresentes = presentes.trim().split(",");
     	String[] base = base1.trim().split(",");
     	
@@ -248,13 +293,38 @@ public class ControllerVotacao implements Serializable {
     	return baseGov;
     }
 
+    private int aprovaPlenarioLivre (String presentes, Map<String,Deputado> deputados, String interessesRelacionados) {
+        String[] listaPresentes = presentes.trim().split(",");
+        String[] interesse = interessesRelacionados.trim().split(",");
+
+        int aprova = 0;
+
+        for (int j = 0; j < interesse.length; j++) {
+            for (String F : listaPresentes) {
+                String[] interesseDNI = deputados.get(F).getInteresses().trim().split(",");
+                for (int l = 0; l < interesseDNI.length; l++) {
+                    if (interesseDNI[l].equals(interesse[j]))
+                        aprova += 1;
+                }
+            }
+        }
+        return aprova;
+    }
+
     private boolean plenarioDiferenciacao (String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
         String[] listaPresentes = presentes.trim().split(",");
         String[] base = partidosBase.trim().split(",");
 
         if (codigo.contains("PL ")) {
             int meta = (int) Math.round(Math.floor(listaPresentes.length/2)+1);
-            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
+
+            if (statusGovernista.equals("LIVRE")) {
+                if (aprovaPlenarioLivre(presentes, deputados, propostasLegislativas.get(codigo).getInteressesRelacionados()) >= meta) {
+                    return true;
+                }
+
+            }
+            else if ((aprovaPlenarioGovernista(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
         }
@@ -263,41 +333,29 @@ public class ControllerVotacao implements Serializable {
 
             int meta = (int) Math.round(Math.floor(deputados.size()/2)+1);
 
-            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
+            if (statusGovernista.equals("LIVRE")) {
+                    if (aprovaPlenarioLivre(presentes, deputados, propostasLegislativas.get(codigo).getInteressesRelacionados()) >= meta) {
+                        return true;
+                    }
+            }
+            else if ((aprovaPlenarioGovernista(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
-
         }
 
         if (codigo.contains("PEC")) {
 
             int meta = (int) Math.round(Math.floor(deputados.size() * 3 / 5)+1);
-
-            if ((aprovaPlenario(presentes, partidosBase, deputados)) >= meta) {
+            if (statusGovernista.equals("LIVRE")) {
+                if (aprovaPlenarioLivre(presentes, deputados, propostasLegislativas.get(codigo).getInteressesRelacionados()) >= meta) {
+                    return true;
+                }
+            }
+            else if ((aprovaPlenarioGovernista(presentes, partidosBase, deputados)) >= meta) {
                 return true;
             }
-
         }
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
