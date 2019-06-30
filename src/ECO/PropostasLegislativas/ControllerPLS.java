@@ -3,6 +3,7 @@ package ECO.PropostasLegislativas;
 import ECO.Comissao.Comissao;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,14 +11,23 @@ import static ECO.Util.Validador.*;
 
 public class ControllerPLS implements Serializable {
 
-    private int numeroPL = 1;
-    private int numeroPLP = 1;
-    private int numeroPEC = 1;
+//    private int numeroPL = 1;
+//    private int numeroPLP = 1;
+//    private int numeroPEC = 1;
 
     private HashMap<String, PropostaLegislativa> propostasDeLeis;
 
+    private HashMap<Integer, Integer> numeroPL;
+    private HashMap<Integer, Integer> numeroPLP;
+    private HashMap<Integer, Integer> numeroPEC;
+
+
     public ControllerPLS() {
         this.propostasDeLeis = new HashMap<>();
+        this.numeroPL = new HashMap<>();
+        this.numeroPLP = new HashMap<>();
+        this.numeroPEC = new HashMap<>();
+
     }
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo){
@@ -29,9 +39,8 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PL "+ this.numeroPL + "/" + ano;
+        String codigo = "PL " + contadorPL(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PL(dni,ano,ementa,interesses,url,conclusivo, codigo));
-        this.numeroPL ++;
         return codigo;
     }
 
@@ -45,9 +54,8 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PLP "+ this.numeroPLP + "/" + ano;
+        String codigo = "PLP " + contadorPLP(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PLP(dni,ano,ementa,interesses,url,artigos, codigo));
-        this.numeroPLP ++;
         return codigo;
 
     }
@@ -62,10 +70,39 @@ public class ControllerPLS implements Serializable {
         validadorAnoFuturo(ano, "Erro ao cadastrar projeto: ano posterior ao ano atual" );
         validadorAno(ano, "Erro ao cadastrar projeto: ano anterior a 1988");
 
-        String codigo = "PEC "+ this.numeroPEC + "/" + ano;
+        String codigo = "PEC " + contadorPEC(ano) + "/" + ano;
         propostasDeLeis.put(codigo,new PEC(dni,ano,ementa,interesses,url,artigos, codigo));
-        this.numeroPEC ++;
         return codigo;
+    }
+
+    private Integer contadorPL(Integer ano) {
+        if (numeroPL.containsKey(ano)) {
+            numeroPL.put(ano,numeroPL.get(ano) + 1);
+            return numeroPL.get(ano);
+        } else {
+            numeroPL.put(ano, 0);
+            return contadorPL(ano);
+        }
+    }
+
+    private Integer contadorPLP(Integer ano) {
+        if (numeroPLP.containsKey(ano)) {
+            numeroPLP.put(ano,numeroPLP.get(ano) + 1);
+            return numeroPLP.get(ano);
+        } else {
+            numeroPLP.put(ano, 0);
+            return contadorPLP(ano);
+        }
+    }
+
+    private Integer contadorPEC(Integer ano) {
+        if (numeroPEC.containsKey(ano)) {
+            numeroPEC.put(ano,numeroPEC.get(ano) + 1);
+            return numeroPEC.get(ano);
+        } else {
+            numeroPEC.put(ano, 0);
+            return contadorPEC(ano);
+        }
     }
 
     /**

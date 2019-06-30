@@ -4,6 +4,7 @@ import ECO.Comissao.Comissao;
 import ECO.Pessoa.Deputado;
 import ECO.PropostasLegislativas.PropostaLegislativa;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.Serializable;
 import java.util.*;
 
@@ -15,13 +16,11 @@ public class ControllerVotacao implements Serializable {
 
 
     public ControllerVotacao() {
-
     }
 
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, Map<String, Comissao> comissoes, HashMap<String,
             PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase, String interessesRelacionados) {
-
 
 //        Verificacoes
 
@@ -50,7 +49,7 @@ public class ControllerVotacao implements Serializable {
         String[] situacaoAtual = propostasLegislativas.get(codigo).getSituacaoAtual().split("VOTACAO");
         String localAtual = situacaoAtual[1].substring(2, situacaoAtual[1].length() - 1);
 
-        if (localAtual.trim().equals("plenario") && proximoLocal.equals("plenario")) {
+        if (localAtual.contains("Plenario") || localAtual.contains("plenario")) {
             throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
         }
 
@@ -58,32 +57,37 @@ public class ControllerVotacao implements Serializable {
 //		Governista
 
         if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("GOVERNISTA")) {
-            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
+
             aprovacao = true;
+
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
 
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
 
-            
+            }
 
-
-            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true
-                    && (!localAtual.equals("CCJC"))) {
+            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() && (!localAtual.equals("CCJC"))) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
                 deputados.get(dniAutor).adicionaLei();
             }
 
-        } else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) == false && statusGovernista.equals("GOVERNISTA")) {
-            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
+        } else if (!(aprovaGoverno(localAtual, partidosBase, comissoes, deputados)) && statusGovernista.equals("GOVERNISTA")) {
 
             aprovacao = false;
 
-
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
-            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true) {
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
+
+            }
+            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo()) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
 
             }
@@ -93,32 +97,39 @@ public class ControllerVotacao implements Serializable {
 
 
         else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("OPOSICAO")) {
+
             aprovacao = false;
+
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
             propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
 
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
 
-            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true) {
+            }
+
+            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo()) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
-
-            } else {
-                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
             }
 
 
-
-        } else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) == false && statusGovernista.equals("OPOSICAO")) {
-
-            propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
-
-            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
-
+        } else if (!(aprovaGoverno(localAtual, partidosBase, comissoes, deputados)) && statusGovernista.equals("OPOSICAO")) {
 
             aprovacao = true;
 
-            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() == true
-                    && (!localAtual.equals("CCJC"))) {
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
+
+            propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
+
+
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
+
+            }
+
+            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() && (!localAtual.equals("CCJC"))) {
 
                 propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
@@ -130,49 +141,47 @@ public class ControllerVotacao implements Serializable {
 
 //		Livre
 
-        else if (statusGovernista.equals("LIVRE")) {
-            if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados)) {
-                aprovacao = true;
+        else if (statusGovernista.equals("LIVRE") && verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) ) {
 
-                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
+            aprovacao = true;
 
-                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
 
-                if (proximoLocal.equals("plenario")) {
-                    propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + " - 1o turno)");
-                }
+            propostasLegislativas.get(codigo).setTramitacao(propostasLegislativas.get(codigo).getTramitacao() + ", APROVADO (" + localAtual + ")");
 
-                if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) && !localAtual.equals("CCJC")) {
-                    propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
-                    String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
-                    deputados.get(dniAutor).adicionaLei();
-                }
+
+
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
+
             }
-            if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) == false) {
-                aprovacao = false;
 
-                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
-
-                propostasLegislativas.get(codigo).setTramitacao( propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
-
-
-
-                if (verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) == false && !localAtual.equals("CCJC")) {
-                    propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
-
-                }
+            if (propostasLegislativas.get(codigo).verificaBooleanConclusivo() && !localAtual.equals("CCJC")) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
+                String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
+                deputados.get(dniAutor).adicionaLei();
             }
         }
+        else if (!verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) && statusGovernista.equals("LIVRE")) {
+
+            aprovacao = false;
+
+            propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (" + proximoLocal + ")");
+
+            propostasLegislativas.get(codigo).setTramitacao(propostasLegislativas.get(codigo).getTramitacao() + ", REJEITADO (" + localAtual + ")");
 
 
+            if (proximoLocal.equals("plenario") && (!codigo.contains("PL "))) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - 1o turno)");
+
+            }
 
 
-        System.out.println(" ");
-        System.out.println(localAtual);
-        System.out.println(proximoLocal);
-        System.out.println(propostasLegislativas.get(codigo).getSituacaoAtual());
-        System.out.println(" ");
-        System.out.println(" ");
+            if (!(propostasLegislativas.get(codigo).verificaBooleanConclusivo())) {
+                propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
+
+            }
+        }
         return aprovacao;
     }
 
@@ -183,11 +192,12 @@ public class ControllerVotacao implements Serializable {
 
         boolean aprovacao = false;
         int turno;
-        if (!propostasLegislativas.get(codigo).getSituacaoAtual().contains("1")) {
-            turno = 0;
+
+        if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("1")) {
+            turno = 1;
         }
         else {
-            turno = 1;
+            turno = 2;
         }
 
 
@@ -199,7 +209,7 @@ public class ControllerVotacao implements Serializable {
         if(plenarioDiferenciacao(codigo, statusGovernista, presentes, comissoes, propostasLegislativas, deputados, partidosBase)) {
         	aprovacao = true;
         	propostasLegislativas.get(codigo).setSituacaoAtual("EM VOTACAO (Plenario - " + (turno + 1) + "o turno)");
-        	if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("2")) {
+        	if (propostasLegislativas.get(codigo).getSituacaoAtual().contains("3") || codigo.contains("PL ")) {
                 propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
                 String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
                 deputados.get(dniAutor).adicionaLei();
@@ -211,22 +221,9 @@ public class ControllerVotacao implements Serializable {
             propostasLegislativas.get(codigo).setSituacaoAtual("ARQUIVADO");
         }
 
-        if (codigo.contains("PL ") && aprovacao == true) {
-
-            propostasLegislativas.get(codigo).setSituacaoAtual("APROVADO");
-            String dniAutor = propostasLegislativas.get(codigo).getDNIAutor();
-            deputados.get(dniAutor).adicionaLei();
-        }
 
 
-//        System.out.println(statusGovernista);
-//        System.out.println(codigo);
-//        System.out.println(presentes);
-//        System.out.println(propostasLegislativas.get(codigo).toString());
-//        System.out.println(aprovacao);
-//        System.out.println(propostasLegislativas.get(codigo).getSituacaoAtual());
-//        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-//        System.out.println(" ");
+
 
         return aprovacao;
     }
