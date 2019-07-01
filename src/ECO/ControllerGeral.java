@@ -231,11 +231,15 @@ public class ControllerGeral implements Serializable {
         return this.controllerPLS.exibirProjeto(codigo);
     }
 
-
+    /**
+     * Metodo relacionado ao votar Comissao.
+     * @param codigo
+     * @param statusGovernista
+     * @param proximoLocal
+     * @return
+     */
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
-
-        //        Verificacoes
 
 
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
@@ -268,6 +272,14 @@ public class ControllerGeral implements Serializable {
         return controllerVotacao.votarComissao(codigo, statusGovernista, proximoLocal, this.controleComissao.getMapaComissoes(), this.controllerPLS.getPropostasDeLeis(),
                 this.controlePessoas.getDeputados(), this.controlePessoas.exibirBase(),this.controllerPLS.getInteressesRelacionados(codigo));
     }
+
+    /**
+     * Método relacionado a votacao do plenario de acordo com os parametros dados.
+     * @param codigo
+     * @param statusGovernista
+     * @param presentes
+     * @return
+     */
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
 
@@ -302,8 +314,12 @@ public class ControllerGeral implements Serializable {
                 this.controlePessoas.getDeputados(),this.controlePessoas.exibirBase(), this.controllerPLS.getInteressesRelacionados(codigo));
     }
 
+    /**
+     * Método que a partir do codigo recebido como parametro, valida o codigo, procura se ha uma tramitacao relacionada. Caso contrario, lanca-se uma excecao.
+     * @param codigo meio de identificacao da tramitacao
+     * @return a tramitacao relacionada.
+     */
 
-//    US8
 
     public String exibirTramitacao(String codigo) {
         validadorString(codigo, "");
@@ -314,9 +330,6 @@ public class ControllerGeral implements Serializable {
         return controllerPLS.exibirTramitacao(codigo);
     }
 
-
-//	  US9
-    
     
     public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
     	if(dni.trim().equals("")) {
@@ -329,6 +342,12 @@ public class ControllerGeral implements Serializable {
     	
     	controllerPLS.configuraEstrategiaProposta(dni, estrategia);
     }
+
+    /**
+     * Metodo que a partir do dni passado como parametro, pega a proposta relacionado ao Deputado com essa proposta
+     * @param dni
+     * @return
+     */
 
     public String pegarPropostaRelacionada(String dni) {
     	if(dni.trim().equals("")) {
@@ -363,6 +382,10 @@ public class ControllerGeral implements Serializable {
         this.controleComissao.escreverArquivos(controleComissao.getMapaComissoes(), "Comissao.dat");
         this.controllerPLS.escreverArquivos(controllerPLS.getPropostasDeLeis(), "Propostas.dat");
     }
+    /**
+     * Metodo responsavel por limpar o sistema
+     * nos controladores de comissao, pls e pessoa.
+     */
 
     public void limparSistema() {
         this.controlePessoas.limpar();

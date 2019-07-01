@@ -84,6 +84,12 @@ public class Validador {
         }
     }
 
+    /**
+     * Verifica se o ano recebido como parametro refere-se a um ano no futuro. Caso contrario, lanca-se uma excecao.
+     * @param ano a ser verificado
+     * @param mensagem sera usada quando o ano for no futuro.
+     */
+
     public static void validadorAnoFuturo (int ano, String mensagem) {
         try {
             String anoDesejado = Integer.toString(ano);
@@ -98,6 +104,12 @@ public class Validador {
             throw new IllegalArgumentException("Problemas nas conversao de anos.");
         }
     }
+
+    /**
+     * Verifica se o ano eh relacionado a um ano menor que 1998. Caso contrario, lanca-se uma excecao.
+     * @param ano
+     * @param mensagem
+     */
 
     public static void validadorAno (int ano, String mensagem) {
         if ( ano < 1998) {

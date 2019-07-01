@@ -1,7 +1,14 @@
 package ECO.Util;
 
-
+/**
+ * Classe Conversoes que serve para unicamente resolver convercoes de data
+ */
 public class  Conversoes {
+    /**
+     * Converte a data recebida como parametro para forma convencional.
+     * @param dataDeInicio parametro de inicio de atuacao do Deputado relacionado
+     * @return a data convertida
+     */
 
     public static String converteData(String dataDeInicio) {
         String aux = "";
