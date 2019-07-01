@@ -9,7 +9,7 @@ import static ECO.Util.Conversoes.*;
 
 
 /**
- * Classe Deputado que tem Funcao como interface.
+ * Classe Deputado que herda de Pessoa todos seu atributos ainda acrescentando alguns e algumas funcionalidades.
  */
 public class Deputado extends Pessoa implements Serializable {
     /**
