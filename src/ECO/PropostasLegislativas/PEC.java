@@ -82,9 +82,7 @@ public class PEC extends PropostaLegislativa {
     @Override
     public String exibirTramitacao(String codigo) {
         String saida = getTramitacao();
-//        System.out.println(saida);
-//        System.out.println(saida.length());
-//        System.out.println(" ");
+//
         if ( saida.equals("")) {
             throw new IllegalArgumentException("Isso nem existe");
         }

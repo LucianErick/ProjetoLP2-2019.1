@@ -70,7 +70,6 @@ public abstract class PropostaLegislativa implements Serializable {
     }
 
 
-
     /**
      * Retorna o ano que a proposta legislativa foi inicializada
      * @return ano de inicio
@@ -122,8 +121,10 @@ public abstract class PropostaLegislativa implements Serializable {
         return tramitacao;
     }
 
-
-
+    /**
+     * Edita a tramitacao da proposta legislativa relacionada
+     * @param tramitacao
+     */
 
     public void setTramitacao(String tramitacao) {
         this.tramitacao = tramitacao;
@@ -133,8 +134,6 @@ public abstract class PropostaLegislativa implements Serializable {
      * Retorna a String com a situacao atual da proposta legislativa
      * @return situacao atual
      */
-
-
 
     public String getSituacaoAtual() {
         return situacaoAtual;
@@ -149,18 +148,40 @@ public abstract class PropostaLegislativa implements Serializable {
         return url;
     }
 
-    //    criado para a votacao, nao sei se vai continuar
+    /**
+     * Verfica se a proposta legislativa eh conclusiva.
+     * @return boolean confirmando ou nao a conclusao
+     */
     public abstract boolean verificaBooleanConclusivo();
+
+    /**
+     * Edita a situacao atual da proposta legislativa relacionada
+     * @param novaSituacao como ficara a situacao da PLS
+     */
 
     public void setSituacaoAtual(String novaSituacao) {
         this.situacaoAtual = novaSituacao;
     }
 
+    /**
+     * Retorna os interesses da proposta legislativa relacionada
+     * @return a String com os interesses
+     */
+
     public String getInteressesRelacionados() {
         return interessesRelacionados;
     }
+    /**
+     * Verifica se ha um quorum minimo relacionando os deputados presentes com o total.
+     * @param deputadosPresentes deputados que estao presentes atuantes
+     * @param totalDeDeputados total de deputados.
+     */
 
     public abstract void quorumMininimo (int deputadosPresentes, int totalDeDeputados);
+    /**
+     * Exibe a tramitacao. Retorna de acordo com a tramitacao da proposta que possue o codigo passado como parametro.
+     * @param codigo relacionado a identificacao da proposta
+     */
 
     public abstract String exibirTramitacao(String codigo);
 }
