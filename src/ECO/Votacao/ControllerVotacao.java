@@ -10,13 +10,28 @@ import java.util.*;
 
 import static ECO.Util.Validador.validadorString;
 
+/**
+ * Classe responsavel por gerenciar as votacoes envolvidas no desenrolar do sistema.
+ */
+
 public class ControllerVotacao implements Serializable {
 
-
-
-
     public ControllerVotacao() {
+
     }
+
+    /**
+     * Metodo relacionada a votacao da comissao relacionada de acordo com as informacoes dadas como parametro
+     * @param codigo
+     * @param statusGovernista
+     * @param proximoLocal
+     * @param comissoes
+     * @param propostasLegislativas
+     * @param deputados
+     * @param partidosBase
+     * @param interessesRelacionados
+     * @return boolean de acordo com o resultado da votacao
+     */
 
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, Map<String, Comissao> comissoes, HashMap<String,
@@ -54,7 +69,6 @@ public class ControllerVotacao implements Serializable {
         }
 
 
-//		Governista
 
         if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("GOVERNISTA")) {
 
@@ -93,7 +107,6 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
-//		Oposicao
 
 
         else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("OPOSICAO")) {
@@ -138,9 +151,6 @@ public class ControllerVotacao implements Serializable {
 
         }
 
-
-//		Livre
-
         else if (statusGovernista.equals("LIVRE") && verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) ) {
 
             aprovacao = true;
@@ -184,6 +194,19 @@ public class ControllerVotacao implements Serializable {
         }
         return aprovacao;
     }
+
+    /**
+     * Metodo relacionado a votacao do plenario de acordo com as informacoes dadas como parametro
+     * @param codigo
+     * @param statusGovernista
+     * @param presentes
+     * @param comissoes
+     * @param propostasLegislativas
+     * @param deputados
+     * @param partidosBase
+     * @param interessesRelacionados
+     * @return boolean de acordo com a votacao relacionada
+     */
 
 
     public boolean votarPlenario(String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes,
@@ -236,12 +259,17 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
-
-
-
-
         return aprovacao;
     }
+
+    /**
+     * Aprova o governo de acordo com as informacoes dadas como parametros.
+     * @param comissaoAtual
+     * @param base1
+     * @param comissoes
+     * @param deputados
+     * @return
+     */
 
 
     private boolean aprovaGoverno(String comissaoAtual, String base1, Map<String, Comissao> comissoes, Map<String, Deputado> deputados) {
@@ -261,6 +289,16 @@ public class ControllerVotacao implements Serializable {
         }
         return baseGov > oposicao;
     }
+
+    /**
+     * Verifica interesse da comissao relacionada de acordo com as informacoes dadas como parametros.
+     * @param comissaoAtual
+     * @param comissoes
+     * @param deputados
+     * @param propostasLegislativas
+     * @param interessesRelacionadas
+     * @return boolean de acordo com a verificacao
+     */
 
     private boolean verificaInteresse(String comissaoAtual, Map<String, Comissao> comissoes, Map<String, Deputado> deputados,
                                       HashMap<String, PropostaLegislativa> propostasLegislativas, String interessesRelacionadas) {
@@ -286,6 +324,14 @@ public class ControllerVotacao implements Serializable {
         }
         return false;
     }
+
+    /**
+     * Aprova o plenario governista de acordo com os deputados presentes e o mapa contendo eles.
+     * @param presentes
+     * @param base1
+     * @param deputados
+     * @return inteiro de acordo com a aprovacao do plenario governista
+     */
     
     private int aprovaPlenarioGovernista(String presentes, String base1, Map<String,Deputado> deputados) {
     	String[] listaPresentes = presentes.trim().split(",");
@@ -305,6 +351,14 @@ public class ControllerVotacao implements Serializable {
     	return baseGov;
     }
 
+    /**
+     * Aprova o Plenario Livre em relacao a String com presentes e o mapa contendo os deputados participantes
+     * @param presentes
+     * @param deputados
+     * @param interessesRelacionados
+     * @return int relacionado a aprovacao do plenario livre
+     */
+
     private int aprovaPlenarioLivre (String presentes, Map<String,Deputado> deputados, String interessesRelacionados) {
         String[] listaPresentes = presentes.trim().split(",");
         String[] interesse = interessesRelacionados.trim().split(",");
@@ -322,6 +376,18 @@ public class ControllerVotacao implements Serializable {
         }
         return aprova;
     }
+
+    /**
+     * Formacao do plenario diferenciacao relacionando aos varios tipos de Propostas Legislativas.
+     * @param codigo
+     * @param statusGovernista
+     * @param presentes
+     * @param comissoes
+     * @param propostasLegislativas
+     * @param deputados
+     * @param partidosBase
+     * @return
+     */
 
     private boolean plenarioDiferenciacao (String codigo, String statusGovernista, String presentes, Map<String, Comissao> comissoes, HashMap<String, PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase) {
         String[] listaPresentes = presentes.trim().split(",");

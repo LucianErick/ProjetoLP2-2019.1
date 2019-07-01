@@ -54,41 +54,11 @@ public class ControllerComissao implements Serializable {
 
     }
 
-    public String getDniDeputados (String codigo) {
-        return mapaComissoes.get(codigo).getDniDeputados();
-    }
-
-    public int getQuantidadeDeputados (String codigo) { return mapaComissoes.get(codigo).getDniDeputados().length();}
-
-
-
-
-//    public  boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, String localAtual, ) {
-//        boolean aprovacao = false;
-//
-//        //        Verificacoes
-//
-//        validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
-//
-//        if (!mapaComissoes.containsKey("CCJC")) {
-//            throw new IllegalArgumentException("Erro ao votar proposta: CCJC nao cadastrada");
-//        }
-//
-//        validadorString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
-//
-//        if (!statusGovernista.equals("GOVERNISTA") && !statusGovernista.equals("OPOSICAO")
-//                && !statusGovernista.equals("LIVRE")) {
-//            throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
-//        }
-//
-//
-//    }
     /**
      * Método de gravação de mapa de commisao, o objeto é gravado após o sistema ser fechado.
      * @param map, mapa de comissoes.
      * @param arquivo, nome do arquivo de destino.
      */
-
 
     public void escreverArquivos(Map<String, Comissao> map, String arquivo){
         FileOutputStream arquivoComissao;
