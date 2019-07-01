@@ -31,6 +31,17 @@ public class ControllerPLS implements Serializable {
 
 	}
 
+	/**
+	 * Cadastra o objeto PL de acordo com as informacoes recebidos como parametro. Caso esses parametros forem invalidos, lanca-se uma excecao.
+	 * @param dni meio de identificao
+	 * @param ano em que foi cadastrado
+	 * @param ementa informacoes sobre os objetivos da proposta
+	 * @param interesses relacionados a proposta
+	 * @param url meio de documentacao
+	 * @param conclusivo boolean relacionado a proposta ser ou nao conclusivo
+	 * @return o codigo da proposta cadastrada.
+	 */
+
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
 		validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
 		validadorDni(dni, "Erro ao cadastrar projeto: dni invalido");
@@ -44,6 +55,16 @@ public class ControllerPLS implements Serializable {
 		propostasDeLeis.put(codigo, new PL(dni, ano, ementa, interesses, url, conclusivo, codigo));
 		return codigo;
 	}
+	/**
+	 * Cadastra o objeto PLP de acordo com as informacoes recebidos como parametro. Caso esses parametros forem invalidos, lanca-se uma excecao.
+	 * @param dni meio de identificao
+	 * @param ano em que foi cadastrado
+	 * @param ementa informacoes sobre os objetivos da proposta
+	 * @param interesses relacionados a proposta
+	 * @param url meio de documentacao
+	 * @param artigos boolean relacionado a proposta ser ou nao conclusivo
+	 * @return o codigo da proposta cadastrada.
+	 */
 
 	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigos) {
 		validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
@@ -60,6 +81,16 @@ public class ControllerPLS implements Serializable {
 		return codigo;
 
 	}
+	/**
+	 * Cadastra o objeto PEC de acordo com as informacoes recebidos como parametro. Caso esses parametros forem invalidos, lanca-se uma excecao.
+	 * @param dni meio de identificao
+	 * @param ano em que foi cadastrado
+	 * @param ementa informacoes sobre os objetivos da proposta
+	 * @param interesses relacionados a proposta
+	 * @param url meio de documentacao
+	 * @param artigos boolean relacionado a proposta ser ou nao conclusivo
+	 * @return o codigo da proposta cadastrada.
+	 */
 
 	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigos) {
 		validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
@@ -76,6 +107,12 @@ public class ControllerPLS implements Serializable {
 		return codigo;
 	}
 
+	/**
+	 * Contador responsavel por quantificar o numero de propostas do Tipo PL com o ano recebido como parametro como sendo seu atributo
+	 * @param ano forma de identificacao
+	 * @return o numero de propostas
+	 */
+
 	private Integer contadorPL(Integer ano) {
 		if (numeroPL.containsKey(ano)) {
 			numeroPL.put(ano, numeroPL.get(ano) + 1);
@@ -85,6 +122,11 @@ public class ControllerPLS implements Serializable {
 			return contadorPL(ano);
 		}
 	}
+	/**
+	 * Contador responsavel por quantificar o numero de propostas do Tipo PLP com o ano recebido como parametro como sendo seu atributo
+	 * @param ano forma de identificacao
+	 * @return o numero de propostas
+	 */
 
 	private Integer contadorPLP(Integer ano) {
 		if (numeroPLP.containsKey(ano)) {
@@ -95,6 +137,11 @@ public class ControllerPLS implements Serializable {
 			return contadorPLP(ano);
 		}
 	}
+	/**
+	 * Contador responsavel por quantificar o numero de propostas do Tipo PEC com o ano recebido como parametro como sendo seu atributo
+	 * @param ano forma de identificacao
+	 * @return o numero de propostas
+	 */
 
 	private Integer contadorPEC(Integer ano) {
 		if (numeroPEC.containsKey(ano)) {
@@ -115,26 +162,47 @@ public class ControllerPLS implements Serializable {
 	public String exibirProjeto(String codigo) {
 		return propostasDeLeis.get(codigo).toString();
 	}
+	/**
+	 * Verfica se a proposta legislativa eh conclusiva.
+	 * @return boolean confirmando ou nao a conclusao
+	 */
 
 	public boolean verificaBooleanConclusivo(String codigo) {
 		return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo();
 	}
 
+	/**
+	 * Retorna o mapa contendo todas as propostas ja cadastradas
+	 * @return o mapa de PLS
+	 */
+
 	public HashMap<String, PropostaLegislativa> getPropostasDeLeis() {
 		return propostasDeLeis;
 	}
 
+	/**
+	 * Retorna os interesses da proposta que possue o codigo recebido como parametro
+	 * @param codigo meio de identificacao da proposta
+	 * @return os interesses
+	 */
+
 	public String getInteressesRelacionados(String codigo) {
 		return propostasDeLeis.get(codigo).getInteressesRelacionados();
 	}
-
-	public void alteraSituacaoAtual(String codigo, String alteracao) {
-		propostasDeLeis.get(codigo).setSituacaoAtual(alteracao);
-	}
+	/**
+	 * Verifica se ha um quorum minimo relacionando os deputados presentes com o total.
+	 * @param deputadosPresentes deputados que estao presentes atuantes
+	 * @param totalDeDeputados total de deputados.
+	 */
 
 	public void quorumMininimo(String codigo, int deputadosPresentes, int totalDeDeputados) {
 		propostasDeLeis.get(codigo).quorumMininimo(deputadosPresentes, totalDeDeputados);
 	}
+	/**
+	 * Exibe a tramitacao. Retorna de acordo com a tramitacao da proposta que possue o codigo passado como parametro.
+	 * @param codigo relacionado a identificacao da proposta
+	 * @return saida
+	 */
 
 	public String exibirTramitacao(String codigo) {
 		String complemento = "";
@@ -152,7 +220,13 @@ public class ControllerPLS implements Serializable {
 		return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
 	}
 	
-	public Map<String, String> estrategia ;
+	public Map<String, String> estrategia;
+
+	/**
+	 * Configura a estrategia recebida como parametro
+	 * @param dni meio de identificacao da estrategia do Deputado relacionado
+	 * @param estrategia String contendo a estrategia do Deputado.
+	 */
 	
 	public void configuraEstrategiaProposta(String dni, String estrategia) {
 		switch (estrategia) {
@@ -167,6 +241,14 @@ public class ControllerPLS implements Serializable {
 		}
 
 	}
+
+	/**
+	 * Metodo que funciona pegando a proposta relacionada ao objeto Deputado que tem o dni recebido como parametro.
+	 * @param dni meio de identificacao do objeto Deputadp
+	 * @param pessoa mapa de pessoas
+	 * @param leis leis relacionadas
+	 * @return a proposta relacionada
+	 */
 
 	public String pegarPropostaRelacionada(String dni, Map<String, Pessoa> pessoa,Map<String, PropostaLegislativa> leis) {
 		estrategia = new HashMap<>();
@@ -200,6 +282,11 @@ public class ControllerPLS implements Serializable {
 	return retorno;
 
 	}
+	/**
+	 * Método de gravação de mapa de pls, o objeto é gravado após o sistema ser fechado.
+	 * @param map, mapa de comissoes.
+	 * @param arquivo, nome do arquivo de destino.
+	 */
 
 	public void escreverArquivos(Map<String, PropostaLegislativa> map, String arquivo) {
 
@@ -216,6 +303,10 @@ public class ControllerPLS implements Serializable {
 		}
 
 	}
+	/**
+	 * Método de recuperação de mapa gravado.
+	 * @param arquivo, nome do arquivo onde os dados serão buscados.
+	 */
 
 	public void lerArquivos(String arquivo) {
 		File arquivoPLS = null;
@@ -240,6 +331,10 @@ public class ControllerPLS implements Serializable {
 		}
 
 	}
+
+	/**
+	 * Inicia um novo mapa de propostasDeLeis para limpar o sistema.
+	 */
 
 	public void limpar() {
 		this.propostasDeLeis = new HashMap<>();
