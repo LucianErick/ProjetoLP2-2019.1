@@ -22,7 +22,7 @@ public class ControllerVotacao implements Serializable {
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, Map<String, Comissao> comissoes, HashMap<String,
             PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase, String interessesRelacionados) {
 
-//        Verificacoes
+
 
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
 

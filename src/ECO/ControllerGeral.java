@@ -13,7 +13,7 @@ import static ECO.Util.Validador.validadorDni;
 import static ECO.Util.Validador.validadorString;
 
 /**
- * Classe responsavel por controller todos os controllers das classes mais especificas
+ * Classe responsavel por controlar todos os controllers das classes mais especificas
  */
 
 public class ControllerGeral implements Serializable {
@@ -63,9 +63,19 @@ public class ControllerGeral implements Serializable {
         return controleComissao;
     }
 
+    /**
+     * Retorna o controlePLS
+     * @return controlerPLS
+     */
+
 	public ControllerPLS getControllerPLS() {
 		return controllerPLS;
 	}
+
+    /**
+     * Retorna o controleVotacao.
+     * @return controllerVotacao
+     */
 
 	public ControllerVotacao getControllerVotacao() {
 		return controllerVotacao;
@@ -134,8 +144,6 @@ public class ControllerGeral implements Serializable {
     public String exibeBase() {
         return this.controlePessoas.exibirBase();
     }
-    
-    
 
     /**
      * Cadastra o objeto Comissao de acordo com exigencias estabelecidas como: tema ja cadastrado, tema ou String dniPoliticos nulo ou vazia.
@@ -232,10 +240,10 @@ public class ControllerGeral implements Serializable {
     }
 
     /**
-     * Metodo relacionado ao votar Comissao.
-     * @param codigo
+     * Metodo relacionado ao votar Comissao. Ha a verificacoes necessarias. Caso os parametros forem invalidos, lanca-se uma excecao.
+     * @param codigo meio de identificacao
      * @param statusGovernista
-     * @param proximoLocal
+     * @param proximoLocal proximo local onde o comissao estara
      * @return
      */
 
@@ -274,8 +282,8 @@ public class ControllerGeral implements Serializable {
     }
 
     /**
-     * Método relacionado a votacao do plenario de acordo com os parametros dados.
-     * @param codigo
+     * Método relacionado a votacao do plenario de acordo com os parametros dados. Ocorrem as verificacoes. Caso os parametros forem invalidos, lanca-se uma excecao.
+     * @param codigo meio de identificacao da proposta
      * @param statusGovernista
      * @param presentes
      * @return
