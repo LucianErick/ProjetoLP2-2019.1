@@ -51,11 +51,20 @@ public class PEC extends PropostaLegislativa {
         return "Projeto de Emenda Constitucional - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + getArtigo() + " - " + getSituacaoAtual();
     }
 
-    //    criado para a votacao, nao sei se vai continuar
+    /**
+     * Verfica se a proposta legislativa eh conclusiva.
+     * @return boolean confirmando ou nao a conclusao
+     */
     @Override
     public boolean verificaBooleanConclusivo() {
         return false;
     }
+
+    /**
+     * Verifica se ha um quorum minimo relacionando os deputados presentes com o total.
+     * @param deputadosPresentes deputados que estao presentes atuantes
+     * @param totalDeDeputados total de deputados.
+     */
 
     @Override
     public void quorumMininimo(int deputadosPresentes, int totalDeDeputados) {
@@ -63,6 +72,12 @@ public class PEC extends PropostaLegislativa {
             throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
         }
     }
+
+    /**
+     * Exibe a tramitacao. Retorna de acordo com a tramitacao da proposta que possue o codigo passado como parametro.
+     * @param codigo identificacao da proposta
+     * @return saida
+     */
 
     @Override
     public String exibirTramitacao(String codigo) {

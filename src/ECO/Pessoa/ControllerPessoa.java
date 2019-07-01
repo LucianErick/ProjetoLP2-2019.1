@@ -187,29 +187,6 @@ public class ControllerPessoa implements Serializable {
         }
         return saida;
     }
-    
-    public Map<String ,Pessoa> getControllerPessoa() {
-        return this.pessoas;
-    }
-
-    public String getPartidos (String dni) {
-        return pessoas.get(dni).getPartido();
-    }
-
-    public String getInteresses (String dni) {
-        return pessoas.get(dni).getInteresses();
-    }
-
-    public boolean verificaPartidos (String partidos) {
-        if ( this.partidos.contains(partidos)) {
-            return true;
-        }
-        return false;
-    }
-
-    public void adicionaLeia (String dni) {
-        deputados.get(dni).adicionaLei();
-    }
 
     /**
      * Retorna o int com a quantidade de deputados que ja foram cadastrados

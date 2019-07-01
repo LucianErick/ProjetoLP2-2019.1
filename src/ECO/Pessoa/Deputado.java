@@ -65,9 +65,6 @@ public class Deputado extends Pessoa implements Serializable {
     }
 
 
-
-
-
     /**
      * Representacao textual do objeto Deputado.
      * @return representacao textual.
@@ -86,6 +83,9 @@ public class Deputado extends Pessoa implements Serializable {
 
     }
 
+    /**
+     * Acrescenta leis de acordo com atuacao do Deputado. Inicialmente, o Deputado tem o atributo zerado.
+     */
 
     public void adicionaLei() {
         this.quantidadeDeLeis += 1;
