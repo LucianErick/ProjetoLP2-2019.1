@@ -9,6 +9,10 @@ import static ECO.Util.Validador.*;
 
 /**
  * Classe ControllerPessoa que serve para armazenar os objetos Pessoa e objetos Deputado.
+ * @autor Ana Carolina Chaves
+ * @autor Luciano Erick
+ * @autor Artur Brito
+ * @autor Gutemberg Filho
  */
 
 public class ControllerPessoa implements Serializable {
@@ -16,13 +20,7 @@ public class ControllerPessoa implements Serializable {
      * Atributo que refere-se ao mapa para armazenar objetos Pessoa.
      */
     private Map<String ,Pessoa> pessoas;
-    /**
-     * Atributo que refere-se a lista que armazenara as Strings partido
-     */
     private List<String> partidos;
-    /**
-     * Atributo que refere-se ao mapa para armazenar objetos Deputado.
-     */
     private Map<String, Deputado> deputados;
 
     /**
@@ -34,10 +32,9 @@ public class ControllerPessoa implements Serializable {
         this.partidos = new ArrayList<>();
         this.deputados = new HashMap<>();
     }
-
     /**
      * Retorna o mapa que contem os objetos Pessoa ja cadastrados
-     * @return
+     * @return mapa contendo os objetos Pessoa cadastrados
      */
 
     public Map<String, Pessoa> getPessoas() {
@@ -46,7 +43,7 @@ public class ControllerPessoa implements Serializable {
 
     /**
      * Retorna o mapa que contem os objetos Deputado ja cadastrados.
-     * @return
+     * @return mapa contendo os objetos Deputado cadastrados.
      */
 
     public Map<String, Deputado> getDeputados() {
@@ -187,10 +184,9 @@ public class ControllerPessoa implements Serializable {
         }
         return saida;
     }
-
     /**
      * Retorna o int com a quantidade de deputados que ja foram cadastrados
-     * @return
+     * @return inteiro com a quantidade de deputados ja cadastrados
      */
 
     public int qtdDeputados () {
@@ -205,6 +201,7 @@ public class ControllerPessoa implements Serializable {
     public List<String> getPartidos() {
         return partidos;
     }
+
     /**
      * Método de gravação de mapa de pessoas, o objeto é gravado após o sistema ser fechado.
      * @param map, mapa de pessoas.
@@ -222,7 +219,6 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     /**
      * Método de gravação de mapa de deputados, o objeto é gravado após o sistema ser fechado.
@@ -240,14 +236,12 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     /**
      * Método de gravação de mapa de partidos, o objeto é gravado após o sistema ser fechado.
      * @param list, lista de partidos.
      * @param arquivo, nome do arquivo de destino.
      */
-
     public void escreverArquivosPartido(List<String> list, String arquivo){
         FileOutputStream arquivoPartido;
         try {
@@ -287,12 +281,12 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     /**
      * Método de recuperação de mapa gravado.
      * @param arquivo, nome do arquivo onde os dados serão buscados.
      */
+
     public void lerArquivosDeputado(String arquivo){
         File arquivoDeputado = null;
         arquivoDeputado = new File(arquivo);
@@ -341,9 +335,7 @@ public class ControllerPessoa implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
     /**
      * Inicializa novos mapas e lista para limpar o sistema.
      */

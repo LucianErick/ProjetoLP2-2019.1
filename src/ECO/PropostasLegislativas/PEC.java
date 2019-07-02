@@ -2,6 +2,7 @@ package ECO.PropostasLegislativas;
 
 /**
  * Classe responsavel por criar o objeto PEC que se faz filha da super classe PropostaLegislativa. Se baseia nos atributos da super classe acompanhado do atributo artigo especifico da classe.
+ * @autor Artur Brito
  */
 public class PEC extends PropostaLegislativa {
     /**
@@ -72,7 +73,6 @@ public class PEC extends PropostaLegislativa {
             throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
         }
     }
-
     /**
      * Exibe a tramitacao. Retorna de acordo com a tramitacao da proposta que possue o codigo passado como parametro.
      * @param codigo identificacao da proposta
@@ -82,7 +82,7 @@ public class PEC extends PropostaLegislativa {
     @Override
     public String exibirTramitacao(String codigo) {
         String saida = getTramitacao();
-//
+
         if ( saida.equals("")) {
             throw new IllegalArgumentException("Isso nem existe");
         }

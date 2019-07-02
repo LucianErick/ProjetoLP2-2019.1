@@ -2,6 +2,7 @@ package ECO.PropostasLegislativas;
 
 /**
  * Classe responsavel por criar o objeto PLP que se faz filha da super classe PropostaLegislativa. Se baseia nos atributos gerais da super classe adicionando o atributo artigo especifico da classe PLP.
+ * @autor Artur Brito
  */
 
 public class PLP extends PropostaLegislativa {
@@ -50,7 +51,6 @@ public class PLP extends PropostaLegislativa {
     public String toString() {
         return "Projeto de Lei Complementar - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + " - " + getArtigo() + " - " + getSituacaoAtual();
     }
-
     /**
      * Verfica se a proposta legislativa eh conclusiva.
      * @return boolean confirmando ou nao a conclusao
@@ -60,11 +60,13 @@ public class PLP extends PropostaLegislativa {
     public boolean verificaBooleanConclusivo() {
         return false;
     }
+
     /**
      * Verifica se ha um quorum minimo relacionando os deputados presentes com o total.
      * @param deputadosPresentes deputados que estao presentes atuantes
      * @param totalDeDeputados total de deputados.
      */
+
     @Override
     public void quorumMininimo(int deputadosPresentes, int totalDeDeputados) {
         if (!(deputadosPresentes >= Math.floor((totalDeDeputados / 2) + 1))) {
@@ -80,7 +82,7 @@ public class PLP extends PropostaLegislativa {
     @Override
     public String exibirTramitacao(String codigo) {
         String saida = getTramitacao();
-//
+
         if ( saida.equals("")) {
             throw new IllegalArgumentException("Isso nem existe");
         }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Super Classe responsavel por padronizar os distintos objetos relacionados a proposta legislativa com os atributos e metodos em comum as classes filhas
+ * @autor Artur Brito
  */
 
 public abstract class PropostaLegislativa implements Serializable {
@@ -70,6 +71,7 @@ public abstract class PropostaLegislativa implements Serializable {
     }
 
 
+
     /**
      * Retorna o ano que a proposta legislativa foi inicializada
      * @return ano de inicio
@@ -121,10 +123,8 @@ public abstract class PropostaLegislativa implements Serializable {
         return tramitacao;
     }
 
-    /**
-     * Edita a tramitacao da proposta legislativa relacionada
-     * @param tramitacao
-     */
+
+
 
     public void setTramitacao(String tramitacao) {
         this.tramitacao = tramitacao;
@@ -162,12 +162,10 @@ public abstract class PropostaLegislativa implements Serializable {
     public void setSituacaoAtual(String novaSituacao) {
         this.situacaoAtual = novaSituacao;
     }
-
     /**
      * Retorna os interesses da proposta legislativa relacionada
      * @return a String com os interesses
      */
-
     public String getInteressesRelacionados() {
         return interessesRelacionados;
     }

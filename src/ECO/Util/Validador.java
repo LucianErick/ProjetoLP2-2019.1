@@ -8,6 +8,10 @@ import java.util.Date;
 
 /**
  * Classe Validador que serve para validar os parametros recebidos em alguns metodos do projeto.
+ * @autor Ana Carolina Chaves
+ * @autor Luciano Erick
+ * @autor Artur Brito
+ * @autor Gutemberg Filho
  */
 public class Validador {
     /**
@@ -104,11 +108,10 @@ public class Validador {
             throw new IllegalArgumentException("Problemas nas conversao de anos.");
         }
     }
-
     /**
      * Verifica se o ano eh relacionado a um ano menor que 1998. Caso contrario, lanca-se uma excecao.
-     * @param ano
-     * @param mensagem
+     * @param ano recebido como parametro a ser comparado
+     * @param mensagem sera usada caso o ano for menor que 1998
      */
 
     public static void validadorAno (int ano, String mensagem) {

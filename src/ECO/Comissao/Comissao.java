@@ -10,6 +10,8 @@ import static ECO.Util.Validador.validadorString;
 
 /**
  * Classe responsavel por criar o objeto Comissao a partir de um tema e uma String composta pelos dnis responsaveis pela identificacao dos deputadps participantes da comissao.
+ * @autor Ana Carolina Chaves
+ * @autor Luciano Erick
  */
 
 public class Comissao implements Serializable {
@@ -63,11 +65,6 @@ public class Comissao implements Serializable {
     public String getDniDeputados() {
         return dniDeputados;
     }
-
-    /**
-     * Retorna a lista que contem os dni dos deputados que participam do objeto Comissao relacionado.
-     * @return
-     */
 
     public Set<String> getListaDNI() {
         return listaDNI;

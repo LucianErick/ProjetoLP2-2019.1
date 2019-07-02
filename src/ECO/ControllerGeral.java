@@ -13,7 +13,11 @@ import static ECO.Util.Validador.validadorDni;
 import static ECO.Util.Validador.validadorString;
 
 /**
- * Classe responsavel por controlar todos os controllers das classes mais especificas
+ * Classe responsavel por controller todos os controllers das classes mais especificas
+ * @autor Ana Carolina Chaves
+ * @autor Luciano Erick
+ * @autor Artur Brito
+ * @autor Gutemberg Filho
  */
 
 public class ControllerGeral implements Serializable {
@@ -63,19 +67,9 @@ public class ControllerGeral implements Serializable {
         return controleComissao;
     }
 
-    /**
-     * Retorna o controlePLS
-     * @return controlerPLS
-     */
-
 	public ControllerPLS getControllerPLS() {
 		return controllerPLS;
 	}
-
-    /**
-     * Retorna o controleVotacao.
-     * @return controllerVotacao
-     */
 
 	public ControllerVotacao getControllerVotacao() {
 		return controllerVotacao;
@@ -144,6 +138,8 @@ public class ControllerGeral implements Serializable {
     public String exibeBase() {
         return this.controlePessoas.exibirBase();
     }
+    
+    
 
     /**
      * Cadastra o objeto Comissao de acordo com exigencias estabelecidas como: tema ja cadastrado, tema ou String dniPoliticos nulo ou vazia.
@@ -285,7 +281,7 @@ public class ControllerGeral implements Serializable {
      * Método relacionado a votacao do plenario de acordo com os parametros dados. Ocorrem as verificacoes. Caso os parametros forem invalidos, lanca-se uma excecao.
      * @param codigo meio de identificacao da proposta
      * @param statusGovernista
-     * @param presentes
+     * @param presentes quantidade de deputados presentes na votacao
      * @return
      */
 
@@ -338,6 +334,12 @@ public class ControllerGeral implements Serializable {
         return controllerPLS.exibirTramitacao(codigo);
     }
 
+
+    /**
+     * Configura a estrategia recebida como parametro apos fazer as devidas verificaoes
+     * @param dni objeto que se relacionara com a estrategia
+     * @param estrategia recebida como String que sera configurada ou nao
+     */
     
     public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
     	if(dni.trim().equals("")) {
@@ -350,7 +352,6 @@ public class ControllerGeral implements Serializable {
     	
     	controllerPLS.configuraEstrategiaProposta(dni, estrategia);
     }
-
     /**
      * Metodo que a partir do dni passado como parametro, pega a proposta relacionado ao Deputado com essa proposta
      * @param dni
@@ -390,9 +391,9 @@ public class ControllerGeral implements Serializable {
         this.controleComissao.escreverArquivos(controleComissao.getMapaComissoes(), "Comissao.dat");
         this.controllerPLS.escreverArquivos(controllerPLS.getPropostasDeLeis(), "Propostas.dat");
     }
+
     /**
-     * Metodo responsavel por limpar o sistema
-     * nos controladores de comissao, pls e pessoa.
+     * Metodo responsavel pela limpeza do sistema inicializando novos mapas
      */
 
     public void limparSistema() {

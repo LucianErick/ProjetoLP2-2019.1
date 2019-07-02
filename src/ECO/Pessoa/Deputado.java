@@ -9,7 +9,8 @@ import static ECO.Util.Conversoes.*;
 
 
 /**
- * Classe Deputado que herda de Pessoa todos seu atributos ainda acrescentando alguns e algumas funcionalidades.
+ * Classe Deputado que herda os atributos da Classe Pessoa acrescentando novos e algumas funcionalidades
+ * @autor Artur Brito
  */
 public class Deputado extends Pessoa implements Serializable {
     /**
@@ -57,7 +58,7 @@ public class Deputado extends Pessoa implements Serializable {
 
     /**
      * Retorna a quantidade de leis cadastradas do objeto Deputado relacionado
-     * @return
+     * @return inteiro com o atributo contendo a quantidade de leis.
      */
 
     public int getQuantidadeDeLeis() {
@@ -84,7 +85,7 @@ public class Deputado extends Pessoa implements Serializable {
     }
 
     /**
-     * Acrescenta leis de acordo com atuacao do Deputado. Inicialmente, o Deputado tem o atributo zerado.
+     * Metodo responsavel pela adicao de leis no atributo da Classe Deputado que inicialmente eh zerado.
      */
 
     public void adicionaLei() {

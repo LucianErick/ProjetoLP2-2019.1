@@ -7,7 +7,9 @@ import java.util.Map;
 import static ECO.Util.Validador.validadorString;
 
 /**
- * Classe responsavel por controlar todas as acoes relacionadas ao objeto Comissao armazenando-os em uma colecao para melhor administracao
+ *  Classe responsavel por controlar todas as acoes relacionadas ao objeto Comissao armazenando-os em uma colecao para melhor administracao
+ * @autor Luciano Erick
+ * @autor Ana Carolina Chaves
  */
 
 public class ControllerComissao implements Serializable {
@@ -46,12 +48,17 @@ public class ControllerComissao implements Serializable {
         this.mapaComissoes.put(tema, new Comissao(tema, dniPoliticos));
     }
 
+    /**
+     * Verifica se o objeto Comissao com o tema passado como parametro contem no mapa de comissoes. Caso contrario, lanca-se uma excecao.
+     * @param tema meio de identificacao do objeto Comissao.
+     * @param mensagem que sera lancada caso o objeto Comissao nao exista no mapa comissao
+     */
+
     public void verificaComissao(String tema, String mensagem) {
         validadorString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
         if (!this.mapaComissoes.containsKey(tema)) {
             throw new IllegalArgumentException(mensagem);
         }
-
     }
 
     /**
@@ -101,7 +108,6 @@ public class ControllerComissao implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 

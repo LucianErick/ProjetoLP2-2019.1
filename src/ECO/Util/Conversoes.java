@@ -2,7 +2,9 @@ package ECO.Util;
 
 /**
  * Classe Conversoes que serve para unicamente resolver convercoes de data
+ * @autor Artur Brito
  */
+
 public class  Conversoes {
     /**
      * Converte a data recebida como parametro para forma convencional.

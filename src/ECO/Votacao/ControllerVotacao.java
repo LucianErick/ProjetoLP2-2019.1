@@ -11,33 +11,27 @@ import java.util.*;
 import static ECO.Util.Validador.validadorString;
 
 /**
- * Classe responsavel por gerenciar as votacoes envolvidas no desenrolar do sistema.
+ * Classe responsavel por gerenciar as votacoes contidas no programa
+ * @autor Artur Brito
+ * @autor Gutemberg Filho
  */
 
 public class ControllerVotacao implements Serializable {
-
-    public ControllerVotacao() {
-
-    }
-
     /**
-     * Metodo relacionada a votacao da comissao relacionada de acordo com as informacoes dadas como parametro
-     * @param codigo
-     * @param statusGovernista
-     * @param proximoLocal
-     * @param comissoes
-     * @param propostasLegislativas
-     * @param deputados
-     * @param partidosBase
-     * @param interessesRelacionados
+     * Metodo relacionada a votacao da comissao relacionada de acordo com as informacoes dadas como parametro. Caso algum parametro seja invalido, uma excecao sera lancada.
+     * @param codigo da proposta relacionada
+     * @param statusGovernista status relacionado ao governo
+     * @param proximoLocal onde a comissao sera encaminhada
+     * @param comissoes mapa contendo as comissoes cadastradas
+     * @param propostasLegislativas propostas emvolvidas
+     * @param deputados deputados relacionados no mapa
+     * @param partidosBase lista de partidos relacionados
+     * @param interessesRelacionados interesses da comissao
      * @return boolean de acordo com o resultado da votacao
      */
 
-
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal, Map<String, Comissao> comissoes, HashMap<String,
             PropostaLegislativa> propostasLegislativas, Map<String, Deputado> deputados, String partidosBase, String interessesRelacionados) {
-
-
 
         validadorString(statusGovernista, "Erro ao votar proposta: status invalido");
 
@@ -67,8 +61,6 @@ public class ControllerVotacao implements Serializable {
         if (localAtual.contains("Plenario") || localAtual.contains("plenario")) {
             throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
         }
-
-
 
         if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("GOVERNISTA")) {
 
@@ -106,8 +98,6 @@ public class ControllerVotacao implements Serializable {
 
             }
         }
-
-
 
         else if (aprovaGoverno(localAtual, partidosBase, comissoes, deputados) && statusGovernista.equals("OPOSICAO")) {
 
@@ -150,6 +140,7 @@ public class ControllerVotacao implements Serializable {
             }
 
         }
+
 
         else if (statusGovernista.equals("LIVRE") && verificaInteresse(localAtual, comissoes, deputados, propostasLegislativas, interessesRelacionados) ) {
 
@@ -194,18 +185,17 @@ public class ControllerVotacao implements Serializable {
         }
         return aprovacao;
     }
-
     /**
-     * Metodo relacionado a votacao do plenario de acordo com as informacoes dadas como parametro
-     * @param codigo
-     * @param statusGovernista
-     * @param presentes
-     * @param comissoes
-     * @param propostasLegislativas
-     * @param deputados
-     * @param partidosBase
-     * @param interessesRelacionados
-     * @return boolean de acordo com a votacao relacionada
+     * Metodo relacionada a votacao do plenario relacionada de acordo com as informacoes dadas como parametro. Caso algum parametro seja invalido, uma excecao sera lancada.
+     * @param codigo da proposta relacionada
+     * @param statusGovernista status relacionado ao governo
+     * @param presentes deputados que partipara
+     * @param comissoes mapa contendo as comissoes cadastradas
+     * @param propostasLegislativas propostas emvolvidas
+     * @param deputados deputados relacionados no mapa
+     * @param partidosBase lista de partidos relacionados
+     * @param interessesRelacionados interesses da comissao
+     * @return boolean de acordo com o resultado da votacao
      */
 
 
@@ -259,15 +249,18 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
+
+
+
+
         return aprovacao;
     }
-
     /**
      * Aprova o governo de acordo com as informacoes dadas como parametros.
-     * @param comissaoAtual
+     * @param comissaoAtual comissao atual
      * @param base1
-     * @param comissoes
-     * @param deputados
+     * @param comissoes relacionadas ao governo no mapa
+     * @param deputados relacionados ao governo no mapa
      * @return
      */
 
@@ -291,13 +284,13 @@ public class ControllerVotacao implements Serializable {
     }
 
     /**
-     * Verifica interesse da comissao relacionada de acordo com as informacoes dadas como parametros.
+     * Serve para verificar se as comissoes e os deputados relacionados possuem o mesmo interesse
      * @param comissaoAtual
-     * @param comissoes
-     * @param deputados
-     * @param propostasLegislativas
-     * @param interessesRelacionadas
-     * @return boolean de acordo com a verificacao
+     * @param comissoes mapa de comissao
+     * @param deputados mapa de deputado
+     * @param propostasLegislativas mapa com as propotas
+     * @param interessesRelacionadas interesses dos deputados
+     * @return
      */
 
     private boolean verificaInteresse(String comissaoAtual, Map<String, Comissao> comissoes, Map<String, Deputado> deputados,
@@ -324,7 +317,6 @@ public class ControllerVotacao implements Serializable {
         }
         return false;
     }
-
     /**
      * Aprova o plenario governista de acordo com os deputados presentes e o mapa contendo eles.
      * @param presentes
@@ -350,12 +342,11 @@ public class ControllerVotacao implements Serializable {
 
     	return baseGov;
     }
-
     /**
      * Aprova o Plenario Livre em relacao a String com presentes e o mapa contendo os deputados participantes
-     * @param presentes
-     * @param deputados
-     * @param interessesRelacionados
+     * @param presentes deputados participantes
+     * @param deputados mapa com todos os deputados
+     * @param interessesRelacionados interesses relacionados
      * @return int relacionado a aprovacao do plenario livre
      */
 
@@ -376,7 +367,6 @@ public class ControllerVotacao implements Serializable {
         }
         return aprova;
     }
-
     /**
      * Formacao do plenario diferenciacao relacionando aos varios tipos de Propostas Legislativas.
      * @param codigo

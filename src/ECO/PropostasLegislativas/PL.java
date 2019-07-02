@@ -2,6 +2,7 @@ package ECO.PropostasLegislativas;
 
 /**
  * Classe responsavel por criar o objeto PL que se faz filha da super classe PropostaLegislativa. Se baseia nos atributos gerais da classe mae adicionados do atribut boolean Conclusivo e o int numeroPL que se inicia como sendo igual a 1
+ * @autor Artur Brito
  */
 
 public class PL extends PropostaLegislativa {
@@ -49,11 +50,11 @@ public class PL extends PropostaLegislativa {
     public String toString() {
         return "Projeto de Lei - " + getCodigo() + " - " + getDNIAutor() + " - " + getEmenta() + isConclusivo() + " - " + getSituacaoAtual();
     }
-
     /**
      * Verfica se a proposta legislativa eh conclusiva.
      * @return boolean confirmando ou nao a conclusao
      */
+
     @Override
     public boolean verificaBooleanConclusivo() {
         return this.Conclusivo;
@@ -63,6 +64,7 @@ public class PL extends PropostaLegislativa {
      * @param deputadosPresentes deputados que estao presentes atuantes
      * @param totalDeDeputados total de deputados.
      */
+
     @Override
     public void quorumMininimo(int deputadosPresentes, int totalDeDeputados) {
         if (!(deputadosPresentes >= Math.floor((totalDeDeputados / 2) + 1))) {
@@ -78,7 +80,6 @@ public class PL extends PropostaLegislativa {
     @Override
     public String exibirTramitacao(String codigo) {
         String saida = getTramitacao();
-//
         if ( saida.equals("")) {
             throw new IllegalArgumentException("Isso nem existe");
         }

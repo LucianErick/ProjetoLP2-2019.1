@@ -6,6 +6,8 @@ import static ECO.Util.Validador.*;
 
 /**
  * Classe Pessoa onde o objeto Pessoa se forma a partir dos atributos relacionados.
+ * @autor Luciano Erick
+ * @autor Ana Carolina Chaves
  */
 public class Pessoa implements Serializable {
     /**

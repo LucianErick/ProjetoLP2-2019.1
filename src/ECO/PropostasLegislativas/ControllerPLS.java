@@ -11,17 +11,34 @@ import java.util.Map;
 
 import static ECO.Util.Validador.*;
 
-public class ControllerPLS implements Serializable {
+/**
+ * Classe responsavel por controlar e gerenciar todas as acoes de propostas legislativas
+ * @autor Artur Brito
+ */
 
-//    private int numeroPL = 1;
-//    private int numeroPLP = 1;
-//    private int numeroPEC = 1;
+public class ControllerPLS implements Serializable {
+	/**
+	 * Atributo mapa responsavel por armazenar as PLS cadastradas.
+	 */
 
 	private HashMap<String, PropostaLegislativa> propostasDeLeis;
+	/**
+	 * Atributo responsavel por armazenar o numero de propostas do Tipo PL
+	 */
 
 	private HashMap<Integer, Integer> numeroPL;
+	/**
+	 * Atributo responsavel por armazenar o numero de propostas do Tipo PLP
+	 */
 	private HashMap<Integer, Integer> numeroPLP;
+	/**
+	 * Atributo responsavel por armazenar o numero de propostas do Tipo PEC
+	 */
 	private HashMap<Integer, Integer> numeroPEC;
+
+	/**
+	 * Construtor da classe que inicializa os mapas tidos como parametros.
+	 */
 
 	public ControllerPLS() {
 		this.propostasDeLeis = new HashMap<>();
@@ -30,7 +47,6 @@ public class ControllerPLS implements Serializable {
 		this.numeroPEC = new HashMap<>();
 
 	}
-
 	/**
 	 * Cadastra o objeto PL de acordo com as informacoes recebidos como parametro. Caso esses parametros forem invalidos, lanca-se uma excecao.
 	 * @param dni meio de identificao
@@ -41,6 +57,7 @@ public class ControllerPLS implements Serializable {
 	 * @param conclusivo boolean relacionado a proposta ser ou nao conclusivo
 	 * @return o codigo da proposta cadastrada.
 	 */
+
 
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
 		validadorString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
@@ -106,7 +123,6 @@ public class ControllerPLS implements Serializable {
 		propostasDeLeis.put(codigo, new PEC(dni, ano, ementa, interesses, url, artigos, codigo));
 		return codigo;
 	}
-
 	/**
 	 * Contador responsavel por quantificar o numero de propostas do Tipo PL com o ano recebido como parametro como sendo seu atributo
 	 * @param ano forma de identificacao
@@ -166,26 +182,21 @@ public class ControllerPLS implements Serializable {
 	 * Verfica se a proposta legislativa eh conclusiva.
 	 * @return boolean confirmando ou nao a conclusao
 	 */
-
 	public boolean verificaBooleanConclusivo(String codigo) {
 		return this.propostasDeLeis.get(codigo).verificaBooleanConclusivo();
 	}
-
 	/**
 	 * Retorna o mapa contendo todas as propostas ja cadastradas
 	 * @return o mapa de PLS
 	 */
-
 	public HashMap<String, PropostaLegislativa> getPropostasDeLeis() {
 		return propostasDeLeis;
 	}
-
 	/**
 	 * Retorna os interesses da proposta que possue o codigo recebido como parametro
 	 * @param codigo meio de identificacao da proposta
 	 * @return os interesses
 	 */
-
 	public String getInteressesRelacionados(String codigo) {
 		return propostasDeLeis.get(codigo).getInteressesRelacionados();
 	}
@@ -194,10 +205,10 @@ public class ControllerPLS implements Serializable {
 	 * @param deputadosPresentes deputados que estao presentes atuantes
 	 * @param totalDeDeputados total de deputados.
 	 */
-
 	public void quorumMininimo(String codigo, int deputadosPresentes, int totalDeDeputados) {
 		propostasDeLeis.get(codigo).quorumMininimo(deputadosPresentes, totalDeDeputados);
 	}
+
 	/**
 	 * Exibe a tramitacao. Retorna de acordo com a tramitacao da proposta que possue o codigo passado como parametro.
 	 * @param codigo relacionado a identificacao da proposta
@@ -219,6 +230,10 @@ public class ControllerPLS implements Serializable {
 		}
 		return propostasDeLeis.get(codigo).exibirTramitacao(codigo) + complemento;
 	}
+
+	/**
+	 * Declara um mapa que armazenara as estrategias envolvidas no processo de votacao
+	 */
 	
 	public Map<String, String> estrategia;
 
@@ -241,7 +256,6 @@ public class ControllerPLS implements Serializable {
 		}
 
 	}
-
 	/**
 	 * Metodo que funciona pegando a proposta relacionada ao objeto Deputado que tem o dni recebido como parametro.
 	 * @param dni meio de identificacao do objeto Deputadp
@@ -301,8 +315,8 @@ public class ControllerPLS implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
+
 	/**
 	 * Método de recuperação de mapa gravado.
 	 * @param arquivo, nome do arquivo onde os dados serão buscados.
@@ -329,9 +343,7 @@ public class ControllerPLS implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 	/**
 	 * Inicia um novo mapa de propostasDeLeis para limpar o sistema.
 	 */
