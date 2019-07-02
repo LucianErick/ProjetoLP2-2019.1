@@ -249,10 +249,6 @@ public class ControllerVotacao implements Serializable {
             }
         }
 
-
-
-
-
         return aprovacao;
     }
     /**

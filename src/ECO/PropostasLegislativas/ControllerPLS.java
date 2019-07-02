@@ -320,9 +320,10 @@ public class ControllerPLS implements Serializable {
 	/**
 	 * Método de recuperação de mapa gravado.
 	 * @param arquivo, nome do arquivo onde os dados serão buscados.
+	 * @return o mapa com as informacoes gravadas
 	 */
 
-	public void lerArquivos(String arquivo) {
+	public Map<String, PropostaLegislativa> lerArquivos(String arquivo) {
 		File arquivoPLS = null;
 		arquivoPLS = new File(arquivo);
 		Map<String, PropostaLegislativa> map = new HashMap<>();
@@ -337,12 +338,13 @@ public class ControllerPLS implements Serializable {
 			} else {
 				fis = new FileInputStream(arquivo);
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				this.propostasDeLeis = (HashMap<String, PropostaLegislativa>) ois.readObject();
+				map = (HashMap<String, PropostaLegislativa>) ois.readObject();
 				ois.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return map;
 	}
 	/**
 	 * Inicia um novo mapa de propostasDeLeis para limpar o sistema.

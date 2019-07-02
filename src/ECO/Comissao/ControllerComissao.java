@@ -87,7 +87,7 @@ public class ControllerComissao implements Serializable {
      * @return, retorna um mapa de comissao gravado anteriormente.
      */
 
-    public void lerArquivos (String arquivo){
+    public Map<String, Comissao> lerArquivos (String arquivo){
         File arquivoComissao = null;
         arquivoComissao = new File(arquivo);
         Map<String, Comissao> map = new HashMap<>();
@@ -102,13 +102,13 @@ public class ControllerComissao implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.mapaComissoes = (Map<String, Comissao>) ois.readObject();
+                map = (Map<String, Comissao>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return map;
     }
 
     /**

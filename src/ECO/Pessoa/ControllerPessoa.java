@@ -258,9 +258,10 @@ public class ControllerPessoa implements Serializable {
     /**
      * Método de recuperação de mapa gravado.
      * @param arquivo, nome do arquivo onde os dados serão buscados.
+     * @return mapa com as informacoes
      */
 
-    public void lerArquivosPessoa(String arquivo){
+    public Map<String, Pessoa> lerArquivosPessoa(String arquivo){
         File arquivoPessoa = null;
         arquivoPessoa = new File(arquivo);
         Map<String, Pessoa> map = new HashMap<>();
@@ -275,19 +276,21 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.pessoas = (Map<String, Pessoa>) ois.readObject();
+                map = (Map<String, Pessoa>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return map;
     }
     /**
      * Método de recuperação de mapa gravado.
      * @param arquivo, nome do arquivo onde os dados serão buscados.
+     * @return mapa com as informacoes
      */
 
-    public void lerArquivosDeputado(String arquivo){
+    public Map<String, Deputado> lerArquivosDeputado(String arquivo){
         File arquivoDeputado = null;
         arquivoDeputado = new File(arquivo);
         Map<String, Deputado> map = new HashMap<>();
@@ -302,19 +305,21 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.deputados = (Map<String, Deputado>) ois.readObject();
+                map = (Map<String, Deputado>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return map;
     }
     /**
      * Método de recuperação de mapa gravado.
      * @param arquivo, nome do arquivo onde os dados serão buscados.
+     * @return a lista com as informacoes
      */
 
-    public void lerArquivosPartido(String arquivo){
+    public List<String> lerArquivosPartido(String arquivo){
         File arquivoPartido = null;
         arquivoPartido = new File(arquivo);
         List<String> list = new ArrayList<>(); 
@@ -329,12 +334,13 @@ public class ControllerPessoa implements Serializable {
             }else{
                 fis = new FileInputStream(arquivo);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                this.partidos = (List<String>) ois.readObject();
+                list = (List<String>) ois.readObject();
                 ois.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return list;
     }
     /**
      * Inicializa novos mapas e lista para limpar o sistema.

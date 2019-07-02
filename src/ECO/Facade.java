@@ -19,7 +19,6 @@ public class Facade {
         this.controladorGeral.iniciaSistema();
     }
 
-    //US1
     public void cadastrarPessoa(String nome, String dni, String estadoOrigem, String interesses) {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses);
     }
@@ -28,19 +27,15 @@ public class Facade {
         this.controladorGeral.cadastrarPessoa(nome, dni, estadoOrigem, interesses, partido);
     }
 
-    // US2
 
     public void cadastrarDeputado(String dni, String dataInicio) {
         this.controladorGeral.cadastrarDeputado(dni, dataInicio);
     }
 
-    // US3
-
     public String exibirPessoa(String dni) {
         return this.controladorGeral.exibePessoa(dni);
     }
 
-    // US4
 
     public void cadastrarPartido(String nomePartido) {
         this.controladorGeral.cadastrarPartido(nomePartido);
@@ -51,13 +46,10 @@ public class Facade {
         return this.controladorGeral.exibeBase();
     }
 
-    // US5
 
     public void cadastrarComissao(String tema, String dniPoliticos) {
         this.controladorGeral.cadastrarComissao(tema, dniPoliticos);
     }
-
-    // US6
 
     public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
         return this.controladorGeral.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
@@ -75,7 +67,6 @@ public class Facade {
         return this.controladorGeral.exibirProjeto(codigo);
     }
 
-    // US7
 
     public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
         return controladorGeral.votarComissao(codigo, statusGovernista, proximoLocal);
@@ -85,25 +76,19 @@ public class Facade {
         return controladorGeral.votarPlenario(codigo, statusGovernista, presentes);
     }
 
-//    US8
 
     public String exibirTramitacao(String codigo) {
         return controladorGeral.exibirTramitacao(codigo);
     }
 
-//   US9
-
     public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
         controladorGeral.configurarEstrategiaPropostaRelacionada(dni, estrategia);
     }
-
 
     public String pegarPropostaRelacionada(String dni) {
         return controladorGeral.pegarPropostaRelacionada(dni);
     }
 
-
-//   US10
     public void salvarSistema() throws IOException {
          this.controladorGeral.finalizaSistema();
     }
